@@ -1225,6 +1225,36 @@ function ProjectPage({
 }
 
 // ========== 360° VIEWER (Pannellum) ==========
+// ¿Se puede mover la vista moviendo el telefono? En Android sí de entrada.
+// iOS 13+ exige que el usuario lo conceda con un gesto explicito, asi que ahi
+// hace falta un toque. MOTION_OK recuerda el permiso durante la visita, para no
+// volver a pedirlo en cada visor.
+const MOTION_CAPABLE = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches && typeof window.DeviceOrientationEvent !== 'undefined';
+const MOTION_NEEDS_TAP = MOTION_CAPABLE && typeof window.DeviceOrientationEvent.requestPermission === 'function';
+let MOTION_OK = MOTION_CAPABLE && !MOTION_NEEDS_TAP;
+const MOTION_LISTENERS = new Set();
+
+async function askMotion() {
+  if (!MOTION_CAPABLE) return false;
+  if (!MOTION_NEEDS_TAP) {
+    MOTION_OK = true;
+  } else {
+    try {
+      const r = await window.DeviceOrientationEvent.requestPermission();
+      MOTION_OK = r === 'granted';
+    } catch (e) {
+      MOTION_OK = false;
+    }
+  }
+  // avisar a los demas visores abiertos
+  MOTION_LISTENERS.forEach(fn => {
+    try {
+      fn(MOTION_OK);
+    } catch (e) {}
+  });
+  return MOTION_OK;
+}
+
 function Pano360({
   src,
   autoRotate = true,
@@ -1232,10 +1262,14 @@ function Pano360({
   pitch = 0,
   orientationDefault = false,
   onViewer,
-  eye = false
+  eye = false,
+  motionUI = false
 }) {
   const ref = useRef(null);
   const viewerRef = useRef(null);
+  // el aviso solo aparece donde hace falta: movil, permiso pendiente
+  const [askTap, setAskTap] = useState(motionUI && MOTION_CAPABLE && !MOTION_OK);
+  const [motionOn, setMotionOn] = useState(motionUI && MOTION_OK);
   useEffect(() => {
     if (!ref.current || !window.pannellum) return;
     const isTouch = window.matchMedia('(max-width:1080px)').matches;
@@ -1255,7 +1289,7 @@ function Pano360({
       hfov: eye ? 80 : isTouch ? 85 : 100,
       minHfov: eye ? 80 : 50,
       maxHfov: eye ? 80 : 120,
-      orientationOnByDefault: orientationDefault,
+      orientationOnByDefault: orientationDefault || motionOn,
       backgroundColor: [0.05, 0.04, 0.04]
     });
     onViewer && onViewer(viewerRef.current);
@@ -1265,11 +1299,55 @@ function Pano360({
         viewerRef.current && viewerRef.current.destroy();
       } catch (e) {}
     };
-  }, [src, autoRotate, yaw, pitch, orientationDefault, eye]);
-  return /*#__PURE__*/React.createElement("div", {
+  }, [src, autoRotate, yaw, pitch, orientationDefault, eye, motionUI, motionOn]);
+
+  // Encender la orientacion en un visor ya creado. pannellum ignora
+  // startOrientation() si no considera "soportada" la orientacion (exige HTTPS y
+  // navegador movil), asi que si no prende se recrea el visor con la opcion
+  // puesta desde el principio, que es un camino que siempre funciona.
+  const enableOrientation = () => {
+    const v = viewerRef.current;
+    try {
+      v && v.startOrientation();
+    } catch (e) {}
+    setTimeout(() => {
+      let on = false;
+      try {
+        const w = viewerRef.current;
+        on = !!(w && w.isOrientationActive());
+      } catch (e) {}
+      if (!on) setMotionOn(true);
+    }, 150);
+  };
+
+  // si el permiso se concede en otro visor, este se entera y se enciende
+  useEffect(() => {
+    if (!motionUI || !MOTION_CAPABLE) return;
+    const onGrant = ok => {
+      if (!ok) return;
+      setAskTap(false);
+      enableOrientation();
+    };
+    MOTION_LISTENERS.add(onGrant);
+    return () => MOTION_LISTENERS.delete(onGrant);
+  }, [motionUI]);
+
+  const turnOnMotion = async () => {
+    const ok = await askMotion();
+    setAskTap(false);
+    if (!ok) return;
+    enableOrientation();
+  };
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     ref: ref,
-    className: "pano"
-  });
+    className: `pano ${askTap ? 'needs-motion' : ''}`
+  }), askTap && /*#__PURE__*/React.createElement("button", {
+    className: "pano-motion",
+    onClick: turnOnMotion
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ic"
+  }, "◎"), /*#__PURE__*/React.createElement("b", null, "Tap to look around"), /*#__PURE__*/React.createElement("span", null, "by moving your phone")));
 }
 function Tour360({
   onPano
@@ -1293,7 +1371,8 @@ function Tour360({
     key: active.id,
     src: active.src,
     yaw: active.yaw,
-    pitch: active.pitch
+    pitch: active.pitch,
+    motionUI: true
   }), /*#__PURE__*/React.createElement("div", {
     className: "pano-tag"
   }, /*#__PURE__*/React.createElement("span", {
@@ -1343,7 +1422,7 @@ function PanoOverlay({
   const viewerRef = useRef(null);
   const eyeRef = useRef(null);
   const vrPushed = useRef(false);
-  const [motion, setMotion] = useState(false);
+  const [motion, setMotion] = useState(MOTION_OK);
   const [vr, setVr] = useState(false);
 
   // El modo gafas mete su propia entrada en el historial. Asi el boton o el
@@ -1372,13 +1451,11 @@ function PanoOverlay({
     }
     setVr(false);
   };
-  // Gyroscope: available on touch devices that expose DeviceOrientationEvent.
-  // iOS 13+ requires an explicit permission prompt from a user gesture;
-  // Android (and older iOS) can start orientation immediately.
-  const motionCapable = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches && typeof window.DeviceOrientationEvent !== 'undefined';
-  const needsPermission = motionCapable && typeof window.DeviceOrientationEvent.requestPermission === 'function';
+  const motionCapable = MOTION_CAPABLE;
+  const needsPermission = MOTION_NEEDS_TAP;
+  // al cambiar de estancia se recrea el visor: si ya hay permiso, sigue encendido
   useEffect(() => {
-    setMotion(false);
+    setMotion(MOTION_OK);
   }, [cur]);
   useEffect(() => {
     if (!open) setVr(false);
@@ -1422,14 +1499,7 @@ function PanoOverlay({
   const enterVr = async () => {
     // El clic es el gesto que iOS exige para pedir permiso del giroscopio,
     // asi que se pide aqui, antes de partir la pantalla.
-    if (needsPermission) {
-      try {
-        const r = await window.DeviceOrientationEvent.requestPermission();
-        if (r === 'granted') setMotion(true);
-      } catch (e) {}
-    } else if (motionCapable) {
-      setMotion(true);
-    }
+    if (await askMotion()) setMotion(true);
     setVr(true);
   };
   useEffect(() => {
@@ -1455,14 +1525,12 @@ function PanoOverlay({
       setMotion(false);
       return;
     }
+    const ok = await askMotion();
+    if (!ok) return;
     try {
-      if (needsPermission) {
-        const r = await window.DeviceOrientationEvent.requestPermission();
-        if (r !== 'granted') return;
-      }
       v.startOrientation();
-      setMotion(true);
     } catch (e) {}
+    setMotion(true);
   };
   return /*#__PURE__*/React.createElement("div", {
     className: `pano-ov ${open ? 'open' : ''}`
@@ -1515,10 +1583,10 @@ function PanoOverlay({
     yaw: pano.yaw,
     pitch: pano.pitch,
     autoRotate: false,
-    orientationDefault: motionCapable && !needsPermission,
+    orientationDefault: MOTION_OK,
     onViewer: v => {
       viewerRef.current = v;
-      if (v && motionCapable && !needsPermission) setMotion(true);
+      if (v && MOTION_OK) setMotion(true);
     }
   }), /*#__PURE__*/React.createElement(TourBar, {
     current: pano,

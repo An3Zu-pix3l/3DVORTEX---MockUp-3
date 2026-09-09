@@ -415,6 +415,24 @@
   /* keep pannellum zoom controls clear of the overlay top bar */
   .pano-ov .pnlm-controls-container{top:96px; left:24px}
 
+  /* Aviso para encender el giroscopio. Solo sale en iPhone, que exige un toque
+     del usuario para conceder el permiso; en Android se enciende solo. */
+  .pano-motion{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    z-index:6; display:flex; flex-direction:column; align-items:center; gap:7px;
+    text-align:center; max-width:min(78%,260px); padding:18px 22px; border-radius:14px;
+    background:rgba(8,18,30,.66); -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px); color:rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.35); font-family:var(--font-mono);
+    font-size:9px; letter-spacing:.16em; text-transform:uppercase; line-height:1.7;
+    cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent}
+  .pano-motion .ic{font-size:22px; line-height:1; color:var(--on-dark)}
+  .pano-motion b{font-weight:400; font-size:11px; color:#fff; letter-spacing:.14em}
+  .pano-motion:active{background:#fff; color:#5c6b7a}
+  .pano-motion:active b,.pano-motion:active .ic{color:#0a1a2a}
+  /* mientras falta el permiso, fuera el boton de orientacion de pannellum: en
+     iPhone no haria nada y pareceria que la web esta rota */
+  .pano.needs-motion .pnlm-orientation-button{display:none}
+
   /* ========== MODO GAFAS (Cardboard) ========== */
   /* Dos mitades con la misma imagen. Las panoramicas son monoscopicas, asi que
      esto da inmersion —miras alrededor moviendo la cabeza— pero no profundidad:
