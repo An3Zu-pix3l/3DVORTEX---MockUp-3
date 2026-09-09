@@ -415,6 +415,42 @@
   /* keep pannellum zoom controls clear of the overlay top bar */
   .pano-ov .pnlm-controls-container{top:96px; left:24px}
 
+  /* ========== MODO GAFAS (Cardboard) ========== */
+  /* Dos mitades con la misma imagen. Las panoramicas son monoscopicas, asi que
+     esto da inmersion —miras alrededor moviendo la cabeza— pero no profundidad:
+     para eso harian falta panoramicas estereo. */
+  .vr-stage{position:absolute; inset:0; display:flex; background:#000; z-index:8}
+  .vr-eye{position:relative; flex:1 1 50%; min-width:0; overflow:hidden}
+  .vr-eye .pano{position:absolute; inset:0}
+  /* separacion central: el tabique de las gafas cae aqui */
+  .vr-split{position:absolute; top:0; bottom:0; left:50%; width:4px;
+    transform:translateX(-2px); background:#000; z-index:3; pointer-events:none}
+  .vr-exit{position:absolute; top:14px; left:50%; transform:translateX(-50%); z-index:4;
+    padding:8px 16px; border-radius:100px; background:rgba(0,0,0,.55);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); color:#fff;
+    border:1px solid rgba(255,255,255,.3); font-family:var(--font-mono);
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase; cursor:pointer}
+  .vr-exit:hover{background:#fff; color:#000}
+  .vr-room{position:absolute; bottom:14px; left:50%; transform:translateX(-50%); z-index:4;
+    color:rgba(255,255,255,.55); font-family:var(--font-mono); font-size:10px;
+    letter-spacing:.16em; text-transform:uppercase; pointer-events:none}
+  /* dentro de las gafas no hay nada que pulsar: fuera los controles del visor */
+  .vr-eye .pnlm-controls-container,
+  .vr-eye .pnlm-orientation-button{display:none !important}
+  .pano-ov .close.vr-btn{border-color:rgba(255,255,255,.45)}
+  /* en vertical las dos mitades salen demasiado estrechas */
+  .vr-rotate{display:none}
+  @media(orientation:portrait) and (pointer:coarse){
+    .vr-rotate{position:absolute; inset:0; z-index:6; display:flex; align-items:center;
+      justify-content:center; text-align:center; padding:32px; background:rgba(0,0,0,.82);
+      color:#fff; font-family:var(--font-mono); font-size:12px; letter-spacing:.18em;
+      text-transform:uppercase; line-height:2}
+  }
+  @media(max-width:560px){
+    .vr-exit{top:8px; padding:6px 12px; font-size:10px}
+    .vr-room{display:none}
+  }
+
   /* ========== TWEAKS ========== */
   .tweaks{position:fixed; right:24px; bottom:24px; z-index:300; background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 24px 60px rgba(0,0,0,.12); padding:18px; width:300px; font-size:13px; display:none}
   .tweaks.show{display:block}

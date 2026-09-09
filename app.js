@@ -1231,7 +1231,8 @@ function Pano360({
   yaw = 0,
   pitch = 0,
   orientationDefault = false,
-  onViewer
+  onViewer,
+  eye = false
 }) {
   const ref = useRef(null);
   const viewerRef = useRef(null);
@@ -1244,14 +1245,16 @@ function Pano360({
       autoLoad: true,
       autoRotate: autoRotate && !isTouch ? -2 : 0,
       autoRotateInactivityDelay: 3000,
-      showZoomCtrl: true,
-      showFullscreenCtrl: true,
+      // en modo gafas no hay controles: cada mitad es solo imagen
+      showZoomCtrl: !eye,
+      showFullscreenCtrl: !eye,
       compass: false,
       yaw,
       pitch,
-      hfov: isTouch ? 85 : 100,
-      minHfov: 50,
-      maxHfov: 120,
+      // campo de vision fijo por ojo, parecido al de unas gafas de carton
+      hfov: eye ? 80 : isTouch ? 85 : 100,
+      minHfov: eye ? 80 : 50,
+      maxHfov: eye ? 80 : 120,
       orientationOnByDefault: orientationDefault,
       backgroundColor: [0.05, 0.04, 0.04]
     });
@@ -1262,7 +1265,7 @@ function Pano360({
         viewerRef.current && viewerRef.current.destroy();
       } catch (e) {}
     };
-  }, [src, autoRotate, yaw, pitch, orientationDefault]);
+  }, [src, autoRotate, yaw, pitch, orientationDefault, eye]);
   return /*#__PURE__*/React.createElement("div", {
     ref: ref,
     className: "pano"
@@ -1338,7 +1341,9 @@ function PanoOverlay({
   }, [panoId]);
   const pano = cur ? PANO_BY_ID[cur] : panoId ? PANO_BY_ID[panoId] : null;
   const viewerRef = useRef(null);
+  const eyeRef = useRef(null);
   const [motion, setMotion] = useState(false);
+  const [vr, setVr] = useState(false);
   // Gyroscope: available on touch devices that expose DeviceOrientationEvent.
   // iOS 13+ requires an explicit permission prompt from a user gesture;
   // Android (and older iOS) can start orientation immediately.
@@ -1348,8 +1353,66 @@ function PanoOverlay({
     setMotion(false);
   }, [cur]);
   useEffect(() => {
+    if (!open) setVr(false);
+  }, [open]);
+
+  // El ojo derecho copia al izquierdo en cada fotograma. Es lo que mantiene las
+  // dos mitades pegadas, tanto si se arrastra con el raton como si manda el
+  // giroscopio: solo el ojo izquierdo recibe entrada.
+  useEffect(() => {
+    if (!vr) return;
+    let raf = 0;
+    const tick = () => {
+      const a = viewerRef.current,
+        b = eyeRef.current;
+      if (a && b) {
+        try {
+          b.setYaw(a.getYaw(), false);
+          b.setPitch(a.getPitch(), false);
+        } catch (e) {}
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [vr, cur]);
+
+  // Al entrar: pantalla completa del navegador y, si se puede, apaisado.
+  // Al salir: deshacer las dos cosas.
+  useEffect(() => {
+    if (vr) {
+      const el = document.documentElement;
+      if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(() => {});
+      }
+    } else if (document.fullscreenElement && document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    }
+  }, [vr]);
+
+  const enterVr = async () => {
+    // El clic es el gesto que iOS exige para pedir permiso del giroscopio,
+    // asi que se pide aqui, antes de partir la pantalla.
+    if (needsPermission) {
+      try {
+        const r = await window.DeviceOrientationEvent.requestPermission();
+        if (r === 'granted') setMotion(true);
+      } catch (e) {}
+    } else if (motionCapable) {
+      setMotion(true);
+    }
+    setVr(true);
+  };
+  useEffect(() => {
     const k = e => {
-      if (open && e.key === 'Escape') onClose();
+      if (!open || e.key !== 'Escape') return;
+      // en modo gafas, Escape sale primero de las gafas, no del visor
+      setVr(v => {
+        if (v) return false;
+        onClose();
+        return v;
+      });
     };
     window.addEventListener('keydown', k);
     return () => window.removeEventListener('keydown', k);
@@ -1375,7 +1438,43 @@ function PanoOverlay({
   };
   return /*#__PURE__*/React.createElement("div", {
     className: `pano-ov ${open ? 'open' : ''}`
-  }, open && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, open && vr && /*#__PURE__*/React.createElement("div", {
+    className: "vr-stage"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "vr-eye"
+  }, /*#__PURE__*/React.createElement(Pano360, {
+    key: pano.id + '-L',
+    src: pano.src,
+    yaw: pano.yaw,
+    pitch: pano.pitch,
+    autoRotate: false,
+    eye: true,
+    orientationDefault: motion,
+    onViewer: v => {
+      viewerRef.current = v;
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "vr-eye"
+  }, /*#__PURE__*/React.createElement(Pano360, {
+    key: pano.id + '-R',
+    src: pano.src,
+    yaw: pano.yaw,
+    pitch: pano.pitch,
+    autoRotate: false,
+    eye: true,
+    onViewer: v => {
+      eyeRef.current = v;
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "vr-split"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "vr-rotate"
+  }, "\u21bb Turn your phone sideways, then slide it into the glasses"), /*#__PURE__*/React.createElement("button", {
+    className: "vr-exit",
+    onClick: () => setVr(false)
+  }, "✕ Exit VR"), /*#__PURE__*/React.createElement("div", {
+    className: "vr-room"
+  }, pano.t, " · ", pano.c)), open && !vr && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "stage"
   }, /*#__PURE__*/React.createElement(Pano360, {
     key: pano.id,
@@ -1403,7 +1502,11 @@ function PanoOverlay({
       gap: 10,
       alignItems: 'center'
     }
-  }, motionCapable && /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "close vr-btn",
+    onClick: enterVr,
+    title: "Split the view for a Cardboard-style headset"
+  }, "◫ VR glasses"), motionCapable && /*#__PURE__*/React.createElement("button", {
     className: `close motion ${motion ? 'on' : ''}`,
     onClick: toggleMotion
   }, motion ? '◉ Motion on' : '◎ Motion'), /*#__PURE__*/React.createElement("button", {
