@@ -5,7 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>3DVORTEX — Architectural Visualization, Zürich</title>
 <meta name="description" content="3D Vortex — architectural visualization studio in Zürich. Photoreal renderings, AI visualization, 3D printing and technical drafting." />
-<link rel="preload" as="image" href="assets/hero.jpg" />
+<link rel="canonical" href="https://3dvortex.ch/" />
+
+<!-- Open Graph -->
+<meta property="og:type"           content="website" />
+<meta property="og:site_name"      content="3D Vortex" />
+<meta property="og:locale"         content="en_US" />
+<meta property="og:url"            content="https://3dvortex.ch/" />
+<meta property="og:title"          content="3D Vortex — Architectural Visualization Studio, Zürich" />
+<meta property="og:description"    content="Photorealistic renderings, AI visualization, 3D-printed models and technical drafting for architecture studios in Switzerland." />
+<meta property="og:image"          content="https://3dvortex.ch/assets/og-cover.jpg" />
+<meta property="og:image:width"    content="1200" />
+<meta property="og:image:height"   content="630" />
+<meta property="og:image:alt"      content="Kindergarten Kreuzgut, competition visualization by 3D Vortex" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="3D Vortex — Architectural Visualization Studio, Zürich" />
+<meta name="twitter:description" content="Photorealistic renderings, AI visualization, 3D-printed models and technical drafting." />
+<meta name="twitter:image"       content="https://3dvortex.ch/assets/og-cover.jpg" />
+
+<meta name="theme-color" content="#ffffff" />
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%23111'/%3E%3C/svg%3E" />
 <link rel="stylesheet" href="fonts/fonts.css"/>
 <link rel="stylesheet" href="vendor/pannellum.css"/>
@@ -241,7 +262,7 @@
   /* ========== FOOTER ========== */
   footer{padding:60px 0 40px; border-top:1px solid var(--line)}
   .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px}
-  .foot-grid h5{font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:0 0 16px; font-weight:500}
+  .foot-grid h2{font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:0 0 16px; font-weight:500}
   .foot-grid ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; font-size:14px}
   .foot-grid a{color:var(--ink-2)} .foot-grid a:hover{color:var(--ink)}
   .big-mark{font-family:var(--font-display); font-size:clamp(64px,14vw,200px); line-height:.9; letter-spacing:-.03em; margin:80px 0 24px; color:#dde5ed}
@@ -402,9 +423,90 @@
   .tweaks .sw .s{width:26px; height:26px; border-radius:50%; border:1px solid var(--line); cursor:pointer}
   .tweaks .sw .s.on{outline:2px solid var(--ink); outline-offset:2px}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "3D Vortex",
+  "url": "https://3dvortex.ch/",
+  "image": "https://3dvortex.ch/assets/og-cover.jpg",
+  "description": "Architectural visualization studio in Zürich: photorealistic renderings, AI visualization, 3D-printed architectural models, 360° virtual tours and technical drafting.",
+  "email": "info@3dvortex.ch",
+  "telephone": "+41 44 203 13 30",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Aemtlerstrasse 78",
+    "postalCode": "8003",
+    "addressLocality": "Zürich",
+    "addressCountry": "CH"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  }],
+  "areaServed": ["CH", "DE", "AT", "LI"],
+  "sameAs": ["https://www.instagram.com/3dvortex.ch/"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Architectural visualization" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI visualization" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "3D printed architectural models" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "360° virtual tours" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Plan digitization and technical drafting" }}
+    ]
+  }
+}
+</script>
 </head>
 <body>
   <div id="root"></div>
+
+  <noscript>
+    <div style="max-width:760px;margin:0 auto;padding:48px 24px;font-family:system-ui,sans-serif;line-height:1.6;color:#0a1a2a">
+    <h1>3D Vortex — architectural visualization studio in Z&uuml;rich</h1>
+    <p>Photorealistic exterior and interior renderings, AI visualization, 3D-printed
+    architectural models, 360&deg; virtual tours and technical drafting for architecture
+    studios, developers and private clients across Switzerland, Germany, Austria and
+    Liechtenstein.</p>
+
+    <h2>Services</h2>
+    <ul>
+      <li><strong>Architectural renderings</strong> — from abstract and artistic to highly precise photoreal imagery.</li>
+      <li><strong>AI renderings</strong> — sketch-to-render in hours, ready for pitches and early design rounds.</li>
+      <li><strong>3D printing</strong> — tactile architectural models for juries and clients.</li>
+      <li><strong>Digitalization &amp; drafting</strong> — hand-drawn plans turned into precise CAD.</li>
+    </ul>
+
+    <h2>Selected projects</h2>
+    <ul>
+      <li>Graffio, Golino — Visualization</li>
+      <li>Viseu, Golino — Visualization</li>
+      <li>Casa Lele, Cevio — Visualization</li>
+      <li>Football Pitch Roof, Pamplona — Competition</li>
+      <li>Silserkugel, St. Moritz — Competition</li>
+      <li>Arento MFH, Zürich — Real Estate</li>
+      <li>Kindergarten Kreuzgut — Competition</li>
+      <li>Wohnungsbau Altstetten, Zürich — Competition</li>
+      <li>Casa Lele, Cevio — 3D Print Model</li>
+      <li>Oerlikon Facade, Zürich — 3D Print Model</li>
+      <li>Graffio, Golino — 3D Print Model</li>
+      <li>Graffio, Golino — 360° Virtual Tour</li>
+      <li>Silserkugel, St. Moritz — 360° Virtual Tour</li>
+      <li>EFH Maria, Liechtenstein — AI Visualization</li>
+    </ul>
+
+    <h2>Studio</h2>
+    <p>3D Vortex<br />Aemtlerstrasse 78, 8003 Z&uuml;rich, Switzerland<br />
+    <a href="mailto:info@3dvortex.ch">info@3dvortex.ch</a> &middot;
+    <a href="tel:+41442031330">+41 44 203 13 30</a></p>
+
+    <p><em>This site needs JavaScript for the interactive gallery and the 360&deg; tour.</em></p>
+    </div>
+  </noscript>
 
   <script defer src="app.js"></script>
 </body>

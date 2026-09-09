@@ -75,6 +75,18 @@ const PNT = {
   amb4: "assets/pano-amb-04-t.jpg"
 };
 
+// recortes intermedios: mismo encuadre que ensena la tarjeta, 1600x1200.
+// Evitan bajar el equirectangular completo solo para una miniatura.
+const PNM = {
+  hall: "assets/pano-hall-m.jpg",
+  court1: "assets/pano-court-01-m.jpg",
+  court2: "assets/pano-court-02-m.jpg",
+  amb1: "assets/pano-amb-01-m.jpg",
+  amb2: "assets/pano-amb-02-m.jpg",
+  amb3: "assets/pano-amb-03-m.jpg",
+  amb4: "assets/pano-amb-04-m.jpg"
+};
+
 // 360° equirectangular panoramas
 const PANORAMAS = [{
   id: "amb3",
@@ -84,6 +96,7 @@ const PANORAMAS = [{
   place: "Golino",
   src: PN.amb3,
   thumb: PNT.amb3,
+  mid: PNM.amb3,
   yaw: 0,
   pitch: -2
 }, {
@@ -94,6 +107,7 @@ const PANORAMAS = [{
   place: "Golino",
   src: PN.amb2,
   thumb: PNT.amb2,
+  mid: PNM.amb2,
   yaw: 0,
   pitch: -2
 }, {
@@ -104,6 +118,7 @@ const PANORAMAS = [{
   place: "Golino",
   src: PN.amb4,
   thumb: PNT.amb4,
+  mid: PNM.amb4,
   yaw: 0,
   pitch: -2
 }, {
@@ -114,6 +129,7 @@ const PANORAMAS = [{
   place: "Golino",
   src: PN.amb1,
   thumb: PNT.amb1,
+  mid: PNM.amb1,
   yaw: 0,
   pitch: -2
 }, {
@@ -124,6 +140,7 @@ const PANORAMAS = [{
   place: "St. Moritz",
   src: PN.court1,
   thumb: PNT.court1,
+  mid: PNM.court1,
   yaw: 0,
   pitch: -2
 }, {
@@ -134,6 +151,7 @@ const PANORAMAS = [{
   place: "St. Moritz",
   src: PN.court2,
   thumb: PNT.court2,
+  mid: PNM.court2,
   yaw: 0,
   pitch: -2
 }, {
@@ -144,6 +162,7 @@ const PANORAMAS = [{
   place: "St. Moritz",
   src: PN.hall,
   thumb: PNT.hall,
+  mid: PNM.hall,
   yaw: 0,
   pitch: -2
 }];
@@ -760,7 +779,7 @@ const PROJECTS = [{
     service: "tour",
     pending: false,
     cover: {
-      img: PN.amb1,
+      img: PNM.amb1,
       ar: "ar-43",
       pano: true
     },
@@ -770,7 +789,7 @@ const PROJECTS = [{
       layout: "full",
       items: [
         {
-        img: PN.amb1,
+        img: PNM.amb1,
         pano: "amb1",
         t: "Bedroom & Bath",
         c: "Enter the 360° tour",
@@ -782,14 +801,14 @@ const PROJECTS = [{
       layout: "pair",
       items: [
         {
-        img: PN.amb2,
+        img: PNM.amb2,
         pano: "amb2",
         t: "Kitchen",
         c: "Enter the 360° tour",
         ar: "ar-43"
       },
         {
-        img: PN.amb3,
+        img: PNM.amb3,
         pano: "amb3",
         t: "Living Room",
         c: "Enter the 360° tour",
@@ -801,7 +820,7 @@ const PROJECTS = [{
       layout: "full",
       items: [
         {
-        img: PN.amb4,
+        img: PNM.amb4,
         pano: "amb4",
         t: "Bar & Lounge",
         c: "Enter the 360° tour",
@@ -818,7 +837,7 @@ const PROJECTS = [{
     service: "tour",
     pending: false,
     cover: {
-      img: PN.court1,
+      img: PNM.court1,
       ar: "ar-43",
       pano: true
     },
@@ -828,7 +847,7 @@ const PROJECTS = [{
       layout: "full",
       items: [
         {
-        img: PN.court1,
+        img: PNM.court1,
         pano: "court1",
         t: "Ice Rink",
         c: "Enter the 360° tour",
@@ -840,14 +859,14 @@ const PROJECTS = [{
       layout: "pair",
       items: [
         {
-        img: PN.court2,
+        img: PNM.court2,
         pano: "court2",
         t: "Rink — Training",
         c: "Enter the 360° tour",
         ar: "ar-43"
       },
         {
-        img: PN.hall,
+        img: PNM.hall,
         pano: "hall",
         t: "Restaurant",
         c: "Enter the 360° tour",
@@ -1054,7 +1073,7 @@ function Tile({
     onClick: onClick
   }, /*#__PURE__*/React.createElement("img", {
     src: data.img,
-    alt: data.t,
+    alt: data.alt || data.t,
     loading: "lazy",
     style: {
       objectPosition: data.fit || '50% 50%',
@@ -1109,7 +1128,8 @@ function HomeGallery() {
         ...pr.cover,
         ar: row.layout === 'full' ? 'ar-169' : 'ar-43',
         t: pr.title,
-        c: meta
+        c: meta,
+        alt: `${pr.title}${pr.place ? ', ' + pr.place : ''} — ${pr.cat} by 3D Vortex`
       },
       onClick: () => {
         window.location.hash = '#/p/' + pr.slug;
@@ -1162,7 +1182,7 @@ function ProjectPage({
     const idx = imgs.indexOf(it);
     return /*#__PURE__*/React.createElement(Tile, {
       key: j,
-      data: it,
+      data: { ...it, alt: `${proj.title}${proj.place ? ', ' + proj.place : ''} — ${it.t || proj.cat}, ${proj.cat} by 3D Vortex` },
       idxText: `${String(idx + 1).padStart(2, '0')} / ${String(imgs.length).padStart(2, '0')}`,
       onClick: () => it.pano ? onPano(it.pano) : setLb({
         open: true,
@@ -1290,8 +1310,9 @@ function Tour360({
     className: `scene-tab ${i === idx ? 'on' : ''}`,
     onClick: () => setI(idx)
   }, /*#__PURE__*/React.createElement("img", {
-    src: s.src,
-    alt: s.t,
+    src: s.mid || s.src,
+    alt: `${s.t}, ${s.c} — 360° virtual tour by 3D Vortex`,
+    loading: "lazy",
     style: {
       transform: 'scale(2.4)'
     }
@@ -1630,7 +1651,7 @@ function Footer() {
     className: "wrap"
   }, /*#__PURE__*/React.createElement("div", {
     className: "foot-grid"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h5", null, "3DVortex — Zürich"), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "3DVortex — Zürich"), /*#__PURE__*/React.createElement("p", {
     style: {
       color: 'var(--ink-2)',
       fontSize: 14,
@@ -1638,7 +1659,7 @@ function Footer() {
       maxWidth: '40ch',
       margin: 0
     }
-  }, "Architectural visualization, AI rendering, 3D printing and technical drafting for architectural studios.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h5", null, "Menu"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, "Architectural visualization, AI rendering, 3D printing and technical drafting for architectural studios.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Menu"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#/"
   }, "Home")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#portfolio"
@@ -1650,11 +1671,11 @@ function Footer() {
     href: "#about"
   }, "About")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#contact"
-  }, "Contact")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h5", null, "Contact"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "Aemtlerstrasse 78"), /*#__PURE__*/React.createElement("li", null, "8003 Zürich, CH"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, "Contact")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Contact"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "Aemtlerstrasse 78"), /*#__PURE__*/React.createElement("li", null, "8003 Zürich, CH"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "mailto:info@3dvortex.ch"
   }, "info@3dvortex.ch")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "tel:+41442031330"
-  }, "+41 44 203 13 30")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h5", null, "Follow"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, "+41 44 203 13 30")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Follow"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
   }, "Instagram")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
@@ -1810,6 +1831,35 @@ function App() {
     }
     window.scrollTo(0, 0);
   }, [route]);
+
+  // Titulo y descripcion propios de cada vista. No sustituye a tener una URL
+  // real por proyecto, pero al menos cada vista deja de compartir metadatos.
+  useEffect(() => {
+    const site = '3DVORTEX';
+    let title = 'Architectural Visualization Studio, Zürich | ' + site;
+    let desc = 'Architectural visualization studio in Zürich: photoreal renderings, ' +
+      'AI visualization, 3D-printed models, 360° virtual tours and technical drafting.';
+    if (view === 'tour') {
+      title = '360° Virtual Tours — Graffio & Silserkugel | ' + site;
+      desc = 'Walk through our architectural visualizations in 360°: the Graffio ' +
+        'residence in Golino and the Silserkugel ice arena in St. Moritz.';
+    } else if (view === 'project') {
+      const p = PROJECTS.find(x => x.slug === slug);
+      if (p) {
+        title = `${p.title}${p.place ? ' — ' + p.place : ''} · ${p.cat} | ${site}`;
+        desc = `${p.cat} of ${p.title}${p.place ? ' in ' + p.place : ''} by 3D Vortex, ` +
+          'architectural visualization studio in Zürich.';
+      }
+    }
+    document.title = title;
+    let m = document.querySelector('meta[name="description"]');
+    if (!m) {
+      m = document.createElement('meta');
+      m.setAttribute('name', 'description');
+      document.head.appendChild(m);
+    }
+    m.setAttribute('content', desc);
+  }, [view, slug]);
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', tw.theme);
     document.documentElement.style.setProperty('--coral', ACCENTS[tw.accent] || ACCENTS.coral);

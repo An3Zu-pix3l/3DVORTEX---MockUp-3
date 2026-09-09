@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hoy el sitio es una sola pagina: los 14 proyectos viven tras rutas con
+     almohadilla (#/p/...) y los buscadores no las tratan como URL propias.
+     Cuando cada ficha tenga su direccion real, se anaden aqui. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://3dvortex.ch/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
