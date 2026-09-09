@@ -425,12 +425,16 @@
   /* separacion central: el tabique de las gafas cae aqui */
   .vr-split{position:absolute; top:0; bottom:0; left:50%; width:4px;
     transform:translateX(-2px); background:#000; z-index:3; pointer-events:none}
-  .vr-exit{position:absolute; top:14px; left:50%; transform:translateX(-50%); z-index:4;
-    padding:8px 16px; border-radius:100px; background:rgba(0,0,0,.55);
+  /* Una salida por ojo, no una centrada: en el centro cae el tabique de las
+     gafas, y pegada al borde puede quedar bajo la barra del navegador.
+     Va por encima de todo lo demas para que nada pueda tragarse el toque. */
+  .vr-exit{position:absolute; top:9%; left:50%; transform:translateX(-50%); z-index:9;
+    padding:11px 20px; border-radius:100px; background:rgba(0,0,0,.62);
     -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); color:#fff;
-    border:1px solid rgba(255,255,255,.3); font-family:var(--font-mono);
-    font-size:11px; letter-spacing:.18em; text-transform:uppercase; cursor:pointer}
-  .vr-exit:hover{background:#fff; color:#000}
+    border:1px solid rgba(255,255,255,.45); font-family:var(--font-mono);
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase; cursor:pointer;
+    touch-action:manipulation; -webkit-tap-highlight-color:transparent; white-space:nowrap}
+  .vr-exit:hover,.vr-exit:active{background:#fff; color:#000}
   .vr-room{position:absolute; bottom:14px; left:50%; transform:translateX(-50%); z-index:4;
     color:rgba(255,255,255,.55); font-family:var(--font-mono); font-size:10px;
     letter-spacing:.16em; text-transform:uppercase; pointer-events:none}
@@ -439,15 +443,19 @@
   .vr-eye .pnlm-orientation-button{display:none !important}
   .pano-ov .close.vr-btn{border-color:rgba(255,255,255,.45)}
   /* en vertical las dos mitades salen demasiado estrechas */
+  /* El aviso de girar el movil NO puede tragarse toques: sin el, al sacar el
+     telefono de las gafas quedaba en vertical, el aviso cubria el boton de
+     salir y no habia forma de volver atras. */
   .vr-rotate{display:none}
   @media(orientation:portrait) and (pointer:coarse){
-    .vr-rotate{position:absolute; inset:0; z-index:6; display:flex; align-items:center;
-      justify-content:center; text-align:center; padding:32px; background:rgba(0,0,0,.82);
-      color:#fff; font-family:var(--font-mono); font-size:12px; letter-spacing:.18em;
-      text-transform:uppercase; line-height:2}
+    .vr-rotate{position:absolute; inset:0; z-index:5; display:flex; align-items:flex-end;
+      justify-content:center; text-align:center; padding:0 28px 16vh;
+      background:rgba(0,0,0,.72); color:#fff; font-family:var(--font-mono);
+      font-size:12px; letter-spacing:.18em; text-transform:uppercase; line-height:2;
+      pointer-events:none}
   }
   @media(max-width:560px){
-    .vr-exit{top:8px; padding:6px 12px; font-size:10px}
+    .vr-exit{top:7%; padding:9px 14px; font-size:10px; letter-spacing:.14em}
     .vr-room{display:none}
   }
 

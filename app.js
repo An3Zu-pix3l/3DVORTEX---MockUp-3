@@ -1342,8 +1342,36 @@ function PanoOverlay({
   const pano = cur ? PANO_BY_ID[cur] : panoId ? PANO_BY_ID[panoId] : null;
   const viewerRef = useRef(null);
   const eyeRef = useRef(null);
+  const vrPushed = useRef(false);
   const [motion, setMotion] = useState(false);
   const [vr, setVr] = useState(false);
+
+  // El modo gafas mete su propia entrada en el historial. Asi el boton o el
+  // gesto de "atras" del movil sale de las gafas en vez de abandonar la pagina.
+  useEffect(() => {
+    if (!vr) return;
+    try {
+      history.pushState({ vr: true }, '');
+      vrPushed.current = true;
+    } catch (e) {}
+    const onPop = () => {
+      vrPushed.current = false;
+      setVr(false);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, [vr]);
+
+  const exitVr = () => {
+    if (vrPushed.current) {
+      vrPushed.current = false;
+      try {
+        history.back();
+        return;
+      } catch (e) {}
+    }
+    setVr(false);
+  };
   // Gyroscope: available on touch devices that expose DeviceOrientationEvent.
   // iOS 13+ requires an explicit permission prompt from a user gesture;
   // Android (and older iOS) can start orientation immediately.
@@ -1408,15 +1436,15 @@ function PanoOverlay({
     const k = e => {
       if (!open || e.key !== 'Escape') return;
       // en modo gafas, Escape sale primero de las gafas, no del visor
-      setVr(v => {
-        if (v) return false;
-        onClose();
-        return v;
-      });
+      if (vr) {
+        exitVr();
+        return;
+      }
+      onClose();
     };
     window.addEventListener('keydown', k);
     return () => window.removeEventListener('keydown', k);
-  }, [open, onClose]);
+  }, [open, onClose, vr]);
   const toggleMotion = async () => {
     const v = viewerRef.current;
     if (!v) return;
@@ -1453,7 +1481,11 @@ function PanoOverlay({
     onViewer: v => {
       viewerRef.current = v;
     }
-  })), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("button", {
+    className: "vr-exit",
+    onClick: exitVr,
+    "aria-label": "Exit VR"
+  }, "✕ Exit VR")), /*#__PURE__*/React.createElement("div", {
     className: "vr-eye"
   }, /*#__PURE__*/React.createElement(Pano360, {
     key: pano.id + '-R',
@@ -1465,14 +1497,15 @@ function PanoOverlay({
     onViewer: v => {
       eyeRef.current = v;
     }
-  })), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("button", {
+    className: "vr-exit",
+    onClick: exitVr,
+    "aria-label": "Exit VR"
+  }, "✕ Exit VR")), /*#__PURE__*/React.createElement("div", {
     className: "vr-split"
   }), /*#__PURE__*/React.createElement("div", {
     className: "vr-rotate"
-  }, "\u21bb Turn your phone sideways, then slide it into the glasses"), /*#__PURE__*/React.createElement("button", {
-    className: "vr-exit",
-    onClick: () => setVr(false)
-  }, "✕ Exit VR"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", null, "\u21bb Turn your phone sideways, then slide it into the glasses")), /*#__PURE__*/React.createElement("div", {
     className: "vr-room"
   }, pano.t, " · ", pano.c)), open && !vr && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "stage"
