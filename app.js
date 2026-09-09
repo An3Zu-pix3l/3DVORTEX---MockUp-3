@@ -182,7 +182,7 @@ function TourBar({
     className: "n"
   }, current.c), /*#__PURE__*/React.createElement("span", {
     className: "p"
-  }, current.place, " · 360° Tour")), /*#__PURE__*/React.createElement("div", {
+  }, current.place, t(" · 360° Tour"))), /*#__PURE__*/React.createElement("div", {
     className: "tb-rooms"
   }, rooms.map(r => /*#__PURE__*/React.createElement("button", {
     key: r.id,
@@ -193,7 +193,7 @@ function TourBar({
     src: r.thumb,
     alt: "",
     "aria-hidden": "true"
-  }), r.t))));
+  }), t(r.t)))));
 }
 const PANO_BY_ID = Object.fromEntries(PANORAMAS.map(p => [p.id, p]));
 
@@ -937,6 +937,186 @@ const HEADLINES = {
   C: ["A Zürich studio for ", "architectural", " clarity — rendered, printed, drafted."]
 };
 
+// ========== IDIOMA ==========
+// Los datos de arriba (PROJECTS, SERVICES, PANORAMAS, HEADLINES) se evaluan una
+// sola vez al cargar, asi que no se traducen ahi: se traducen al pintarlos, con
+// t(). LANG es una variable de modulo que App pone al dia en cada render, para
+// que t() la vea desde cualquier componente.
+const DE = {
+  "Home": "Start",
+  "Projects": "Projekte",
+  "360° Tour": "360°-Tour",
+  "Services": "Leistungen",
+  "About": "Über uns",
+  "Contact": "Kontakt",
+  "Menu": "Menü",
+  "Follow": "Folgen",
+  "Studio · Zürich ↗": "Studio · Zürich ↗",
+  "Zürich · Architectural Visualization · EST. 2023": "Zürich · Architekturvisualisierung · seit 2023",
+  " — Selected projects": " — Ausgewählte Projekte",
+  "Scroll to explore →": "Weiter scrollen →",
+  "Stop letting your best designs get lost in translation — ": "Ihre besten Entwürfe verdienen mehr als eine Skizze — ",
+  " turns your concepts into undeniable architectural visualization.": " macht aus Ihren Konzepten Architekturvisualisierungen, die überzeugen.",
+  "Every pixel, ": "Jedes Pixel ",
+  "intentional": "durchdacht",
+  ". We render the buildings you're about to build.": ". Wir rendern die Gebäude, die Sie bauen werden.",
+  "A Zürich studio for ": "Ein Zürcher Studio für ",
+  "architectural": "architektonische",
+  " clarity — rendered, printed, drafted.": " Klarheit — gerendert, gedruckt, gezeichnet.",
+  "All": "Alle",
+  "Visualization": "Visualisierung",
+  "3D Print Model": "3D-Druckmodell",
+  "360° Virtual Tour": "360°-Rundgang",
+  "AI Visualization": "KI-Visualisierung",
+  "Competition": "Wettbewerb",
+  "Real Estate": "Immobilien",
+  "With ": "Bei ",
+  ", every detail matters. Our photoreal visualizations don't just showcase design — they tell a story, creating immersive experiences that resonate with your audience.": " zählt jedes Detail. Unsere fotorealistischen Visualisierungen zeigen nicht nur den Entwurf — sie erzählen eine Geschichte und schaffen Bilder, die bei Ihrem Publikum haften bleiben.",
+  "Faster sell‑through": "Schnellerer Verkauf",
+  "with photoreal renders": "mit fotorealistischen Renderings",
+  "Of buyers rely": "Der Käufer stützen sich",
+  "on online listings": "auf Online-Inserate",
+  "Higher engagement": "Mehr Aufmerksamkeit",
+  "with premium imagery": "mit hochwertigen Bildern",
+  "Photoreal Rendering": "Fotorealistisches Rendering",
+  "3D Printing": "3D-Druck",
+  "Technical Drafting": "Technisches Zeichnen",
+  "CAD Restoration": "CAD-Rekonstruktion",
+  "Mood Frames": "Stimmungsbilder",
+  "Developer Presentations": "Bauträger-Präsentationen",
+  "Architectural Dreaming": "Architektonisches Träumen",
+  "Four ways we ": "Vier Wege, wie wir Ihr Büro ",
+  "render": "rendern",
+  " your practice.": ".",
+  "Architectural": "Architektur",
+  "Renderings": "Renderings",
+  "AI": "KI",
+  "3D": "3D",
+  "Printing": "Druck",
+  "Digitalization": "Digitalisierung",
+  "& Drafting": "& Zeichnung",
+  "From abstract & artistic to highly precise photoreal imagery — each infused with our design signature.": "Von abstrakt und künstlerisch bis hochpräzise und fotorealistisch — jedes Bild mit unserer gestalterischen Handschrift.",
+  "Photoreal · Concept · Mood": "Fotorealistisch · Konzept · Stimmung",
+  "Sketch‑to‑render in hours. Fine‑tuned materials and illumination ready for pitches, publications and early design rounds.": "Von der Skizze zum Rendering in Stunden. Feinabgestimmte Materialien und Licht für Pitches, Publikationen und frühe Entwurfsphasen.",
+  "Concept · Iteration · Pitch": "Konzept · Iteration · Pitch",
+  "Tactile, immersive architectural models with accuracy and detail. State‑of‑the‑art printing for architectural studios.": "Greifbare Architekturmodelle mit Präzision und Detailtreue. Modernster Druck für Architekturbüros.",
+  "Physical · Scale · Detail": "Physisch · Massstab · Detail",
+  "Analog to digital. Hand‑drawn plans become pristine CAD. Precise technical drafting for architecture and engineering.": "Von analog zu digital. Handgezeichnete Pläne werden zu sauberem CAD. Präzises technisches Zeichnen für Architektur und Ingenieurwesen.",
+  "CAD · Restoration · Precision": "CAD · Rekonstruktion · Präzision",
+  "Interested in starting a project? Feel free to ": "Möchten Sie ein Projekt starten? ",
+  "contact us": "Schreiben Sie uns",
+  " for more information.": " — wir beraten Sie gern.",
+  "All Projects →": "Alle Projekte →",
+  "Start a project →": "Projekt starten →",
+  "360° Experience": "360°-Erlebnis",
+  "Step ": "Treten Sie ",
+  "inside": "hinein",
+  " the render.": " ins Rendering.",
+  "Don't just look at the design — walk through it. Drag to look around, scroll to zoom, and explore each space as if you were standing in it. On your phone, go immersive and look around by simply moving your device.": "Betrachten Sie den Entwurf nicht nur — gehen Sie hindurch. Ziehen zum Umsehen, scrollen zum Zoomen, und jeden Raum erleben, als stünden Sie darin. Auf dem Handy genügt es, das Gerät zu bewegen.",
+  "⛶ Immersive view": "⛶ Vollbild",
+  "⟳ Drag to look around · Scroll to zoom": "⟳ Ziehen zum Umsehen · Scrollen zum Zoomen",
+  "Tap to look around": "Tippen und umsehen",
+  "by moving your phone": "durch Bewegen des Handys",
+  "◫ VR glasses": "◫ VR-Brille",
+  "✕ Exit VR": "✕ VR beenden",
+  "Split the view for a Cardboard-style headset": "Ansicht teilen für eine Cardboard-Brille",
+  "\\u21bb Turn your phone sideways, then slide it into the glasses": "\\u21bb Handy quer drehen und in die Brille schieben",
+  "◎ Motion": "◎ Bewegung",
+  "◉ Motion on": "◉ Bewegung an",
+  "◎ Tap Motion — move your phone to look around": "◎ Bewegung antippen — Handy bewegen und umsehen",
+  "Close ✕": "Schliessen ✕",
+  " · 360° Tour": " · 360°-Tour",
+  "⟳ Enter 360° Tour": "⟳ 360°-Rundgang starten",
+  "360° View": "360°-Ansicht",
+  "Living Room": "Wohnzimmer",
+  "Kitchen": "Küche",
+  "Bar & Lounge": "Bar & Lounge",
+  "Bedroom & Bath": "Schlafen & Bad",
+  "Ice Rink": "Eisfeld",
+  "Rink — Training": "Eisfeld — Training",
+  "Restaurant": "Restaurant",
+  "Project · ": "Projekt · ",
+  "← Previous project": "← Vorheriges Projekt",
+  "Next project →": "Nächstes Projekt →",
+  "by 3D Vortex": "von 3D Vortex",
+  "360° virtual tour by 3D Vortex": "360°-Rundgang von 3D Vortex",
+  "Access gallery": "Erschliessungsgalerie",
+  "Arrival & entrance": "Ankunft & Eingang",
+  "Assembly by hand": "Montage von Hand",
+  "Bedroom": "Schlafzimmer",
+  "Enter the 360° tour": "360°-Rundgang starten",
+  "Exterior & garden": "Aussenraum & Garten",
+  "Exterior & interior": "Aussen & Innen",
+  "Exterior perspectives": "Aussenperspektiven",
+  "Grid detail": "Rasterdetail",
+  "Ground floor": "Erdgeschoss",
+  "Images coming soon": "Bilder folgen in Kürze",
+  "Interior atmosphere": "Innenraumstimmung",
+  "Kitchen island": "Kücheninsel",
+  "Kitchen through the railing": "Küche durch das Geländer",
+  "Living & fireplace": "Wohnen & Cheminée",
+  "Massing & site": "Volumetrie & Umgebung",
+  "Plan detail": "Plandetail",
+  "Pool & cascade": "Pool & Kaskade",
+  "Printed furniture": "Gedruckte Möbel",
+  "Sectioned elevation": "Geschnittene Ansicht",
+  "Street at dusk": "Strasse in der Dämmerung",
+  "Village context": "Dorfkontext",
+  "About · 3DVortex": "Über uns · 3DVortex",
+  "A studio of architects, engineers & ": "Ein Studio aus Architekten, Ingenieuren & ",
+  "image‑makers": "Bildermachern",
+  "Located in the dynamic heart of Zürich, our team comprises passionate architects and engineers who are experts in their field — and deeply understand the needs and challenges of architectural studios.": "Mitten im lebendigen Zürich arbeitet unser Team aus Architekten und Ingenieuren, die ihr Fach beherrschen — und die Anforderungen und Zwänge von Architekturbüros aus eigener Erfahrung kennen.",
+  "Our journey has been enriched by enthusiasm for emerging technologies and a commitment to precision and innovation. We stand as a partner to architectural practices, offering services designed to enhance project efficiency and creativity, one pixel at a time.": "Uns treibt die Begeisterung für neue Technologien an, zusammen mit dem Anspruch auf Präzision und Innovation. Wir verstehen uns als Partner von Architekturbüros und entwickeln Leistungen, die Projekte effizienter und kreativer machen — Pixel für Pixel.",
+  "Founded": "Gegründet",
+  "2023 — Zürich, Switzerland": "2023 — Zürich, Schweiz",
+  "Practice": "Ausrichtung",
+  "Architects · Engineers · Visualization": "Architekten · Ingenieure · Visualisierung",
+  "Clients": "Kunden",
+  "Architectural studios · Developers · Private commissions": "Architekturbüros · Bauträger · Private Auftraggeber",
+  "Languages": "Sprachen",
+  "Deutsch · English · Italiano": "Deutsch · English · Italiano",
+  "Contact Us · We'd love to hear from you": "Kontakt · Wir freuen uns auf Ihre Nachricht",
+  "Let's ": "Lassen Sie uns das Gebäude ",
+  " the building you're about to build.": ", das Sie bauen werden.",
+  "Studio": "Studio",
+  "Reach us": "Erreichbar",
+  "Name *": "Name *",
+  "Email *": "E-Mail *",
+  "Practice / Company": "Büro / Firma",
+  "Tell us about the project — scale, timeline, type of deliverable.": "Erzählen Sie uns vom Projekt — Grösse, Zeitplan, gewünschte Leistungen.",
+  "Send message →": "Nachricht senden →",
+  "Sent ✓ Thank you": "Gesendet ✓ Vielen Dank",
+  "3DVortex — Zürich": "3DVortex — Zürich",
+  "Architectural visualization, AI rendering, 3D printing and technical drafting for architectural studios.": "Architekturvisualisierung, KI-Rendering, 3D-Druck und technisches Zeichnen für Architekturbüros.",
+  "© 3DVortex 2026. All rights reserved.": "© 3DVortex 2026. Alle Rechte vorbehalten.",
+  "Legal Details": "Impressum",
+  "Privacy Policy": "Datenschutz",
+  "Architectural Visualization Studio, Zürich | ": "Studio für Architekturvisualisierung, Zürich | ",
+  "Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting.": "Studio für Architekturvisualisierung in Zürich: fotorealistische Renderings, KI-Visualisierung, 3D-Druckmodelle, 360°-Rundgänge und technisches Zeichnen.",
+  "360° Virtual Tours — Graffio & Silserkugel | ": "360°-Rundgänge — Graffio & Silserkugel | ",
+  "Walk through our architectural visualizations in 360°: the Graffio residence in Golino and the Silserkugel ice arena in St. Moritz.": "Gehen Sie durch unsere Architekturvisualisierungen in 360°: das Wohnhaus Graffio in Golino und die Eisarena Silserkugel in St. Moritz."
+};
+
+let LANG = 'en';
+
+function t(s) {
+  if (LANG !== 'de' || s == null) return s;
+  return DE[s] !== undefined ? DE[s] : s;
+}
+
+// idioma inicial: primero lo que diga la URL, luego lo que se eligio la ultima
+// vez, y si no el del navegador
+function initialLang() {
+  try {
+    const q = new URLSearchParams(location.search).get('lang');
+    if (q === 'de' || q === 'en') return q;
+    const saved = localStorage.getItem('3dv-lang');
+    if (saved === 'de' || saved === 'en') return saved;
+    if ((navigator.language || '').toLowerCase().indexOf('de') === 0) return 'de';
+  } catch (e) {}
+  return 'en';
+}
+
 // ========== HOOKS ==========
 function useReveal(dep) {
   useEffect(() => {
@@ -982,7 +1162,7 @@ function useCounter(target, active, dur = 1500) {
 }
 
 // ========== COMPONENTS ==========
-function Nav() {
+function Nav({ lang, setLang }) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -991,6 +1171,17 @@ function Nav() {
     };
   }, [open]);
   const links = [["#/", "Home"], ["#portfolio", "Projects"], ["#/360", "360° Tour"], ["#services", "Services"], ["#about", "About"], ["#contact", "Contact"]];
+  const Lang = ({ cls }) => /*#__PURE__*/React.createElement("span", {
+    className: cls
+  }, ["en", "de"].map((l, i) => /*#__PURE__*/React.createElement(React.Fragment, {
+    key: l
+  }, i ? " · " : null, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: `lang-btn ${lang === l ? 'on' : ''}`,
+    onClick: () => setLang(l),
+    lang: l,
+    "aria-label": l === 'de' ? 'Auf Deutsch wechseln' : 'Switch to English'
+  }, l.toUpperCase()))));
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("nav", {
     className: "nav"
   }, /*#__PURE__*/React.createElement("div", {
@@ -999,17 +1190,17 @@ function Nav() {
     className: "nav-left"
   }, /*#__PURE__*/React.createElement("a", {
     href: "#/"
-  }, "Home"), /*#__PURE__*/React.createElement("a", {
+  }, t("Home")), /*#__PURE__*/React.createElement("a", {
     href: "#portfolio"
-  }, "Projects"), /*#__PURE__*/React.createElement("a", {
+  }, t("Projects")), /*#__PURE__*/React.createElement("a", {
     href: "#/360"
-  }, "360° Tour"), /*#__PURE__*/React.createElement("a", {
+  }, t("360° Tour")), /*#__PURE__*/React.createElement("a", {
     href: "#services"
-  }, "Services"), /*#__PURE__*/React.createElement("a", {
+  }, t("Services")), /*#__PURE__*/React.createElement("a", {
     href: "#about"
-  }, "About"), /*#__PURE__*/React.createElement("a", {
+  }, t("About")), /*#__PURE__*/React.createElement("a", {
     href: "#contact"
-  }, "Contact")), /*#__PURE__*/React.createElement("a", {
+  }, t("Contact"))), /*#__PURE__*/React.createElement("a", {
     className: "nav-logo",
     href: "#/",
     "aria-label": "3DVortex"
@@ -1021,11 +1212,11 @@ function Nav() {
     }
   })), /*#__PURE__*/React.createElement("div", {
     className: "nav-right"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "lang"
-  }, /*#__PURE__*/React.createElement("b", null, "EN"), " · DE"), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement(Lang, {
+    cls: "lang"
+  }), /*#__PURE__*/React.createElement("a", {
     className: "cart"
-  }, "Studio · Zürich ↗")), /*#__PURE__*/React.createElement("button", {
+  }, t("Studio · Zürich ↗"))), /*#__PURE__*/React.createElement("button", {
     className: `burger ${open ? 'on' : ''}`,
     onClick: () => setOpen(o => !o),
     "aria-label": "Menu"
@@ -1035,14 +1226,16 @@ function Nav() {
     key: h,
     href: h,
     onClick: () => setOpen(false)
-  }, l)), /*#__PURE__*/React.createElement("div", {
+  }, t(l))), /*#__PURE__*/React.createElement("div", {
     className: "m-foot"
-  }, /*#__PURE__*/React.createElement("span", null, "Aemtlerstrasse 78 · 8003 Zürich"), /*#__PURE__*/React.createElement("span", null, "info@3dvortex.ch · +41 44 203 13 30"), /*#__PURE__*/React.createElement("span", null, "EN · DE"))));
+  }, /*#__PURE__*/React.createElement("span", null, "Aemtlerstrasse 78 · 8003 Zürich"), /*#__PURE__*/React.createElement("span", null, "info@3dvortex.ch · +41 44 203 13 30"), /*#__PURE__*/React.createElement(Lang, {
+    cls: "lang m-lang"
+  }))));
 }
 function Statement({
   headlineKey
 }) {
-  const [a, b, c] = HEADLINES[headlineKey] || HEADLINES.A;
+  const [a, b, c] = (HEADLINES[headlineKey] || HEADLINES.A).map(t);
   return /*#__PURE__*/React.createElement("section", {
     className: "statement",
     id: "top"
@@ -1052,15 +1245,15 @@ function Statement({
     className: "kicker reveal"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
-  }), "Zürich · Architectural Visualization · EST. 2023"), /*#__PURE__*/React.createElement("h1", {
+  }), t("Zürich · Architectural Visualization · EST. 2023")), /*#__PURE__*/React.createElement("h1", {
     className: "reveal"
   }, a, /*#__PURE__*/React.createElement("strong", null, b), c), /*#__PURE__*/React.createElement("div", {
     className: "under reveal"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, /*#__PURE__*/React.createElement("b", null, "01 / " + String(PROJECTS.length)), " — Selected projects"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("b", null, "01 / " + String(PROJECTS.length)), t(" — Selected projects")), /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, "Scroll to explore →"))));
+  }, t("Scroll to explore →")))));
 }
 function Tile({
   data,
@@ -1083,7 +1276,7 @@ function Tile({
     className: "deg-badge"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ic"
-  }, "⟳"), " 360° View") : idxText ? /*#__PURE__*/React.createElement("div", {
+  }, "⟳"), " ", t("360° View")) : idxText ? /*#__PURE__*/React.createElement("div", {
     className: "idx"
   }, idxText) : null, /*#__PURE__*/React.createElement("div", {
     className: "cap"
@@ -1114,13 +1307,13 @@ function HomeGallery() {
     className: filter === s.k ? 'on' : '',
     "aria-pressed": filter === s.k,
     onClick: () => setFilter(s.k)
-  }, s.l, /*#__PURE__*/React.createElement("span", {
+  }, t(s.l), /*#__PURE__*/React.createElement("span", {
     className: "n"
   }, countOf(s.k))))), rows.map((row, ri) => /*#__PURE__*/React.createElement("div", {
     key: filter + '-' + ri,
     className: `row ${row.layout} reveal`
   }, row.items.map(pr => {
-    const meta = pr.cat;
+    const meta = t(pr.cat);
     return /*#__PURE__*/React.createElement(Tile, {
       key: pr.slug,
       always: true,
@@ -1129,7 +1322,7 @@ function HomeGallery() {
         ar: row.layout === 'full' ? 'ar-169' : 'ar-43',
         t: pr.title,
         c: meta,
-        alt: `${pr.title}${pr.place ? ', ' + pr.place : ''} — ${pr.cat} by 3D Vortex`
+        alt: `${pr.title}${pr.place ? ', ' + pr.place : ''} — ${t(pr.cat)} ${t("by 3D Vortex")}`
       },
       onClick: () => {
         window.location.hash = '#/p/' + pr.slug;
@@ -1158,20 +1351,20 @@ function ProjectPage({
     className: "kicker reveal"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
-  }), "Project · ", String(pi + 1).padStart(2, '0'), " / ", String(PROJECTS.length).padStart(2, '0')), /*#__PURE__*/React.createElement("h1", {
+  }), t("Project · "), String(pi + 1).padStart(2, '0'), " / ", String(PROJECTS.length).padStart(2, '0')), /*#__PURE__*/React.createElement("h1", {
     className: "reveal"
   }, proj.title, /*#__PURE__*/React.createElement("span", {
     className: "dot-end"
   }, ".")), /*#__PURE__*/React.createElement("div", {
     className: "pmeta reveal"
-  }, /*#__PURE__*/React.createElement("span", null, proj.cat), proj.has360 && /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("span", null, t(proj.cat)), proj.has360 && /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "pill360",
     onClick: () => {
       const first = proj.rows.flatMap(r => r.items).find(x => x.pano);
       if (first) onPano(first.pano);
     }
-  }, "⟳ Enter 360° Tour")))), /*#__PURE__*/React.createElement("section", {
+  }, t("⟳ Enter 360° Tour"))))), /*#__PURE__*/React.createElement("section", {
     className: "cluster"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wrap"
@@ -1182,7 +1375,7 @@ function ProjectPage({
     const idx = imgs.indexOf(it);
     return /*#__PURE__*/React.createElement(Tile, {
       key: j,
-      data: { ...it, alt: `${proj.title}${proj.place ? ', ' + proj.place : ''} — ${it.t || proj.cat}, ${proj.cat} by 3D Vortex` },
+      data: { ...it, t: t(it.t), c: t(it.c), alt: `${proj.title}${proj.place ? ', ' + proj.place : ''} — ${t(it.t || proj.cat)}, ${t(proj.cat)} ${t("by 3D Vortex")}` },
       idxText: `${String(idx + 1).padStart(2, '0')} / ${String(imgs.length).padStart(2, '0')}`,
       onClick: () => it.pano ? onPano(it.pano) : setLb({
         open: true,
@@ -1200,14 +1393,14 @@ function ProjectPage({
     href: '#/p/' + prev.slug
   }, /*#__PURE__*/React.createElement("span", {
     className: "lbl"
-  }, "← Previous project"), /*#__PURE__*/React.createElement("span", {
+  }, t("← Previous project")), /*#__PURE__*/React.createElement("span", {
     className: "t"
   }, prev.title)), /*#__PURE__*/React.createElement("a", {
     className: "pn next",
     href: '#/p/' + next.slug
   }, /*#__PURE__*/React.createElement("span", {
     className: "lbl"
-  }, "Next project →"), /*#__PURE__*/React.createElement("span", {
+  }, t("Next project →")), /*#__PURE__*/React.createElement("span", {
     className: "t"
   }, next.title))))), /*#__PURE__*/React.createElement(Lightbox, {
     images: imgs,
@@ -1347,7 +1540,7 @@ function Pano360({
     onClick: turnOnMotion
   }, /*#__PURE__*/React.createElement("span", {
     className: "ic"
-  }, "◎"), /*#__PURE__*/React.createElement("b", null, "Tap to look around"), /*#__PURE__*/React.createElement("span", null, "by moving your phone")));
+  }, "◎"), /*#__PURE__*/React.createElement("b", null, t("Tap to look around")), /*#__PURE__*/React.createElement("span", null, t("by moving your phone"))));
 }
 function Tour360({
   onPano
@@ -1365,7 +1558,7 @@ function Tour360({
     className: "kicker"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
-  }), "360° Experience"), /*#__PURE__*/React.createElement("h2", null, "Step ", /*#__PURE__*/React.createElement("em", null, "inside"), " the render.")), /*#__PURE__*/React.createElement("p", null, "Don't just look at the design — walk through it. Drag to look around, scroll to zoom, and explore each space as if you were standing in it. On your phone, go immersive and look around by simply moving your device.")), /*#__PURE__*/React.createElement("div", {
+  }), t("360° Experience")), /*#__PURE__*/React.createElement("h2", null, t("Step "), /*#__PURE__*/React.createElement("em", null, t("inside")), t(" the render."))), /*#__PURE__*/React.createElement("p", null, t("Don't just look at the design — walk through it. Drag to look around, scroll to zoom, and explore each space as if you were standing in it. On your phone, go immersive and look around by simply moving your device."))), /*#__PURE__*/React.createElement("div", {
     className: "pano-frame reveal"
   }, /*#__PURE__*/React.createElement(Pano360, {
     key: active.id,
@@ -1377,12 +1570,12 @@ function Tour360({
     className: "pano-tag"
   }, /*#__PURE__*/React.createElement("span", {
     className: "live"
-  }), active.t, " · ", active.c), /*#__PURE__*/React.createElement("button", {
+  }), t(active.t), " · ", active.c), /*#__PURE__*/React.createElement("button", {
     className: "pano-fs",
     onClick: () => onPano(active.id)
-  }, "⛶ Immersive view"), /*#__PURE__*/React.createElement("div", {
+  }, t("⛶ Immersive view")), /*#__PURE__*/React.createElement("div", {
     className: "pano-hint"
-  }, "⟳ Drag to look around · Scroll to zoom"), /*#__PURE__*/React.createElement(TourBar, {
+  }, t("⟳ Drag to look around · Scroll to zoom")), /*#__PURE__*/React.createElement(TourBar, {
     current: active,
     onPick: id => setI(PANORAMAS.findIndex(p => p.id === id))
   })), /*#__PURE__*/React.createElement("div", {
@@ -1393,7 +1586,7 @@ function Tour360({
     onClick: () => setI(idx)
   }, /*#__PURE__*/React.createElement("img", {
     src: s.mid || s.src,
-    alt: `${s.t}, ${s.c} — 360° virtual tour by 3D Vortex`,
+    alt: `${t(s.t)}, ${s.c} — ${t("360° virtual tour by 3D Vortex")}`,
     loading: "lazy",
     style: {
       transform: 'scale(2.4)'
@@ -1404,7 +1597,7 @@ function Tour360({
     className: "lab"
   }, /*#__PURE__*/React.createElement("span", {
     className: "t"
-  }, s.t), /*#__PURE__*/React.createElement("span", {
+  }, t(s.t)), /*#__PURE__*/React.createElement("span", {
     className: "c"
   }, s.c)))))));
 }
@@ -1553,7 +1746,7 @@ function PanoOverlay({
     className: "vr-exit",
     onClick: exitVr,
     "aria-label": "Exit VR"
-  }, "✕ Exit VR")), /*#__PURE__*/React.createElement("div", {
+  }, t("✕ Exit VR"))), /*#__PURE__*/React.createElement("div", {
     className: "vr-eye"
   }, /*#__PURE__*/React.createElement(Pano360, {
     key: pano.id + '-R',
@@ -1569,11 +1762,11 @@ function PanoOverlay({
     className: "vr-exit",
     onClick: exitVr,
     "aria-label": "Exit VR"
-  }, "✕ Exit VR")), /*#__PURE__*/React.createElement("div", {
+  }, t("✕ Exit VR"))), /*#__PURE__*/React.createElement("div", {
     className: "vr-split"
   }), /*#__PURE__*/React.createElement("div", {
     className: "vr-rotate"
-  }, /*#__PURE__*/React.createElement("span", null, "\u21bb Turn your phone sideways, then slide it into the glasses")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", null, t("\u21bb Turn your phone sideways, then slide it into the glasses"))), /*#__PURE__*/React.createElement("div", {
     className: "vr-room"
   }, pano.t, " · ", pano.c)), open && !vr && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "stage"
@@ -1595,9 +1788,9 @@ function PanoOverlay({
     className: "bar"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "t"
-  }, pano.t), /*#__PURE__*/React.createElement("div", {
+  }, t(pano.t)), /*#__PURE__*/React.createElement("div", {
     className: "c"
-  }, pano.c, " · 360° Tour")), /*#__PURE__*/React.createElement("div", {
+  }, pano.c, t(" · 360° Tour"))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 10,
@@ -1606,17 +1799,17 @@ function PanoOverlay({
   }, /*#__PURE__*/React.createElement("button", {
     className: "close vr-btn",
     onClick: enterVr,
-    title: "Split the view for a Cardboard-style headset"
-  }, "◫ VR glasses"), motionCapable && /*#__PURE__*/React.createElement("button", {
+    title: t("Split the view for a Cardboard-style headset")
+  }, t("◫ VR glasses")), motionCapable && /*#__PURE__*/React.createElement("button", {
     className: `close motion ${motion ? 'on' : ''}`,
     onClick: toggleMotion
-  }, motion ? '◉ Motion on' : '◎ Motion'), /*#__PURE__*/React.createElement("button", {
+  }, motion ? t('◉ Motion on') : t('◎ Motion')), /*#__PURE__*/React.createElement("button", {
     className: "close",
     onClick: onClose
-  }, "Close ✕"))), motionCapable && !motion && /*#__PURE__*/React.createElement("div", {
+  }, t("Close ✕")))), motionCapable && !motion && /*#__PURE__*/React.createElement("div", {
     className: "pano-hint",
     key: pano.id + '-mhint'
-  }, "◎ Tap Motion — move your phone to look around")));
+  }, t("◎ Tap Motion — move your phone to look around"))));
 }
 function Pull({
   showStats
@@ -1643,7 +1836,7 @@ function Pull({
     className: "wrap"
   }, /*#__PURE__*/React.createElement("div", {
     className: "body"
-  }, "With ", /*#__PURE__*/React.createElement("strong", null, "3DVortex"), ", every detail matters. Our photoreal visualizations don't just showcase design — they tell a story, creating immersive experiences that resonate with your audience."), showStats && /*#__PURE__*/React.createElement("div", {
+  }, t("With "), /*#__PURE__*/React.createElement("strong", null, "3DVortex"), t(", every detail matters. Our photoreal visualizations don't just showcase design — they tell a story, creating immersive experiences that resonate with your audience.")), showStats && /*#__PURE__*/React.createElement("div", {
     className: "stats"
   }, /*#__PURE__*/React.createElement("div", {
     className: "stat"
@@ -1651,25 +1844,25 @@ function Pull({
     className: "big"
   }, /*#__PURE__*/React.createElement("em", null, a, "×")), /*#__PURE__*/React.createElement("div", {
     className: "lbl"
-  }, "Faster sell‑through", /*#__PURE__*/React.createElement("br", null), "with photoreal renders")), /*#__PURE__*/React.createElement("div", {
+  }, t("Faster sell‑through"), /*#__PURE__*/React.createElement("br", null), t("with photoreal renders"))), /*#__PURE__*/React.createElement("div", {
     className: "stat"
   }, /*#__PURE__*/React.createElement("div", {
     className: "big"
   }, /*#__PURE__*/React.createElement("em", null, b, "%")), /*#__PURE__*/React.createElement("div", {
     className: "lbl"
-  }, "Of buyers rely", /*#__PURE__*/React.createElement("br", null), "on online listings")), /*#__PURE__*/React.createElement("div", {
+  }, t("Of buyers rely"), /*#__PURE__*/React.createElement("br", null), t("on online listings"))), /*#__PURE__*/React.createElement("div", {
     className: "stat"
   }, /*#__PURE__*/React.createElement("div", {
     className: "big"
   }, /*#__PURE__*/React.createElement("em", null, "+", c, "%")), /*#__PURE__*/React.createElement("div", {
     className: "lbl"
-  }, "Higher engagement", /*#__PURE__*/React.createElement("br", null), "with premium imagery")))));
+  }, t("Higher engagement"), /*#__PURE__*/React.createElement("br", null), t("with premium imagery"))))));
 }
 function Marquee() {
   const items = ["Photoreal Rendering", "AI Visualization", "3D Printing", "Technical Drafting", "CAD Restoration", "Mood Frames", "Developer Presentations", "Architectural Dreaming"];
   const Row = () => /*#__PURE__*/React.createElement("span", null, items.map((it, i) => /*#__PURE__*/React.createElement(React.Fragment, {
     key: i
-  }, /*#__PURE__*/React.createElement("i", null, it), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("i", null, t(it)), /*#__PURE__*/React.createElement("span", {
     className: "sep"
   }))));
   return /*#__PURE__*/React.createElement("div", {
@@ -1711,16 +1904,16 @@ function Services() {
     className: "wrap"
   }, /*#__PURE__*/React.createElement("h2", {
     className: "reveal"
-  }, "Four ways we ", /*#__PURE__*/React.createElement("em", null, "render"), " your practice."), list.map((s, i) => /*#__PURE__*/React.createElement("div", {
+  }, t("Four ways we "), /*#__PURE__*/React.createElement("em", null, t("render")), t(" your practice.")), list.map((s, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     className: "svc-row reveal"
   }, /*#__PURE__*/React.createElement("div", {
     className: "n"
   }, s.n, " / 04"), /*#__PURE__*/React.createElement("div", {
     className: "t"
-  }, s.a, " ", /*#__PURE__*/React.createElement("em", null, s.b)), /*#__PURE__*/React.createElement("div", {
+  }, t(s.a), " ", /*#__PURE__*/React.createElement("em", null, t(s.b))), /*#__PURE__*/React.createElement("div", {
     className: "d"
-  }, s.d, /*#__PURE__*/React.createElement("div", {
+  }, t(s.d), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 8,
       fontFamily: 'var(--font-mono)',
@@ -1729,7 +1922,7 @@ function Services() {
       textTransform: 'uppercase',
       color: 'var(--muted)'
     }
-  }, s.tag)), /*#__PURE__*/React.createElement("div", {
+  }, t(s.tag))), /*#__PURE__*/React.createElement("div", {
     className: "arr"
   }, "→")))));
 }
@@ -1738,12 +1931,12 @@ function CTA() {
     className: "cta-block"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wrap"
-  }, /*#__PURE__*/React.createElement("h3", null, "Interested in starting a project? Feel free to ", /*#__PURE__*/React.createElement("em", null, "contact us"), " for more information."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h3", null, t("Interested in starting a project? Feel free to "), /*#__PURE__*/React.createElement("em", null, t("contact us")), t(" for more information.")), /*#__PURE__*/React.createElement("div", {
     className: "links"
   }, /*#__PURE__*/React.createElement("a", {
     className: "link",
     href: "#portfolio"
-  }, "All Projects →"), /*#__PURE__*/React.createElement("a", {
+  }, t("All Projects →")), /*#__PURE__*/React.createElement("a", {
     className: "link",
     href: "#contact",
     style: {
@@ -1751,7 +1944,7 @@ function CTA() {
       color: 'var(--bg)',
       borderColor: 'var(--coral)'
     }
-  }, "Start a project →"))));
+  }, t("Start a project →")))));
 }
 function About() {
   return /*#__PURE__*/React.createElement("section", {
@@ -1774,27 +1967,27 @@ function About() {
       verticalAlign: 'middle',
       marginRight: 12
     }
-  }), "About · 3DVortex"), /*#__PURE__*/React.createElement("h2", null, "A studio of architects, engineers & ", /*#__PURE__*/React.createElement("em", null, "image‑makers"), ".")), /*#__PURE__*/React.createElement("div", {
+  }), t("About · 3DVortex")), /*#__PURE__*/React.createElement("h2", null, t("A studio of architects, engineers & "), /*#__PURE__*/React.createElement("em", null, t("image‑makers")), ".")), /*#__PURE__*/React.createElement("div", {
     className: "reveal"
-  }, /*#__PURE__*/React.createElement("p", null, "Located in the dynamic heart of Zürich, our team comprises passionate architects and engineers who are experts in their field — and deeply understand the needs and challenges of architectural studios."), /*#__PURE__*/React.createElement("p", null, "Our journey has been enriched by enthusiasm for emerging technologies and a commitment to precision and innovation. We stand as a partner to architectural practices, offering services designed to enhance project efficiency and creativity, one pixel at a time."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("p", null, t("Located in the dynamic heart of Zürich, our team comprises passionate architects and engineers who are experts in their field — and deeply understand the needs and challenges of architectural studios.")), /*#__PURE__*/React.createElement("p", null, t("Our journey has been enriched by enthusiasm for emerging technologies and a commitment to precision and innovation. We stand as a partner to architectural practices, offering services designed to enhance project efficiency and creativity, one pixel at a time.")), /*#__PURE__*/React.createElement("div", {
     className: "facts"
   }, /*#__PURE__*/React.createElement("div", {
     className: "r"
   }, /*#__PURE__*/React.createElement("div", {
     className: "k"
-  }, "Founded"), /*#__PURE__*/React.createElement("div", null, "2023 — Zürich, Switzerland")), /*#__PURE__*/React.createElement("div", {
+  }, t("Founded")), /*#__PURE__*/React.createElement("div", null, t("2023 — Zürich, Switzerland"))), /*#__PURE__*/React.createElement("div", {
     className: "r"
   }, /*#__PURE__*/React.createElement("div", {
     className: "k"
-  }, "Practice"), /*#__PURE__*/React.createElement("div", null, "Architects · Engineers · Visualization")), /*#__PURE__*/React.createElement("div", {
+  }, t("Practice")), /*#__PURE__*/React.createElement("div", null, t("Architects · Engineers · Visualization"))), /*#__PURE__*/React.createElement("div", {
     className: "r"
   }, /*#__PURE__*/React.createElement("div", {
     className: "k"
-  }, "Clients"), /*#__PURE__*/React.createElement("div", null, "Architectural studios · Developers · Private commissions")), /*#__PURE__*/React.createElement("div", {
+  }, t("Clients")), /*#__PURE__*/React.createElement("div", null, t("Architectural studios · Developers · Private commissions"))), /*#__PURE__*/React.createElement("div", {
     className: "r"
   }, /*#__PURE__*/React.createElement("div", {
     className: "k"
-  }, "Languages"), /*#__PURE__*/React.createElement("div", null, "Deutsch · English · Italiano")))))));
+  }, t("Languages")), /*#__PURE__*/React.createElement("div", null, t("Deutsch · English · Italiano"))))))));
 }
 function Contact() {
   const [sent, setSent] = useState(false);
@@ -1816,15 +2009,15 @@ function Contact() {
       color: 'var(--muted)',
       marginBottom: 20
     }
-  }, "Contact Us · We'd love to hear from you"), /*#__PURE__*/React.createElement("h2", null, "Let's ", /*#__PURE__*/React.createElement("em", null, "render"), " the building you're about to build."), /*#__PURE__*/React.createElement("div", {
+  }, t("Contact Us · We'd love to hear from you")), /*#__PURE__*/React.createElement("h2", null, t("Let's "), /*#__PURE__*/React.createElement("em", null, t("render")), t(" the building you're about to build.")), /*#__PURE__*/React.createElement("div", {
     className: "addr"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "k"
-  }, "Studio"), /*#__PURE__*/React.createElement("div", {
+  }, t("Studio")), /*#__PURE__*/React.createElement("div", {
     className: "v"
   }, "Aemtlerstrasse 78", /*#__PURE__*/React.createElement("br", null), "8003 Zürich")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "k"
-  }, "Reach us"), /*#__PURE__*/React.createElement("div", {
+  }, t("Reach us")), /*#__PURE__*/React.createElement("div", {
     className: "v"
   }, "info@3dvortex.ch", /*#__PURE__*/React.createElement("br", null), "+41 44 203 13 30")))), /*#__PURE__*/React.createElement("form", {
     className: "reveal",
@@ -1836,19 +2029,19 @@ function Contact() {
     className: "row2"
   }, /*#__PURE__*/React.createElement("input", {
     required: true,
-    placeholder: "Name *"
+    placeholder: t("Name *")
   }), /*#__PURE__*/React.createElement("input", {
     required: true,
     type: "email",
-    placeholder: "Email *"
+    placeholder: t("Email *")
   })), /*#__PURE__*/React.createElement("input", {
-    placeholder: "Practice / Company"
+    placeholder: t("Practice / Company")
   }), /*#__PURE__*/React.createElement("textarea", {
-    placeholder: "Tell us about the project — scale, timeline, type of deliverable.",
+    placeholder: t("Tell us about the project — scale, timeline, type of deliverable."),
     rows: 4
   }), /*#__PURE__*/React.createElement("button", {
     type: "submit"
-  }, sent ? "Sent ✓ Thank you" : "Send message →")))));
+  }, sent ? t("Sent ✓ Thank you") : t("Send message →"))))));
 }
 function Footer() {
   return /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("div", {
@@ -1863,23 +2056,23 @@ function Footer() {
       maxWidth: '40ch',
       margin: 0
     }
-  }, "Architectural visualization, AI rendering, 3D printing and technical drafting for architectural studios.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Menu"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, t("Architectural visualization, AI rendering, 3D printing and technical drafting for architectural studios."))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, t("Menu")), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#/"
-  }, "Home")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, t("Home"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#portfolio"
-  }, "Projects")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, t("Projects"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#/360"
-  }, "360° Tour")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, t("360° Tour"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#services"
-  }, "Services")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, t("Services"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#about"
-  }, "About")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, t("About"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#contact"
-  }, "Contact")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Contact"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "Aemtlerstrasse 78"), /*#__PURE__*/React.createElement("li", null, "8003 Zürich, CH"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, t("Contact"))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, t("Contact")), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "Aemtlerstrasse 78"), /*#__PURE__*/React.createElement("li", null, "8003 Zürich, CH"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "mailto:info@3dvortex.ch"
   }, "info@3dvortex.ch")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "tel:+41442031330"
-  }, "+41 44 203 13 30")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Follow"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, "+41 44 203 13 30")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, t("Follow")), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
   }, "Instagram")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
@@ -1889,11 +2082,11 @@ function Footer() {
     className: "big-mark"
   }, "3D", /*#__PURE__*/React.createElement("em", null, "Vortex"), "."), /*#__PURE__*/React.createElement("div", {
     className: "foot-bot"
-  }, /*#__PURE__*/React.createElement("div", null, "© 3DVortex 2026. All rights reserved."), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("div", null, t("© 3DVortex 2026. All rights reserved.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
     href: "#"
-  }, "Legal Details"), " · ", /*#__PURE__*/React.createElement("a", {
+  }, t("Legal Details")), " · ", /*#__PURE__*/React.createElement("a", {
     href: "#"
-  }, "Privacy Policy")))));
+  }, t("Privacy Policy"))))));
 }
 function Lightbox({
   images,
@@ -2010,6 +2203,21 @@ function Tweaks({
 
 // ========== APP ==========
 function App() {
+  const [lang, setLang] = useState(initialLang);
+  // t() lo lee desde cualquier componente; se pone al dia antes de pintar
+  LANG = lang;
+  useEffect(() => {
+    document.documentElement.setAttribute('lang', lang);
+    try {
+      localStorage.setItem('3dv-lang', lang);
+    } catch (e) {}
+    // reflejar el idioma en la URL para que sea enlazable, sin recargar
+    try {
+      const u = new URL(location.href);
+      if (lang === 'de') u.searchParams.set('lang', 'de');else u.searchParams.delete('lang');
+      history.replaceState(history.state, '', u);
+    } catch (e) {}
+  }, [lang]);
   const [tw, setTw] = useState(TWEAK_DEFAULTS);
   const [tweakVis, setTweakVis] = useState(false);
   const [panoId, setPanoId] = useState(null);
@@ -2040,19 +2248,16 @@ function App() {
   // real por proyecto, pero al menos cada vista deja de compartir metadatos.
   useEffect(() => {
     const site = '3DVORTEX';
-    let title = 'Architectural Visualization Studio, Zürich | ' + site;
-    let desc = 'Architectural visualization studio in Zürich: photoreal renderings, ' +
-      'AI visualization, 3D-printed models, 360° virtual tours and technical drafting.';
+    let title = t('Architectural Visualization Studio, Zürich | ') + site;
+    let desc = t('Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting.');
     if (view === 'tour') {
-      title = '360° Virtual Tours — Graffio & Silserkugel | ' + site;
-      desc = 'Walk through our architectural visualizations in 360°: the Graffio ' +
-        'residence in Golino and the Silserkugel ice arena in St. Moritz.';
+      title = t('360° Virtual Tours — Graffio & Silserkugel | ') + site;
+      desc = t('Walk through our architectural visualizations in 360°: the Graffio residence in Golino and the Silserkugel ice arena in St. Moritz.');
     } else if (view === 'project') {
       const p = PROJECTS.find(x => x.slug === slug);
       if (p) {
-        title = `${p.title}${p.place ? ' — ' + p.place : ''} · ${p.cat} | ${site}`;
-        desc = `${p.cat} of ${p.title}${p.place ? ' in ' + p.place : ''} by 3D Vortex, ` +
-          'architectural visualization studio in Zürich.';
+        title = `${p.title}${p.place ? ' — ' + p.place : ''} · ${t(p.cat)} | ${site}`;
+        desc = lang === 'de' ? `${t(p.cat)} von ${p.title}${p.place ? ' in ' + p.place : ''} — 3D Vortex, Studio für Architekturvisualisierung in Zürich.` : `${p.cat} of ${p.title}${p.place ? ' in ' + p.place : ''} by 3D Vortex, architectural visualization studio in Zürich.`;
       }
     }
     document.title = title;
@@ -2063,7 +2268,7 @@ function App() {
       document.head.appendChild(m);
     }
     m.setAttribute('content', desc);
-  }, [view, slug]);
+  }, [view, slug, lang]);
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', tw.theme);
     document.documentElement.style.setProperty('--coral', ACCENTS[tw.accent] || ACCENTS.coral);
@@ -2096,7 +2301,10 @@ function App() {
       edits: next
     }, '*');
   };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), view === 'home' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Statement, {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, {
+    lang: lang,
+    setLang: setLang
+  }), view === 'home' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Statement, {
     headlineKey: tw.headline
   }), /*#__PURE__*/React.createElement(HomeGallery, null), /*#__PURE__*/React.createElement(Pull, {
     showStats: tw.showStats
