@@ -94,6 +94,15 @@ VERCEL = {
                          "value": "public, max-age=31536000, immutable"}],
         },
         {
+            # Los originales y las panoramicas del tour, que NO estan en
+            # assets/r/. Esta regla ya existia en el vercel.json anterior y hay
+            # que conservarla: sin ella cada panoramica (1,2 MB) se volveria a
+            # descargar en cada visita.
+            "source": "/assets/(.*).(jpg|jpeg|png|svg|webp|avif)",
+            "headers": [{"key": "Cache-Control",
+                         "value": "public, max-age=31536000, immutable"}],
+        },
+        {
             # El HTML si cambia: se revalida siempre.
             "source": "/(.*)",
             "headers": [{"key": "X-Content-Type-Options", "value": "nosniff"},
@@ -121,6 +130,11 @@ def pagina_404(base):
 <title>Page not found | 3DVORTEX</title>
 <meta name="robots" content="noindex" />
 <link rel="stylesheet" href="/fonts/fonts.css"/>
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
 {estilos}
 <style>
   .e404{{min-height:100vh; display:grid; place-items:center; text-align:center; padding:40px}}
@@ -163,6 +177,17 @@ def main():
         "# La carpeta de plantillas no aporta nada a nadie\nDisallow: /_build/\n\n"
         f"Sitemap: {SITIO}/sitemap.xml\n", encoding="utf-8")
     (SITE / ".vercelignore").write_text("_build/\n", encoding="utf-8")
+
+    # Para el icono al guardar el sitio en la pantalla de inicio del movil.
+    (SITE / "site.webmanifest").write_text(json.dumps({
+        "name": "3D Vortex", "short_name": "3DVORTEX",
+        "icons": [
+            {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"},
+        ],
+        "theme_color": "#ffffff", "background_color": "#ffffff",
+        "display": "standalone", "start_url": "/",
+    }, indent=2) + "\n", encoding="utf-8")
 
     base = (SITE / "_build" / "index.base.html").read_text(encoding="utf-8")
     (SITE / "404.html").write_text(pagina_404(base), encoding="utf-8")
