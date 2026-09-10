@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>360° Virtual Tours — Graffio &amp; Silserkugel | 3DVORTEX</title>
+<meta name="description" content="Walk through our architectural visualizations in 360°: the Graffio residence in Golino and the Silserkugel ice arena in St. Moritz." />
+
+<!-- canonical y hreflang apuntan al dominio final; og:url y las imagenes, a
+     donde vive ahora, para que la vista previa al compartir funcione ya.
+     AL LANZAR EN 3dvortex.ch: poner PRUEBAS = SITIO en prerender.py. -->
+<link rel="canonical" href="https://3dvortex.ch/tour" />
+<link rel="alternate" hreflang="en" href="https://3dvortex.ch/tour" />
+<link rel="alternate" hreflang="de-CH" href="https://3dvortex.ch/de/tour" />
+<link rel="alternate" hreflang="x-default" href="https://3dvortex.ch/tour" />
+
+<!-- Open Graph -->
+<meta property="og:type"           content="article" />
+<meta property="og:site_name"      content="3D Vortex" />
+<meta property="og:locale"         content="en_US" />
+<meta property="og:url"            content="https://3-dvortex-mock-up-3-a.vercel.app/tour" />
+<meta property="og:title"          content="360° Virtual Tours — Graffio &amp; Silserkugel | 3DVORTEX" />
+<meta property="og:description"    content="Walk through our architectural visualizations in 360°: the Graffio residence in Golino and the Silserkugel ice arena in St. Moritz." />
+<meta property="og:image"          content="https://3-dvortex-mock-up-3-a.vercel.app/assets/og-cover.jpg" />
+<meta property="og:image:alt"      content="Kindergarten Kreuzgut, competition visualization by 3D Vortex" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="360° Virtual Tours — Graffio &amp; Silserkugel | 3DVORTEX" />
+<meta name="twitter:description" content="Walk through our architectural visualizations in 360°: the Graffio residence in Golino and the Silserkugel ice arena in St. Moritz." />
+<meta name="twitter:image"       content="https://3-dvortex-mock-up-3-a.vercel.app/assets/og-cover.jpg" />
+
+<meta name="theme-color" content="#ffffff" />
+<link rel="preload" as="image" type="image/avif"
+      href="/assets/r/hero-1400.avif"
+      imagesrcset="/assets/r/hero-500.avif 500w, /assets/r/hero-800.avif 800w, /assets/r/hero-1400.avif 1400w, /assets/r/hero-2000.avif 2000w"
+      imagesizes="(max-width: 1420px) 92vw, 1304px"
+      fetchpriority="high" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%23111'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/fonts/fonts.css"/>
+<link rel="stylesheet" href="/vendor/pannellum.css"/>
+<script src="/vendor/pannellum.js"></script>
+<script src="/vendor/react.production.min.js"></script>
+<script src="/vendor/react-dom.production.min.js"></script>
+<style>
+  :root{
+    /* 3DVortex palette: white base, black ink, warm tan + coral accents */
+    --bg:#ffffff;
+    --bg-2:#f2f5f8;
+    --ink:#0a1a2a;
+    --ink-2:#465a6e;
+    --muted:#8a99a8;
+    --line:#e3e9ef;
+    --tan:#d8c4a2;
+    --coral:#5b8dc8;
+    --accent:var(--coral);
+    /* Azul claro fijo para los elementos que van SOBRE una imagen o sobre
+       el visor 360, donde la tinta marino no se vería. */
+    --on-dark:#8eb6d1;
+    --font-display:"Instrument Serif","Times New Roman",serif;
+    --font-ui:"Inter",system-ui,sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  [data-theme="light"]{ --bg:#ffffff; --bg-2:#f2f5f8; --ink:#0a1a2a; --ink-2:#465a6e; --muted:#8a99a8; --line:#e3e9ef; }
+  [data-theme="dark"]{ --bg:#111111; --bg-2:#1a1814; --ink:#f5f1e8; --ink-2:#c9c3b4; --muted:#7a746a; --line:#28251f; }
+  [data-theme="tan"]{  --bg:#f5f1ea; --bg-2:#ece6da; --ink:#1a1a1a; --ink-2:#3d3a36; --muted:#8a857b; --line:#d9d3c5; }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{background:var(--bg)}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--font-ui);
+    -webkit-font-smoothing:antialiased;
+    transition:background .5s ease, color .5s ease;
+  }
+  img{display:block;max-width:100%}
+  picture{display:contents}
+  ::selection{background:var(--coral); color:var(--bg)}
+  a{color:inherit; text-decoration:none}
+  button{font:inherit; color:inherit; background:none; border:0; cursor:pointer}
+  .mono{font-family:var(--font-mono)}
+  .serif{font-family:var(--font-display)}
+
+  /* Layout */
+  .wrap{max-width:1400px; margin:0 auto; padding:0 48px}
+  @media(max-width:720px){ .wrap{padding:0 20px} }
+
+  /* ========== NAV (Vizio-style minimal: links left, logo center, cart right) ========== */
+  .nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.93); -webkit-backdrop-filter:blur(20px) saturate(1.08); backdrop-filter:blur(20px) saturate(1.08); border-bottom:1px solid var(--line)}
+  .nav-inner{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; height:84px; gap:24px}
+  .nav-left{display:flex; gap:40px; font-size:13px; letter-spacing:.04em}
+  .nav-left a{color:var(--ink-2); padding:6px 0; position:relative; white-space:nowrap}
+  .nav-left a:hover{color:var(--ink)}
+  .nav-logo{display:flex; align-items:center; gap:8px}
+  .nav-logo svg{height:34px; width:auto; display:block}
+  .nav-logo .dot{width:8px; height:8px; background:var(--coral); border-radius:50%}
+  .nav-right{display:flex; gap:28px; justify-content:flex-end; font-size:13px; color:var(--ink-2); align-items:center}
+  .nav-right .cart{display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border:1px solid var(--line); border-radius:100px; white-space:nowrap}
+  .lang{display:inline-flex; align-items:center; gap:2px}
+  .lang-btn{text-decoration:none; cursor:pointer;
+         font:inherit; font-size:13px; letter-spacing:.04em; color:var(--muted);
+    background:none; border:0; padding:2px 1px; cursor:pointer; transition:color .25s}
+  .lang-btn:hover{color:var(--ink)}
+  .lang-btn.on{color:var(--ink)}
+  .m-lang{gap:4px}
+  .m-lang .lang-btn{font-family:var(--font-mono); font-size:11px; letter-spacing:.16em}
+  @media(max-width:1180px){ .nav-left{gap:26px} .nav-right{gap:18px} .nav-right .cart{display:none} }
+  @media(max-width:1080px){ .nav-left,.nav-right{display:none}
+  .nav-logo svg{height:24px} .nav-inner{grid-template-columns:1fr auto} .nav-logo{justify-self:start} }
+
+  /* Mobile menu */
+  .burger{display:none; justify-self:end; width:44px; height:44px; border:1px solid var(--line); border-radius:100px; align-items:center; justify-content:center; gap:4px; flex-direction:column}
+  .burger span{display:block; width:16px; height:1px; background:var(--ink); transition:transform .3s, opacity .3s}
+  .burger.on span:nth-child(1){transform:translateY(2.5px) rotate(45deg)}
+  .burger.on span:nth-child(2){opacity:0}
+  .burger.on span:nth-child(3){transform:translateY(-2.5px) rotate(-45deg)}
+  .mobile-menu{display:none; position:fixed; inset:84px 0 0 0; z-index:49; background:var(--bg); padding:32px 20px 40px; flex-direction:column; gap:4px; overflow-y:auto}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{font-family:var(--font-display); font-size:34px; line-height:1.25; padding:10px 0; border-bottom:1px solid var(--line)}
+  .mobile-menu a em{font-style:italic; color:var(--coral)}
+  .mobile-menu .m-foot{margin-top:auto; padding-top:32px; display:flex; flex-direction:column; gap:8px; font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  @media(max-width:1080px){ .burger{display:flex} }
+
+  /* ========== HERO STATEMENT (Vizio: huge serif text, no image behind it) ========== */
+  .statement{padding:120px 0 80px}
+  .statement .kicker{display:inline-flex; align-items:center; gap:12px; font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:24px}
+  .statement .kicker .bar{width:32px; height:1px; background:var(--muted)}
+  .statement h1{
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(36px, 5.4vw, 88px);
+    line-height:1.02; letter-spacing:-.02em;
+    margin:0; max-width:22ch; text-wrap:balance;
+  }
+  .statement h1 strong{font-weight:400; font-style:italic; color:var(--coral)}
+  .statement .under{
+    margin-top:40px; display:flex; justify-content:space-between; align-items:end; gap:16px; flex-wrap:wrap;
+    padding-top:24px; border-top:1px solid var(--line);
+  }
+  .statement .under .tag{font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+  .statement .under .tag b{color:var(--ink); font-weight:500}
+
+  /* ========== GALLERY CLUSTER (Vizio: stacks of full-width images, varied aspect ratios) ========== */
+  .cluster{padding:12px 0 60px}
+  .pfilter{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 34px}
+  .pfilter button{font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; padding:10px 16px; border:1px solid var(--line); border-radius:100px; background:transparent; color:var(--ink); opacity:.6; cursor:pointer; transition:opacity .3s, background .3s, color .3s, border-color .3s}
+  .pfilter button:hover{opacity:1; border-color:var(--ink)}
+  .pfilter button.on{opacity:1; background:var(--ink); color:var(--bg); border-color:var(--ink)}
+  .pfilter button .n{margin-left:9px; opacity:.55}
+  @media(max-width:720px){ .pfilter{gap:8px; margin-bottom:22px} .pfilter button{font-size:10px; padding:9px 13px; letter-spacing:.12em} }
+
+  .cluster .row{display:grid; gap:20px; margin-bottom:20px}
+  .cluster .row.full{grid-template-columns:1fr}
+  .cluster .row.pair{grid-template-columns:1fr 1fr}
+  .cluster .row.trio{grid-template-columns:1fr 1fr 1fr}
+  .cluster .row.asym-l{grid-template-columns:2fr 1fr}
+  .cluster .row.asym-r{grid-template-columns:1fr 2fr}
+  @media(max-width:720px){ .cluster .row{grid-template-columns:1fr !important} }
+  @media(max-width:900px){
+    .cluster .row.trio, .cluster .row.asym-l, .cluster .row.asym-r{grid-template-columns:1fr}
+    .cluster{padding-bottom:32px}
+    .cluster .row{gap:14px; margin-bottom:14px}
+  }
+
+  .shot{
+    position:relative; overflow:hidden; background:var(--bg-2); border-radius:2px;
+    cursor:pointer; box-shadow:inset 0 0 0 1px rgba(10,26,42,.08);
+    display:block; color:inherit; text-decoration:none;
+  }
+  .shot:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+  /* Velo inferior: el rótulo va en blanco sobre la foto y sin esto se pierde
+     en los renders claros (mucho más frecuentes ahora que el fondo es blanco). */
+  .shot::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:55%;
+    background:linear-gradient(0deg, rgba(8,18,30,.66), rgba(8,18,30,.20) 52%, rgba(8,18,30,0));
+    opacity:0; transition:opacity .4s; pointer-events:none; z-index:1;
+  }
+  .shot:hover::after, .shot.cover::after{opacity:1}
+  .shot img{width:100%; height:100%; object-fit:cover; transition:transform 1.2s cubic-bezier(.2,.7,.2,1), filter .4s}
+  .shot:hover img{transform:scale(1.025)}
+  .shot img[style*="scale(2.6)"]{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+  .shot:hover img[style*="scale(2.6)"]{transform:scale(2.72) !important}
+  .shot .cap{
+    position:absolute; left:24px; bottom:24px; z-index:2;
+    display:flex; align-items:center; gap:12px;
+    color:#fff; opacity:0; transform:translateY(6px); transition:all .4s;
+  }
+  .shot:hover .cap{opacity:1; transform:none}
+  .shot .cap .chip{padding:6px 12px; background:rgba(0,0,0,.45); backdrop-filter:blur(10px); border-radius:100px; font-size:10px; letter-spacing:.18em; text-transform:uppercase}
+  .shot .cap .ttl{font-family:var(--font-display); font-style:italic; font-size:22px; line-height:1}
+  .shot .idx{position:absolute; top:16px; right:16px; z-index:2; font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; color:#fff; background:rgba(0,0,0,.4); padding:4px 8px; border-radius:100px; opacity:0; transition:opacity .3s}
+  .shot:hover .idx{opacity:1}
+
+  /* Aspect ratio helpers */
+  .ar-32{aspect-ratio:3/2}
+  .ar-43{aspect-ratio:4/3}
+  .ar-169{aspect-ratio:16/9}
+  .ar-219{aspect-ratio:21/9}
+  .ar-11{aspect-ratio:1/1}
+  .ar-34{aspect-ratio:3/4}
+  .ar-23{aspect-ratio:2/3}
+
+  /* ========== PULLQUOTE BLOCK (Vizio: centered big-serif text between galleries) ========== */
+  .pull{padding:100px 0 80px}
+  .pull .body{
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(28px, 3.6vw, 56px);
+    line-height:1.12; letter-spacing:-.015em;
+    max-width:22ch; text-wrap:balance;
+  }
+  .pull .body strong{font-weight:400; font-style:italic; color:var(--coral)}
+  .pull .stats{display:grid; grid-template-columns:repeat(3, auto); gap:56px; margin-top:48px; padding-top:32px; border-top:1px solid var(--line); align-items:end}
+  .pull .stat .big{font-family:var(--font-display); font-size:clamp(44px,7vw,72px); line-height:1; letter-spacing:-.02em}
+  .pull .stat .big em{font-style:italic; color:var(--coral)}
+  .pull .stat .lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:8px}
+  @media(max-width:900px){ .pull .stats{grid-template-columns:1fr 1fr; gap:32px} }
+  @media(max-width:560px){ .pull .stats{grid-template-columns:1fr; gap:28px} .pull{padding:64px 0 56px} }
+
+  /* ========== SERVICES STRIP (as horizontal list, Vizio-minimal) ========== */
+  .services{padding:60px 0 100px}
+  .services h2{font-family:var(--font-display); font-weight:400; font-size:clamp(32px,4.2vw,64px); line-height:1.05; letter-spacing:-.02em; margin:0 0 60px; max-width:22ch; text-wrap:balance}
+  .services h2 em{font-style:italic; color:var(--coral)}
+  .svc-row{display:grid; grid-template-columns:80px 1fr 1.5fr 200px; gap:32px; align-items:center; padding:32px 0; border-top:1px solid var(--line); cursor:pointer; transition:padding .3s}
+  .svc-row:last-child{border-bottom:1px solid var(--line)}
+  .svc-row:hover{padding-left:12px}
+  .svc-row .n{font-family:var(--font-mono); font-size:12px; letter-spacing:.18em; color:var(--muted)}
+  .svc-row .t{font-family:var(--font-display); font-size:36px; line-height:1; letter-spacing:-.01em}
+  .svc-row .t em{font-style:italic; color:var(--coral)}
+  .svc-row .d{color:var(--ink-2); font-size:14px; line-height:1.55; max-width:46ch}
+  .svc-row .arr{justify-self:end; font-family:var(--font-display); font-size:40px; line-height:1; transition:transform .4s; color:var(--muted)}
+  .svc-row:hover .arr{transform:translateX(10px); color:var(--coral)}
+  @media(max-width:900px){
+    .svc-row{grid-template-columns:1fr; gap:12px; padding:24px 0}
+    .svc-row .arr{justify-self:start; font-size:28px}
+  }
+
+  /* ========== CTA (Vizio: simple centered prompt + underlined link) ========== */
+  .cta-block{padding:100px 0; text-align:center; border-top:1px solid var(--line)}
+  .cta-block h3{font-family:var(--font-display); font-weight:400; font-size:clamp(32px,4vw,56px); line-height:1.05; letter-spacing:-.02em; margin:0 0 32px; max-width:24ch; margin-inline:auto; text-wrap:balance}
+  .cta-block h3 em{font-style:italic; color:var(--coral)}
+  .cta-block .link{display:inline-flex; align-items:center; gap:12px; font-family:var(--font-mono); font-size:12px; letter-spacing:.22em; text-transform:uppercase; padding:16px 28px; border:1px solid var(--ink); border-radius:100px; transition:all .3s}
+  .cta-block .link:hover{background:var(--ink); color:var(--bg)}
+  .cta-block .links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap}
+
+  /* ========== ABOUT ========== */
+  .about-sec{padding:100px 0; border-top:1px solid var(--line)}
+  .about-sec .grid{display:grid; grid-template-columns:1fr 1.2fr; gap:80px; align-items:start}
+  .about-sec h2{font-family:var(--font-display); font-weight:400; font-size:clamp(32px,4.2vw,64px); line-height:1.05; letter-spacing:-.02em; margin:0 0 28px; text-wrap:balance}
+  .about-sec h2 em{font-style:italic; color:var(--coral)}
+  .about-sec p{color:var(--ink-2); font-size:16px; line-height:1.65; margin:0 0 16px; max-width:58ch}
+  .about-sec .kicker{font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:20px}
+  .about-sec .facts{margin-top:32px}
+  .about-sec .facts .r{display:grid; grid-template-columns:120px 1fr; gap:24px; padding:14px 0; border-top:1px solid var(--line); font-size:14px}
+  .about-sec .facts .r:last-child{border-bottom:1px solid var(--line)}
+  .about-sec .facts .k{font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+  @media(max-width:900px){ .about-sec .grid{grid-template-columns:1fr; gap:40px} }
+  @media(max-width:560px){ .about-sec .facts .r{grid-template-columns:1fr; gap:6px} }
+
+  /* ========== CONTACT ========== */
+  .contact{padding:100px 0; border-top:1px solid var(--line)}
+  .contact .grid{display:grid; grid-template-columns:1.3fr 1fr; gap:80px; align-items:start}
+  .contact h2{font-family:var(--font-display); font-weight:400; font-size:clamp(40px,5.2vw,88px); line-height:1; letter-spacing:-.02em; margin:0 0 32px; text-wrap:balance}
+  .contact h2 em{font-style:italic; color:var(--coral)}
+  .contact .addr{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:40px; max-width:480px}
+  .contact .addr .k{font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+  .contact .addr .v{font-family:var(--font-display); font-style:italic; font-size:20px; margin-top:6px; line-height:1.35}
+  .contact form{display:flex; flex-direction:column; gap:16px}
+  .contact input, .contact textarea{
+    background:transparent; border:0; border-bottom:1px solid var(--line);
+    color:var(--ink); padding:14px 0 10px; font:inherit; font-size:15px; outline:none;
+    font-family:var(--font-ui); transition:border-color .2s;
+  }
+  .contact input:focus, .contact textarea:focus{border-color:var(--ink)}
+  .contact textarea{resize:vertical; min-height:80px}
+  .contact .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  /* campo trampa para robots: fuera de la vista pero no display:none,
+     que algunos robots lo detectan */
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0; pointer-events:none}
+  .form-msg{margin:14px 0 0; font-size:13.5px; line-height:1.55}
+  .form-msg.ok{color:var(--ink-2)}
+  .form-msg.err{color:#a4462f}
+  .form-msg a{color:inherit; text-decoration:underline; text-underline-offset:3px}
+  .contact button[type=submit][disabled]{opacity:.55; cursor:default; background:none; color:var(--muted); border-color:var(--line)}
+  .contact .addr .v a{color:inherit; text-decoration:none; border-bottom:1px solid var(--line)}
+  .contact .addr .v a:hover{border-bottom-color:var(--ink)}
+  .contact button[type=submit]{align-self:flex-start; margin-top:12px; padding:14px 24px; border:1px solid var(--ink); border-radius:100px; font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; transition:all .3s}
+  .contact button[type=submit]:hover{background:var(--ink); color:var(--bg)}
+  @media(max-width:900px){ .contact .grid{grid-template-columns:1fr; gap:40px} }
+  @media(max-width:560px){ .contact .row2{grid-template-columns:1fr} .contact .addr{grid-template-columns:1fr; gap:20px} }
+
+  /* ========== FOOTER ========== */
+  footer{padding:60px 0 40px; border-top:1px solid var(--line)}
+  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px}
+  .foot-grid h2{font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:0 0 16px; font-weight:500}
+  .foot-grid ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; font-size:14px}
+  .foot-grid a{color:var(--ink-2)} .foot-grid a:hover{color:var(--ink)}
+  .big-mark{font-family:var(--font-display); font-size:clamp(64px,14vw,200px); line-height:.9; letter-spacing:-.03em; margin:80px 0 24px; color:#dde5ed}
+  .big-mark em{font-style:italic; color:#b9cddf}
+  .foot-bot{display:flex; justify-content:space-between; align-items:center; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--muted); flex-wrap:wrap; gap:16px}
+  @media(max-width:900px){ .foot-grid{grid-template-columns:1fr 1fr} }
+  @media(max-width:560px){
+    .statement{padding:64px 0 48px}
+    .tour,.about-sec,.contact,.cta-block{padding:64px 0}
+    .services{padding:40px 0 64px}
+    .marquee .track{font-size:20px}
+    .lb{padding:16px}
+    .lb .nav-btn{padding:12px; font-size:32px}
+    .lb .meta{left:20px; bottom:20px}
+    .pano-ov .bar{padding:16px 20px}
+    .pano-ov .bar .t{font-size:20px}
+    .tweaks{right:12px; left:12px; bottom:12px; width:auto}
+  }
+
+  /* ========== MARQUEE ========== */
+  .marquee{border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; padding:22px 0; white-space:nowrap}
+  .marquee .track{display:inline-flex; gap:40px; animation:slide 48s linear infinite; font-family:var(--font-display); font-size:28px; padding-left:40px}
+  .marquee .track .sep{width:6px; height:6px; border-radius:50%; background:var(--coral); display:inline-block; align-self:center}
+  .marquee .track span{display:inline-flex; align-items:center; gap:40px}
+  .marquee i{font-style:italic}
+  @keyframes slide{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+
+  /* Cover tiles (home): caption always visible */
+  .shot.cover .cap{opacity:1; transform:none}
+  .shot.cover:hover .cap .ttl{font-size:24px}
+  .shot.cover .cap .ttl{transition:font-size .4s}
+
+  /* ========== PROJECT VIEW ========== */
+  .pview{padding:90px 0 10px}
+  .pview .kicker{display:inline-flex; align-items:center; gap:12px; font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted)}
+  .pview .kicker .bar{width:32px; height:1px; background:var(--muted)}
+  .pview h1{font-family:var(--font-display); font-weight:400; font-size:clamp(40px,6vw,96px); line-height:1; letter-spacing:-.02em; margin:16px 0 22px; text-wrap:balance}
+  .pview h1 .dot-end{color:var(--coral)}
+  .pview .pmeta{display:flex; gap:22px; align-items:center; flex-wrap:wrap; font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:20px; border-top:1px solid var(--line)}
+  .pview .pill360{display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border:1px solid var(--ink); border-radius:100px; color:var(--ink); background:transparent; font:inherit; font-size:13px; cursor:pointer; transition:all .3s}
+  .pview .pill360:hover{background:var(--ink); color:var(--bg)}
+  .pnav{padding:30px 0 90px}
+  .pnav-in{display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--line); padding-top:28px}
+  .pnav .pn{display:flex; flex-direction:column; gap:8px}
+  .pnav .pn.next{text-align:right; align-items:flex-end}
+  .pnav .pn .lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+  .pnav .pn .t{font-family:var(--font-display); font-size:clamp(24px,3vw,40px); line-height:1.05; transition:color .3s}
+  .pnav .pn:hover .t{color:var(--coral); font-style:italic}
+  @media(max-width:560px){ .pview{padding:56px 0 6px} .pnav{padding:20px 0 64px} .pnav .pn .t{font-size:20px} }
+
+  /* Immersive (fullscreen 360) button on the tour viewer */
+  .pano-fs{position:absolute; left:20px; bottom:20px; z-index:5; display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:100px; background:rgba(0,0,0,.5); backdrop-filter:blur(10px); color:#fff; font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; border:1px solid rgba(255,255,255,.25); cursor:pointer; transition:all .3s}
+  .pano-fs:hover{background:#fff; color:#000}
+
+  /* ========== REVEAL ========== */
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+
+  /* ========== LIGHTBOX ========== */
+  .lb{position:fixed; inset:0; z-index:200; background:rgba(255,255,255,.975); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:40px; opacity:0; pointer-events:none; transition:opacity .3s}
+  .lb.open{opacity:1; pointer-events:auto}
+  .lb img{max-width:min(1300px,94vw); max-height:86vh; object-fit:contain; box-shadow:0 30px 90px rgba(10,26,42,.20)}
+  .lb .meta{position:absolute; left:40px; bottom:32px; color:var(--ink)}
+  .lb .meta .t{font-family:var(--font-display); font-style:italic; font-size:28px}
+  .lb .meta .c{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:4px}
+  .lb .close{position:absolute; top:28px; right:32px; color:var(--ink); font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase}
+  .lb .nav-btn{position:absolute; top:50%; transform:translateY(-50%); color:var(--ink); font-family:var(--font-display); font-size:40px; font-style:italic; padding:20px; opacity:.6}
+  .lb .nav-btn:hover{opacity:1}
+  .lb .prev{left:20px}  .lb .next{right:20px}
+
+  /* ========== 360° TOUR ========== */
+  .tour{padding:100px 0; border-top:1px solid var(--line)}
+  .tour-head{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:36px}
+  .tour-head .kicker{font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); display:inline-flex; align-items:center; gap:12px}
+  .tour-head .kicker .bar{width:32px; height:1px; background:var(--muted)}
+  .tour-head h2{font-family:var(--font-display); font-weight:400; font-size:clamp(32px,4.4vw,68px); line-height:1.02; letter-spacing:-.02em; margin:18px 0 0; text-wrap:balance}
+  .tour-head h2 em{font-style:italic; color:var(--coral)}
+  .tour-head p{color:var(--ink-2); font-size:15px; line-height:1.6; margin:0; max-width:46ch}
+  @media(max-width:900px){ .tour-head{grid-template-columns:1fr; gap:20px} }
+
+  .pano-frame{position:relative; border-radius:3px; overflow:hidden; background:#0a1a2a; aspect-ratio:16/9; box-shadow:inset 0 0 0 1px rgba(10,26,42,.10)}
+  @media(max-width:900px){ .pano-frame{aspect-ratio:4/3} }
+  @media(max-width:560px){ .pano-frame{aspect-ratio:3/4} }
+  .pano{position:absolute; inset:0; width:100%; height:100%}
+  .pano-hint{position:absolute; left:50%; bottom:20px; transform:translateX(-50%); z-index:5; pointer-events:none;
+    display:inline-flex; align-items:center; gap:10px; padding:9px 16px; border-radius:100px;
+    background:rgba(0,0,0,.5); backdrop-filter:blur(10px); color:#fff;
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    animation:hintfade 5s ease forwards;}
+  @keyframes hintfade{0%,70%{opacity:1} 100%{opacity:0}}
+  .pano-tag{position:absolute; top:20px; right:20px; z-index:5; display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:100px; background:rgba(0,0,0,.5); backdrop-filter:blur(10px); color:#fff; font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase}
+  .pano-tag .live{width:7px; height:7px; border-radius:50%; background:var(--on-dark); box-shadow:0 0 0 0 var(--on-dark); animation:livepulse 2s infinite}
+  @keyframes livepulse{0%{box-shadow:0 0 0 0 color-mix(in oklab, var(--on-dark) 70%, transparent)} 70%{box-shadow:0 0 0 8px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+
+  /* Menu de tour virtual dentro del visor 360 */
+  .tourbar{position:absolute; left:0; right:0; bottom:0; z-index:6; display:flex; align-items:center; gap:18px; padding:60px 18px 16px; background:linear-gradient(0deg, rgba(8,9,10,.9), rgba(8,9,10,.5) 45%, rgba(8,9,10,0))}
+  .tourbar .tb-proj{flex:0 0 auto; color:#fff; line-height:1.25}
+  .tourbar .tb-proj .n{display:block; font-family:var(--font-display); font-style:italic; font-size:21px}
+  .tourbar .tb-proj .p{display:block; font-family:var(--font-mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-top:3px}
+  .tourbar .tb-rooms{display:flex; gap:8px; overflow-x:auto; padding:2px 0; scrollbar-width:none}
+  .tourbar .tb-rooms::-webkit-scrollbar{display:none}
+  .tourbar .tb-room{flex:0 0 auto; display:flex; align-items:center; gap:9px; padding:5px 14px 5px 5px; border-radius:100px; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22); color:#fff; font-size:12px; cursor:pointer; white-space:nowrap; transition:background .25s, color .25s, border-color .25s}
+  .tourbar .tb-room img{width:42px; height:26px; object-fit:cover; border-radius:100px; display:block; opacity:.85}
+  .tourbar .tb-room:hover{background:rgba(255,255,255,.2)}
+  .tourbar .tb-room.on{background:#fff; color:#111; border-color:#fff}
+  .tourbar .tb-room.on img{opacity:1}
+  .pano-frame .pano-hint{bottom:86px}
+  .pano-frame .pano-fs{left:auto; right:20px; bottom:auto; top:20px}
+  .pano-frame .pano-tag{top:auto; bottom:86px; right:20px}
+  @media(max-width:900px){
+    .tourbar{gap:12px; padding:48px 12px 12px}
+    .tourbar .tb-proj .n{font-size:16px}
+    .tourbar .tb-room{font-size:11px; padding:4px 11px 4px 4px}
+    .tourbar .tb-room img{width:34px; height:22px}
+  }
+  .scene-tabs{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:20px}
+  .scene-tab{position:relative; overflow:hidden; border-radius:3px; aspect-ratio:16/9; cursor:pointer; border:2px solid transparent; transition:border-color .3s; box-shadow:inset 0 0 0 1px rgba(10,26,42,.08)}
+  .scene-tab::after{content:""; position:absolute; left:0; right:0; bottom:0; height:62%; background:linear-gradient(0deg, rgba(8,18,30,.68), rgba(8,18,30,0)); pointer-events:none; z-index:1}
+  .scene-tab img{width:100%; height:100%; object-fit:cover; transition:transform .8s, filter .3s; filter:saturate(.96) brightness(.93)}
+  .scene-tab:hover img{transform:scale(2.5) !important}
+  .scene-tab.on{border-color:var(--coral)}
+  .scene-tab.on img{filter:none}
+  .scene-tab .lab{position:absolute; left:14px; bottom:12px; color:#fff; z-index:2}
+  .scene-tab .lab .t{display:block; font-family:var(--font-display); font-style:italic; font-size:20px; line-height:1}
+  .scene-tab .lab .c{display:block; font-family:var(--font-mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; opacity:.85; margin-top:4px}
+  .scene-tab .deg{position:absolute; top:10px; right:12px; z-index:2; font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; color:#fff; background:rgba(0,0,0,.4); padding:4px 8px; border-radius:100px}
+  @media(max-width:900px){ .scene-tabs{grid-template-columns:1fr 1fr} }
+  @media(max-width:720px){ .scene-tabs{grid-template-columns:1fr; gap:10px} .scene-tab{aspect-ratio:2/1} }
+
+  /* 360 badge on gallery tiles */
+  .shot .deg-badge{position:absolute; top:16px; left:16px; z-index:3; display:inline-flex; align-items:center; gap:7px; padding:7px 13px; border-radius:100px; background:rgba(0,0,0,.55); backdrop-filter:blur(8px); color:#fff; font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; transition:background .3s}
+  .shot:hover .deg-badge{background:var(--coral)}
+  .shot .deg-badge .ic{font-size:13px}
+
+  /* 360 fullscreen overlay */
+  .pano-ov{position:fixed; inset:0; z-index:210; background:#08070a; opacity:0; pointer-events:none; transition:opacity .35s}
+  .pano-ov.open{opacity:1; pointer-events:auto}
+  .pano-ov .stage{position:absolute; inset:0}
+  .pano-ov .bar{position:absolute; top:0; left:0; right:0; z-index:6; display:flex; justify-content:space-between; align-items:center; padding:24px 32px; background:linear-gradient(180deg, rgba(0,0,0,.55), transparent)}
+  .pano-ov .bar .t{color:#fff; font-family:var(--font-display); font-style:italic; font-size:26px}
+  .pano-ov .bar .c{color:#bbb; font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin-top:2px}
+  .pano-ov .close{color:#fff; font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid rgba(255,255,255,.3); border-radius:100px; padding:10px 18px; transition:all .3s}
+  .pano-ov .close:hover{background:#fff; color:#000}
+  .pano-ov .close.motion.on{background:var(--on-dark); border-color:var(--on-dark); color:#0a1a2a}
+  /* keep pannellum zoom controls clear of the overlay top bar */
+  .pano-ov .pnlm-controls-container{top:96px; left:24px}
+
+  /* Aviso para encender el giroscopio. Solo sale en iPhone, que exige un toque
+     del usuario para conceder el permiso; en Android se enciende solo. */
+  .pano-motion{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    z-index:6; display:flex; flex-direction:column; align-items:center; gap:7px;
+    text-align:center; max-width:min(78%,260px); padding:18px 22px; border-radius:14px;
+    background:rgba(8,18,30,.66); -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px); color:rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.35); font-family:var(--font-mono);
+    font-size:9px; letter-spacing:.16em; text-transform:uppercase; line-height:1.7;
+    cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent}
+  .pano-motion .ic{font-size:22px; line-height:1; color:var(--on-dark)}
+  .pano-motion b{font-weight:400; font-size:11px; color:#fff; letter-spacing:.14em}
+  .pano-motion:active{background:#fff; color:#5c6b7a}
+  .pano-motion:active b,.pano-motion:active .ic{color:#0a1a2a}
+  /* mientras falta el permiso, fuera el boton de orientacion de pannellum: en
+     iPhone no haria nada y pareceria que la web esta rota */
+  .pano.needs-motion .pnlm-orientation-button{display:none}
+
+  /* ========== MODO GAFAS (Cardboard) ========== */
+  /* Dos mitades con la misma imagen. Las panoramicas son monoscopicas, asi que
+     esto da inmersion —miras alrededor moviendo la cabeza— pero no profundidad:
+     para eso harian falta panoramicas estereo. */
+  .vr-stage{position:absolute; inset:0; display:flex; background:#000; z-index:8}
+  .vr-eye{position:relative; flex:1 1 50%; min-width:0; overflow:hidden}
+  .vr-eye .pano{position:absolute; inset:0}
+  /* separacion central: el tabique de las gafas cae aqui */
+  .vr-split{position:absolute; top:0; bottom:0; left:50%; width:4px;
+    transform:translateX(-2px); background:#000; z-index:3; pointer-events:none}
+  /* Una salida por ojo, no una centrada: en el centro cae el tabique de las
+     gafas, y pegada al borde puede quedar bajo la barra del navegador.
+     Va por encima de todo lo demas para que nada pueda tragarse el toque. */
+  .vr-exit{position:absolute; top:9%; left:50%; transform:translateX(-50%); z-index:9;
+    padding:11px 20px; border-radius:100px; background:rgba(0,0,0,.62);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); color:#fff;
+    border:1px solid rgba(255,255,255,.45); font-family:var(--font-mono);
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase; cursor:pointer;
+    touch-action:manipulation; -webkit-tap-highlight-color:transparent; white-space:nowrap}
+  .vr-exit:hover,.vr-exit:active{background:#fff; color:#000}
+  .vr-room{position:absolute; bottom:14px; left:50%; transform:translateX(-50%); z-index:4;
+    color:rgba(255,255,255,.55); font-family:var(--font-mono); font-size:10px;
+    letter-spacing:.16em; text-transform:uppercase; pointer-events:none}
+  /* dentro de las gafas no hay nada que pulsar: fuera los controles del visor */
+  .vr-eye .pnlm-controls-container,
+  .vr-eye .pnlm-orientation-button{display:none !important}
+  .pano-ov .close.vr-btn{border-color:rgba(255,255,255,.45)}
+  /* en vertical las dos mitades salen demasiado estrechas */
+  /* El aviso de girar el movil NO puede tragarse toques: sin el, al sacar el
+     telefono de las gafas quedaba en vertical, el aviso cubria el boton de
+     salir y no habia forma de volver atras. */
+  .vr-rotate{display:none}
+  @media(orientation:portrait) and (pointer:coarse){
+    .vr-rotate{position:absolute; inset:0; z-index:5; display:flex; align-items:flex-end;
+      justify-content:center; text-align:center; padding:0 28px 16vh;
+      background:rgba(0,0,0,.72); color:#fff; font-family:var(--font-mono);
+      font-size:12px; letter-spacing:.18em; text-transform:uppercase; line-height:2;
+      pointer-events:none}
+  }
+  @media(max-width:560px){
+    .vr-exit{top:7%; padding:9px 14px; font-size:10px; letter-spacing:.14em}
+    .vr-room{display:none}
+  }
+
+  /* ========== TWEAKS ========== */
+  .tweaks{position:fixed; right:24px; bottom:24px; z-index:300; background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 24px 60px rgba(0,0,0,.12); padding:18px; width:300px; font-size:13px; display:none}
+  .tweaks.show{display:block}
+  .tweaks h5{margin:0 0 14px; font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); font-weight:500; display:flex; justify-content:space-between}
+  .tweaks .g{display:flex; flex-direction:column; gap:6px; margin-bottom:14px}
+  .tweaks .lbl{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+  .tweaks .pills{display:flex; flex-wrap:wrap; gap:6px}
+  .tweaks .pill{padding:6px 10px; border:1px solid var(--line); border-radius:100px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer}
+  .tweaks .pill.on{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+  .tweaks .sw{display:flex; gap:6px}
+  .tweaks .sw .s{width:26px; height:26px; border-radius:50%; border:1px solid var(--line); cursor:pointer}
+  .tweaks .sw .s.on{outline:2px solid var(--ink); outline-offset:2px}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "3D Vortex",
+  "url": "https://3dvortex.ch/",
+  "image": "https://3dvortex.ch/assets/og-cover.jpg",
+  "description": "Architectural visualization studio in Zürich: photorealistic renderings, AI visualization, 3D-printed architectural models, 360° virtual tours and technical drafting.",
+  "email": "info@3dvortex.ch",
+  "telephone": "+41 44 203 13 30",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Aemtlerstrasse 78",
+    "postalCode": "8003",
+    "addressLocality": "Zürich",
+    "addressCountry": "CH"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  }],
+  "areaServed": ["CH", "DE", "AT", "LI"],
+  "sameAs": ["https://www.instagram.com/3dvortex.ch/"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Architectural visualization" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI visualization" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "3D printed architectural models" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "360° virtual tours" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Plan digitization and technical drafting" }}
+    ]
+  }
+}
+</script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <noscript>
+    <div style="max-width:760px;margin:0 auto;padding:48px 24px;font-family:system-ui,sans-serif;line-height:1.6;color:#0a1a2a">
+    <p><a href="/">3D Vortex</a></p>
+    <h1>360° Virtual Tours — Graffio &amp; Silserkugel</h1>
+    <p>Walk through our architectural visualizations in 360°: the Graffio residence in Golino and the Silserkugel ice arena in St. Moritz.</p>
+    <h2>360° Virtual Tour</h2>
+    <ul>
+      <li>Living Room — Graffio, Golino</li>
+      <li>Kitchen — Graffio, Golino</li>
+      <li>Bar &amp; Lounge — Graffio, Golino</li>
+      <li>Bedroom &amp; Bath — Graffio, Golino</li>
+      <li>Ice Rink — Silserkugel, St. Moritz</li>
+      <li>Rink — Training — Silserkugel, St. Moritz</li>
+      <li>Restaurant — Silserkugel, St. Moritz</li>
+    </ul>
+    <h2>Studio</h2>
+    <p>3D Vortex<br />Aemtlerstrasse 78, 8003 Z&uuml;rich, Switzerland<br />
+    <a href="mailto:info@3dvortex.ch">info@3dvortex.ch</a> &middot;
+    <a href="tel:+41442031330">+41 44 203 13 30</a></p>
+    <p><em>This site needs JavaScript for the interactive gallery and the 360° tour.</em></p>
+    </div>
+  </noscript>
+
+  <script defer src="/app.js"></script>
+</body>
+</html>

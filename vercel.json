@@ -1,8 +1,20 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
-    { "source": "/(.*).(jpg|jpeg|png|svg|woff2|ttf)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+    { "source": "/assets/r/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/(fonts|vendor)/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/assets/(.*).(jpg|jpeg|png|svg|webp|avif)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/(.*)",
+      "headers": [{ "key": "X-Content-Type-Options", "value": "nosniff" },
+                  { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }] }
+  ],
+  "redirects": [
+    { "source": "/work", "destination": "/#portfolio", "permanent": false },
+    { "source": "/de/work", "destination": "/de/#portfolio", "permanent": false }
   ]
 }

@@ -10,81 +10,81 @@ const LOGO_SVG = `<svg viewBox="101.97 422.65 796.06 154.7" xmlns="http://www.w3
 
 // ========== IMAGES (studio renders) ==========
 const P = {
-  hero: "assets/hero.jpg",
-  p1_2: "assets/p1-2.jpg",
-  vs1: "assets/viseu-1.jpg",
-  vs2: "assets/viseu-2.jpg",
-  vs3: "assets/viseu-3.jpg",
-  vs4: "assets/viseu-4.jpg",
-  vs5: "assets/viseu-5.jpg",
-  cl1: "assets/casa-lele-1.jpg",
-  cl2: "assets/casa-lele-2.jpg",
-  cl3: "assets/casa-lele-3.jpg",
-  al1: "assets/altstetten-1.jpg",
-  al2: "assets/altstetten-2.jpg",
-  al3: "assets/altstetten-3.jpg",
-  lm1: "assets/lele-model-1.jpg",
-  lm2: "assets/lele-model-2.jpg",
-  lm3: "assets/lele-model-3.jpg",
-  lm4: "assets/lele-model-4.jpg",
-  lm5: "assets/lele-model-5.jpg",
-  lm6: "assets/lele-model-6.jpg",
-  lm7: "assets/lele-model-7.jpg",
-  lm8: "assets/lele-model-8.jpg",
-  lm9: "assets/lele-model-9.jpg",
-  oe1: "assets/oerlikon-1.jpg",
-  oe2: "assets/oerlikon-2.jpg",
-  gm1: "assets/graffio-model-1.jpg",
-  gm2: "assets/graffio-model-2.jpg",
-  p1_3: "assets/p1-3.jpg",
-  p2_1: "assets/p2-1.jpg",
-  p2_2: "assets/p2-2.jpg",
-  p2_3: "assets/p2-3.jpg",
-  p2_4: "assets/p2-4.jpg",
-  p2_5: "assets/p2-5.jpg",
-  p2_6: "assets/p2-6.jpg",
-  p2_7: "assets/p2-7.jpg",
-  p2_8: "assets/p2-8.jpg",
-  p3_1: "assets/p3-1.jpg",
-  p3_2: "assets/p3-2.jpg",
-  p3_3: "assets/p3-3.jpg",
-  p5_1: "assets/p5-1.jpg",
-  p5_2: "assets/p5-2.jpg",
-  p5_3: "assets/p5-3.jpg",
-  p5_4: "assets/p5-4.jpg",
-  pult: "assets/pult-1.jpg",
-  ph: "assets/placeholder.svg"
+  hero: "/assets/hero.jpg",
+  p1_2: "/assets/p1-2.jpg",
+  vs1: "/assets/viseu-1.jpg",
+  vs2: "/assets/viseu-2.jpg",
+  vs3: "/assets/viseu-3.jpg",
+  vs4: "/assets/viseu-4.jpg",
+  vs5: "/assets/viseu-5.jpg",
+  cl1: "/assets/casa-lele-1.jpg",
+  cl2: "/assets/casa-lele-2.jpg",
+  cl3: "/assets/casa-lele-3.jpg",
+  al1: "/assets/altstetten-1.jpg",
+  al2: "/assets/altstetten-2.jpg",
+  al3: "/assets/altstetten-3.jpg",
+  lm1: "/assets/lele-model-1.jpg",
+  lm2: "/assets/lele-model-2.jpg",
+  lm3: "/assets/lele-model-3.jpg",
+  lm4: "/assets/lele-model-4.jpg",
+  lm5: "/assets/lele-model-5.jpg",
+  lm6: "/assets/lele-model-6.jpg",
+  lm7: "/assets/lele-model-7.jpg",
+  lm8: "/assets/lele-model-8.jpg",
+  lm9: "/assets/lele-model-9.jpg",
+  oe1: "/assets/oerlikon-1.jpg",
+  oe2: "/assets/oerlikon-2.jpg",
+  gm1: "/assets/graffio-model-1.jpg",
+  gm2: "/assets/graffio-model-2.jpg",
+  p1_3: "/assets/p1-3.jpg",
+  p2_1: "/assets/p2-1.jpg",
+  p2_2: "/assets/p2-2.jpg",
+  p2_3: "/assets/p2-3.jpg",
+  p2_4: "/assets/p2-4.jpg",
+  p2_5: "/assets/p2-5.jpg",
+  p2_6: "/assets/p2-6.jpg",
+  p2_7: "/assets/p2-7.jpg",
+  p2_8: "/assets/p2-8.jpg",
+  p3_1: "/assets/p3-1.jpg",
+  p3_2: "/assets/p3-2.jpg",
+  p3_3: "/assets/p3-3.jpg",
+  p5_1: "/assets/p5-1.jpg",
+  p5_2: "/assets/p5-2.jpg",
+  p5_3: "/assets/p5-3.jpg",
+  p5_4: "/assets/p5-4.jpg",
+  pult: "/assets/pult-1.jpg",
+  ph: "/assets/placeholder.svg"
 };
 const PN = {
-  hall: "assets/pano-hall.jpg",
-  court1: "assets/pano-court-01.jpg",
-  court2: "assets/pano-court-02.jpg",
-  amb1: "assets/pano-amb-01.jpg",
-  amb2: "assets/pano-amb-02.jpg",
-  amb3: "assets/pano-amb-03.jpg",
-  amb4: "assets/pano-amb-04.jpg"
+  hall: "/assets/pano-hall.jpg",
+  court1: "/assets/pano-court-01.jpg",
+  court2: "/assets/pano-court-02.jpg",
+  amb1: "/assets/pano-amb-01.jpg",
+  amb2: "/assets/pano-amb-02.jpg",
+  amb3: "/assets/pano-amb-03.jpg",
+  amb4: "/assets/pano-amb-04.jpg"
 };
 // miniaturas de las panoramicas, para el menu del tour
 const PNT = {
-  hall: "assets/pano-hall-t.jpg",
-  court1: "assets/pano-court-01-t.jpg",
-  court2: "assets/pano-court-02-t.jpg",
-  amb1: "assets/pano-amb-01-t.jpg",
-  amb2: "assets/pano-amb-02-t.jpg",
-  amb3: "assets/pano-amb-03-t.jpg",
-  amb4: "assets/pano-amb-04-t.jpg"
+  hall: "/assets/pano-hall-t.jpg",
+  court1: "/assets/pano-court-01-t.jpg",
+  court2: "/assets/pano-court-02-t.jpg",
+  amb1: "/assets/pano-amb-01-t.jpg",
+  amb2: "/assets/pano-amb-02-t.jpg",
+  amb3: "/assets/pano-amb-03-t.jpg",
+  amb4: "/assets/pano-amb-04-t.jpg"
 };
 
 // recortes intermedios: mismo encuadre que ensena la tarjeta, 1600x1200.
 // Evitan bajar el equirectangular completo solo para una miniatura.
 const PNM = {
-  hall: "assets/pano-hall-m.jpg",
-  court1: "assets/pano-court-01-m.jpg",
-  court2: "assets/pano-court-02-m.jpg",
-  amb1: "assets/pano-amb-01-m.jpg",
-  amb2: "assets/pano-amb-02-m.jpg",
-  amb3: "assets/pano-amb-03-m.jpg",
-  amb4: "assets/pano-amb-04-m.jpg"
+  hall: "/assets/pano-hall-m.jpg",
+  court1: "/assets/pano-court-01-m.jpg",
+  court2: "/assets/pano-court-02-m.jpg",
+  amb1: "/assets/pano-amb-01-m.jpg",
+  amb2: "/assets/pano-amb-02-m.jpg",
+  amb3: "/assets/pano-amb-03-m.jpg",
+  amb4: "/assets/pano-amb-04-m.jpg"
 };
 
 // 360° equirectangular panoramas
@@ -189,8 +189,9 @@ function TourBar({
     type: "button",
     className: `tb-room ${r.id === current.id ? 'on' : ''}`,
     onClick: () => onPick(r.id)
-  }, /*#__PURE__*/React.createElement("img", {
+  }, /*#__PURE__*/React.createElement(Pic, {
     src: r.thumb,
+    sizes: SIZE_CHIP,
     alt: "",
     "aria-hidden": "true"
   }), t(r.t)))));
@@ -943,6 +944,10 @@ const HEADLINES = {
 // t(). LANG es una variable de modulo que App pone al dia en cada render, para
 // que t() la vea desde cualquier componente.
 const DE = {
+  "Sending…": "Wird gesendet …",
+  "Thanks — we'll get back to you within one working day.": "Danke — wir melden uns innerhalb eines Arbeitstages.",
+  "The form isn't connected yet. Please write to us at ": "Das Formular ist noch nicht angebunden. Bitte schreiben Sie uns an ",
+  "It didn't go through. Please write to us at ": "Es hat nicht geklappt. Bitte schreiben Sie uns an ",
   "Home": "Start",
   "Projects": "Projekte",
   "360° Tour": "360°-Tour",
@@ -1108,13 +1113,130 @@ function t(s) {
 // vez, y si no el del navegador
 function initialLang() {
   try {
+    // La DIRECCION manda siempre: /de/... es aleman y el resto es ingles.
+    // El idioma guardado y el del navegador solo deciden en la raiz, que es la
+    // unica direccion que no dice de que idioma es. Si no, alguien que eligio
+    // aleman una vez veria las paginas inglesas en aleman, y cada pagina
+    // contradiria a su propio canonical.
+    if (/^\/de(\/|$)/.test(location.pathname)) return 'de';
     const q = new URLSearchParams(location.search).get('lang');
     if (q === 'de' || q === 'en') return q;
+    if (location.pathname !== '/') return 'en';
     const saved = localStorage.getItem('3dv-lang');
     if (saved === 'de' || saved === 'en') return saved;
     if ((navigator.language || '').toLowerCase().indexOf('de') === 0) return 'de';
   } catch (e) {}
   return 'en';
+}
+
+
+
+
+// ========== DIRECCIONES ==========
+// La aplicacion entiende dos formas de decir lo mismo:
+//   /work/graffio-viz   ← direccion real, la que indexa Google y la que se comparte
+//   #/p/graffio-viz     ← la antigua, que se mantiene para no romper enlaces viejos
+// `rutaDesdeUrl` traduce la direccion real al formato interno de siempre, asi que
+// el resto del codigo no se entera del cambio.
+
+// En /de/... todo cuelga de /de/, para que el aleman tenga direcciones propias.
+function prefijoIdioma() {
+  return /^\/de(\/|$)/.test(location.pathname) ? '/de' : '';
+}
+function urlProyecto(slug) {
+  return prefijoIdioma() + '/work/' + slug;
+}
+function urlTour() {
+  return prefijoIdioma() + '/tour';
+}
+function urlInicio() {
+  return prefijoIdioma() + '/';
+}
+
+function rutaDesdeUrl() {
+  const p = decodeURIComponent(location.pathname).replace(/\/+$/, '');
+  const m = p.match(/^(?:\/de)?\/work\/([^/]+)$/);
+  if (m) return '#/p/' + m[1];
+  if (/^(?:\/de)?\/tour$/.test(p)) return '#/360';
+  return location.hash;
+}
+
+function irA(url) {
+  history.pushState({}, '', url);
+  window.dispatchEvent(new PopStateEvent('popstate'));
+}
+
+
+// La misma pagina en el otro idioma, conservando la ruta y el ancla.
+function urlEnIdioma(l) {
+  const p = location.pathname.replace(/\/+$/, '').replace(/^\/de(?=\/|$)/, '') || '/';
+  const base = l === 'de' ? (p === '/' ? '/de' : '/de' + p) : p;
+  return base + location.hash;
+}
+
+// ========== ENVIO DEL FORMULARIO ==========
+// A donde se manda el formulario de contacto. Mientras esto este vacio, el
+// formulario NO finge que envia: avisa de que no esta conectado y ofrece el
+// correo. Para activarlo basta pegar aqui la URL del servicio (Formspree,
+// Basin, o una funcion propia en Vercel).
+const FORM_ENDPOINT = "";
+
+// ========== IMAGENES RESPONSIVE ==========
+// Cada foto tiene versiones AVIF y WebP en varios anchos dentro de assets/r/.
+// VAR dice, por imagen, su tamaño natural y que anchos existen; el navegador
+// elige el que necesita segun el hueco en pantalla y la densidad del aparato.
+// El JPEG original sigue ahi como ultimo recurso para quien no soporte ninguno.
+const VAR = {"/assets/altstetten-1.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-2.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-3.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/casa-lele-1.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-2.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-3.jpg":{"h":1080,"s":[500,800,1400,1920],"w":1920},"/assets/graffio-model-1.jpg":{"h":596,"s":[500,800,1134],"w":1134},"/assets/graffio-model-2.jpg":{"h":636,"s":[500,800,1134],"w":1134},"/assets/hero.jpg":{"h":1635,"s":[500,800,1400,2000],"w":2200},"/assets/lele-model-1.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-2.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-3.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-4.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-5.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-6.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-7.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-8.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-9.jpg":{"h":1080,"s":[500,608],"w":608},"/assets/oerlikon-1.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/oerlikon-2.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/p1-2.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p1-3.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p2-1.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-2.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-3.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-4.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-5.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-6.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p2-7.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-8.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-2.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-3.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p5-1.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-2.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-3.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-4.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/pano-amb-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-03-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-03-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-04-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-04-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-hall-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-hall-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pult-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/viseu-1.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-2.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-3.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-4.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-5.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919}};
+
+// Cuanto mide la imagen en pantalla. Medido de verdad sobre el sitio:
+// una fila "full" ocupa hasta 1304 px; el resto van a dos columnas, 642 px.
+const SIZE_LB = "(max-width: 1383px) 94vw, 1300px";
+const SIZE_ESCENA = "(max-width: 760px) 96vw, 800px";
+const SIZE_CHIP = "42px";
+
+// Proporcion de cada marco, la que fija la clase ar-* en el CSS.
+const AR = { 'ar-32': 1.5, 'ar-43': 4 / 3, 'ar-169': 16 / 9, 'ar-219': 21 / 9,
+             'ar-11': 1, 'ar-34': 0.75, 'ar-23': 2 / 3 };
+
+// Con object-fit:cover, si la foto es MAS APAISADA que su marco el navegador la
+// escala por la altura y recorta los lados: entonces hace falta mas ancho del que
+// mide la caja. Y las fichas que van con zoom fijo necesitan ese zoom de mas.
+function factorFoto(data) {
+  const v = VAR[data.img];
+  if (!v) return 1;
+  const foto = v.w / v.h;
+  const marco = AR[data.ar] || foto;
+  return Math.max(1, foto / marco) * (data.zoom ? 2.6 : 1);
+}
+
+function sizesDeFila(layout, f) {
+  const x = t => f > 1.02 ? 'calc(' + t + ' * ' + f.toFixed(2) + ')' : t;
+  return layout === 'full'
+    ? '(max-width: 1420px) ' + x('92vw') + ', ' + x('1304px')
+    : '(max-width: 760px) ' + x('92vw') + ', (max-width: 1420px) ' + x('45vw') + ', ' + x('642px');
+}
+
+function juego(ruta, ext) {
+  const v = VAR[ruta];
+  const base = '/assets/r/' + ruta.replace(/^\/assets\//, '').replace(/\.[a-zA-Z]+$/, '');
+  return v.s.map(w => base + '-' + w + '.' + ext + ' ' + w + 'w').join(', ');
+}
+
+// Envuelve un <img> en un <picture> con sus fuentes AVIF y WebP.
+// Si la imagen no esta en VAR (un SVG, por ejemplo), sale un <img> normal.
+function Pic(props) {
+  const src = props.src;
+  const resto = Object.assign({}, props);
+  delete resto.sizes;
+  resto.decoding = "async";
+  const v = VAR[src];
+  if (!v) return /*#__PURE__*/React.createElement("img", resto);
+  resto.width = v.w;
+  resto.height = v.h;
+  return /*#__PURE__*/React.createElement("picture", null,
+    /*#__PURE__*/React.createElement("source", { type: "image/avif", srcSet: juego(src, 'avif'), sizes: props.sizes }),
+    /*#__PURE__*/React.createElement("source", { type: "image/webp", srcSet: juego(src, 'webp'), sizes: props.sizes }),
+    /*#__PURE__*/React.createElement("img", resto));
 }
 
 // ========== HOOKS ==========
@@ -1135,14 +1257,65 @@ function useReveal(dep) {
     return () => io.disconnect();
   }, [dep]);
 }
-function useRoute() {
-  const [hash, setHash] = useState(window.location.hash);
+// La ruta completa, para enterarnos tambien de los cambios de /… a /de/…,
+// que no mueven la vista pero si el idioma.
+function usePathname() {
+  const [p, setP] = useState(() => location.pathname);
   useEffect(() => {
-    const f = () => setHash(window.location.hash);
+    const f = () => setP(location.pathname);
+    window.addEventListener('popstate', f);
     window.addEventListener('hashchange', f);
-    return () => window.removeEventListener('hashchange', f);
+    return () => {
+      window.removeEventListener('popstate', f);
+      window.removeEventListener('hashchange', f);
+    };
   }, []);
-  return hash;
+  return p;
+}
+
+function useRoute() {
+  const [route, setRoute] = useState(rutaDesdeUrl);
+  useEffect(() => {
+    const f = () => setRoute(rutaDesdeUrl());
+    window.addEventListener('hashchange', f);
+    window.addEventListener('popstate', f);
+    return () => {
+      window.removeEventListener('hashchange', f);
+      window.removeEventListener('popstate', f);
+    };
+  }, []);
+  return route;
+}
+
+// Un solo manejador para TODOS los enlaces internos: navega sin recargar, pero
+// respeta cmd+clic, ctrl+clic y el clic central, que es justo lo que se gana al
+// usar enlaces de verdad en vez de divs.
+function useEnlacesInternos() {
+  useEffect(() => {
+    const onClick = e => {
+      if (e.defaultPrevented || e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+      let url;
+      try { url = new URL(a.getAttribute('href'), location.href); } catch (err) { return; }
+      if (url.origin !== location.origin) return;
+      e.preventDefault();
+      if (url.pathname === location.pathname) {
+        if (url.hash) {
+          location.hash = url.hash;
+        } else {
+          history.replaceState(history.state, '', url.pathname + url.search);
+          window.scrollTo(0, 0);
+          window.dispatchEvent(new PopStateEvent('popstate'));
+        }
+      } else {
+        irA(url.pathname + url.search + url.hash);
+      }
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
 }
 function useCounter(target, active, dur = 1500) {
   const [v, setV] = useState(0);
@@ -1170,15 +1343,18 @@ function Nav({ lang, setLang }) {
       document.body.style.overflow = '';
     };
   }, [open]);
-  const links = [["#/", "Home"], ["#portfolio", "Projects"], ["#/360", "360° Tour"], ["#services", "Services"], ["#about", "About"], ["#contact", "Contact"]];
+  // El prefijo se calcula AQUI, en cada pintado, no al cargar el archivo:
+  // en /de/... el menu tiene que apuntar al aleman.
+  const pref = prefijoIdioma();
+  const links = [[pref + "/", "Home"], [pref + "/#portfolio", "Projects"], [pref + "/tour", "360° Tour"], [pref + "/#services", "Services"], [pref + "/#about", "About"], [pref + "/#contact", "Contact"]];
   const Lang = ({ cls }) => /*#__PURE__*/React.createElement("span", {
     className: cls
   }, ["en", "de"].map((l, i) => /*#__PURE__*/React.createElement(React.Fragment, {
     key: l
-  }, i ? " · " : null, /*#__PURE__*/React.createElement("button", {
-    type: "button",
+  }, i ? " · " : null, /*#__PURE__*/React.createElement("a", {
     className: `lang-btn ${lang === l ? 'on' : ''}`,
-    onClick: () => setLang(l),
+    href: urlEnIdioma(l),
+    hrefLang: l === 'de' ? 'de-CH' : 'en',
     lang: l,
     "aria-label": l === 'de' ? 'Auf Deutsch wechseln' : 'Switch to English'
   }, l.toUpperCase()))));
@@ -1189,20 +1365,20 @@ function Nav({ lang, setLang }) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "nav-left"
   }, /*#__PURE__*/React.createElement("a", {
-    href: "#/"
+    href: urlInicio()
   }, t("Home")), /*#__PURE__*/React.createElement("a", {
-    href: "#portfolio"
+    href: prefijoIdioma() + "/#portfolio"
   }, t("Projects")), /*#__PURE__*/React.createElement("a", {
-    href: "#/360"
+    href: urlTour()
   }, t("360° Tour")), /*#__PURE__*/React.createElement("a", {
-    href: "#services"
+    href: prefijoIdioma() + "/#services"
   }, t("Services")), /*#__PURE__*/React.createElement("a", {
-    href: "#about"
+    href: prefijoIdioma() + "/#about"
   }, t("About")), /*#__PURE__*/React.createElement("a", {
-    href: "#contact"
+    href: prefijoIdioma() + "/#contact"
   }, t("Contact"))), /*#__PURE__*/React.createElement("a", {
     className: "nav-logo",
-    href: "#/",
+    href: urlInicio(),
     "aria-label": "3DVortex"
   }, /*#__PURE__*/React.createElement("span", {
     className: "logo-mark",
@@ -1259,13 +1435,19 @@ function Tile({
   data,
   onClick,
   idxText,
-  always
+  always,
+  lay,
+  href
 }) {
-  return /*#__PURE__*/React.createElement("div", {
+  // Con destino es un enlace de verdad (Google lo sigue, se abre en pestaña
+  // nueva); sin destino sigue siendo un div, como en el visor de la ficha.
+  return /*#__PURE__*/React.createElement(href ? "a" : "div", {
     className: `shot ${data.ar} ${always ? 'cover' : ''}`,
+    href: href,
     onClick: onClick
-  }, /*#__PURE__*/React.createElement("img", {
+  }, /*#__PURE__*/React.createElement(Pic, {
     src: data.img,
+    sizes: sizesDeFila(lay, factorFoto(data)),
     alt: data.alt || data.t,
     loading: "lazy",
     style: {
@@ -1316,6 +1498,7 @@ function HomeGallery() {
     const meta = t(pr.cat);
     return /*#__PURE__*/React.createElement(Tile, {
       key: pr.slug,
+      lay: row.layout,
       always: true,
       data: {
         ...pr.cover,
@@ -1324,9 +1507,7 @@ function HomeGallery() {
         c: meta,
         alt: `${pr.title}${pr.place ? ', ' + pr.place : ''} — ${t(pr.cat)} ${t("by 3D Vortex")}`
       },
-      onClick: () => {
-        window.location.hash = '#/p/' + pr.slug;
-      }
+      href: urlProyecto(pr.slug)
     });
   })))));
 }
@@ -1375,6 +1556,7 @@ function ProjectPage({
     const idx = imgs.indexOf(it);
     return /*#__PURE__*/React.createElement(Tile, {
       key: j,
+      lay: row.layout,
       data: { ...it, t: t(it.t), c: t(it.c), alt: `${proj.title}${proj.place ? ', ' + proj.place : ''} — ${t(it.t || proj.cat)}, ${t(proj.cat)} ${t("by 3D Vortex")}` },
       idxText: `${String(idx + 1).padStart(2, '0')} / ${String(imgs.length).padStart(2, '0')}`,
       onClick: () => it.pano ? onPano(it.pano) : setLb({
@@ -1584,8 +1766,9 @@ function Tour360({
     key: s.id,
     className: `scene-tab ${i === idx ? 'on' : ''}`,
     onClick: () => setI(idx)
-  }, /*#__PURE__*/React.createElement("img", {
+  }, /*#__PURE__*/React.createElement(Pic, {
     src: s.mid || s.src,
+    sizes: SIZE_ESCENA,
     alt: `${t(s.t)}, ${s.c} — ${t("360° virtual tour by 3D Vortex")}`,
     loading: "lazy",
     style: {
@@ -1935,10 +2118,10 @@ function CTA() {
     className: "links"
   }, /*#__PURE__*/React.createElement("a", {
     className: "link",
-    href: "#portfolio"
+    href: prefijoIdioma() + "/#portfolio"
   }, t("All Projects →")), /*#__PURE__*/React.createElement("a", {
     className: "link",
-    href: "#contact",
+    href: prefijoIdioma() + "/#contact",
     style: {
       background: 'var(--coral)',
       color: 'var(--bg)',
@@ -1990,7 +2173,30 @@ function About() {
   }, t("Languages")), /*#__PURE__*/React.createElement("div", null, t("Deutsch · English · Italiano"))))))));
 }
 function Contact() {
-  const [sent, setSent] = useState(false);
+  // listo · enviando · ok · error · sin-conectar
+  const [estado, setEstado] = useState('listo');
+  const enviar = async e => {
+    e.preventDefault();
+    const datos = Object.fromEntries(new FormData(e.target).entries());
+    // Trampa antispam: campo escondido que una persona nunca ve ni rellena.
+    if (datos.website) return;
+    delete datos.website;
+    if (!FORM_ENDPOINT) {
+      setEstado('sin-conectar');
+      return;
+    }
+    setEstado('enviando');
+    try {
+      const r = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      });
+      setEstado(r.ok ? 'ok' : 'error');
+    } catch (err) {
+      setEstado('error');
+    }
+  };
   return /*#__PURE__*/React.createElement("section", {
     className: "contact",
     id: "contact"
@@ -2019,29 +2225,55 @@ function Contact() {
     className: "k"
   }, t("Reach us")), /*#__PURE__*/React.createElement("div", {
     className: "v"
-  }, "info@3dvortex.ch", /*#__PURE__*/React.createElement("br", null), "+41 44 203 13 30")))), /*#__PURE__*/React.createElement("form", {
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "mailto:info@3dvortex.ch"
+  }, "info@3dvortex.ch"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("a", {
+    href: "tel:+41442031330"
+  }, "+41 44 203 13 30"))))), /*#__PURE__*/React.createElement("form", {
     className: "reveal",
-    onSubmit: e => {
-      e.preventDefault();
-      setSent(true);
-    }
+    onSubmit: enviar,
+    noValidate: false
   }, /*#__PURE__*/React.createElement("div", {
     className: "row2"
   }, /*#__PURE__*/React.createElement("input", {
+    name: "name",
     required: true,
+    autoComplete: "name",
     placeholder: t("Name *")
   }), /*#__PURE__*/React.createElement("input", {
+    name: "email",
     required: true,
     type: "email",
+    autoComplete: "email",
     placeholder: t("Email *")
   })), /*#__PURE__*/React.createElement("input", {
+    name: "company",
+    autoComplete: "organization",
     placeholder: t("Practice / Company")
   }), /*#__PURE__*/React.createElement("textarea", {
+    name: "message",
+    required: true,
     placeholder: t("Tell us about the project — scale, timeline, type of deliverable."),
     rows: 4
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    name: "website",
+    tabIndex: -1,
+    autoComplete: "off",
+    "aria-hidden": "true",
+    className: "hp"
   }), /*#__PURE__*/React.createElement("button", {
-    type: "submit"
-  }, sent ? t("Sent ✓ Thank you") : t("Send message →"))))));
+    type: "submit",
+    disabled: estado === 'enviando' || estado === 'ok'
+  }, estado === 'enviando' ? t("Sending…") : estado === 'ok' ? t("Sent ✓ Thank you") : t("Send message →")), estado === 'ok' && /*#__PURE__*/React.createElement("p", {
+    className: "form-msg ok",
+    role: "status"
+  }, t("Thanks — we'll get back to you within one working day.")), (estado === 'error' || estado === 'sin-conectar') && /*#__PURE__*/React.createElement("p", {
+    className: "form-msg err",
+    role: "alert"
+  }, estado === 'sin-conectar' ? t("The form isn't connected yet. Please write to us at ") : t("It didn't go through. Please write to us at "), /*#__PURE__*/React.createElement("a", {
+    href: "mailto:info@3dvortex.ch"
+  }, "info@3dvortex.ch"), "."))))); 
 }
 function Footer() {
   return /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("div", {
@@ -2057,35 +2289,41 @@ function Footer() {
       margin: 0
     }
   }, t("Architectural visualization, AI rendering, 3D printing and technical drafting for architectural studios."))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, t("Menu")), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#/"
+    href: urlInicio()
   }, t("Home"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#portfolio"
+    href: prefijoIdioma() + "/#portfolio"
   }, t("Projects"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#/360"
+    href: urlTour()
   }, t("360° Tour"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#services"
+    href: prefijoIdioma() + "/#services"
   }, t("Services"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#about"
+    href: prefijoIdioma() + "/#about"
   }, t("About"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#contact"
+    href: prefijoIdioma() + "/#contact"
   }, t("Contact"))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, t("Contact")), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "Aemtlerstrasse 78"), /*#__PURE__*/React.createElement("li", null, "8003 Zürich, CH"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "mailto:info@3dvortex.ch"
   }, "info@3dvortex.ch")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: "tel:+41442031330"
   }, "+41 44 203 13 30")))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, t("Follow")), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#"
+    href: "https://www.instagram.com/3dvortex.ch/",
+    target: "_blank",
+    rel: "noopener"
   }, "Instagram")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#"
+    href: "https://www.linkedin.com/in/info-3dvortex-6a718b252/",
+    target: "_blank",
+    rel: "noopener"
   }, "LinkedIn")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#"
+    href: "https://www.facebook.com/profile.php?id=61554110806838",
+    target: "_blank",
+    rel: "noopener"
   }, "Facebook"))))), /*#__PURE__*/React.createElement("div", {
     className: "big-mark"
   }, "3D", /*#__PURE__*/React.createElement("em", null, "Vortex"), "."), /*#__PURE__*/React.createElement("div", {
     className: "foot-bot"
   }, /*#__PURE__*/React.createElement("div", null, t("© 3DVortex 2026. All rights reserved.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
-    href: "#"
+    href: prefijoIdioma() + (LANG === "de" ? "/impressum" : "/legal")
   }, t("Legal Details")), " · ", /*#__PURE__*/React.createElement("a", {
-    href: "#"
+    href: prefijoIdioma() + (LANG === "de" ? "/datenschutz" : "/privacy")
   }, t("Privacy Policy"))))));
 }
 function Lightbox({
@@ -2128,8 +2366,9 @@ function Lightbox({
       e.stopPropagation();
       onNav(1);
     }
-  }, "›"), /*#__PURE__*/React.createElement("img", {
+  }, "›"), /*#__PURE__*/React.createElement(Pic, {
     src: p.img,
+    sizes: SIZE_LB,
     alt: p.t,
     onClick: e => e.stopPropagation()
   }), /*#__PURE__*/React.createElement("div", {
@@ -2214,14 +2453,40 @@ function App() {
     // reflejar el idioma en la URL para que sea enlazable, sin recargar
     try {
       const u = new URL(location.href);
-      if (lang === 'de') u.searchParams.set('lang', 'de');else u.searchParams.delete('lang');
+      // Si la direccion ya dice el idioma (/de/...), el ?lang sobra.
+      if (lang === 'de' && !/^\/de(\/|$)/.test(location.pathname)) {
+        u.searchParams.set('lang', 'de');
+      } else {
+        u.searchParams.delete('lang');
+      }
       history.replaceState(history.state, '', u);
     } catch (e) {}
   }, [lang]);
+  const path = usePathname();
+  // La direccion manda sobre el idioma, no al reves.
+  useEffect(() => {
+    const l = /^\/de(\/|$)/.test(path) ? 'de' : 'en';
+    setLang(prev => prev === l ? prev : l);
+  }, [path]);
+
+  // Primera visita: si el idioma que toca es aleman pero la direccion es la
+  // inglesa, se corrige la DIRECCION. Antes se cambiaba solo el texto, y la
+  // pagina acababa contradiciendo a su propio canonical.
+  useEffect(() => {
+    if (lang === 'de' && location.pathname === '/') {
+      const u = urlEnIdioma('de');
+      history.replaceState(history.state, '', u);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+    // solo al montar
+    // eslint-disable-next-line
+  }, []);
+
   const [tw, setTw] = useState(TWEAK_DEFAULTS);
   const [tweakVis, setTweakVis] = useState(false);
   const [panoId, setPanoId] = useState(null);
   const route = useRoute();
+  useEnlacesInternos();
   let view = 'home',
     slug = null;
   if (route.indexOf('#/360') === 0) view = 'tour';else if (route.indexOf('#/p/') === 0) {

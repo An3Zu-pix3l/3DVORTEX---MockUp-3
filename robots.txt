@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# La carpeta de plantillas no aporta nada a nadie
+Disallow: /_build/
+
 Sitemap: https://3dvortex.ch/sitemap.xml
