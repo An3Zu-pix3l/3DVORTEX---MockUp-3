@@ -103,6 +103,19 @@ VERCEL = {
                          "value": "public, max-age=31536000, immutable"}],
         },
         {
+            # Los iconos viven en la raiz, asi que no los cubre ninguna regla
+            # de arriba y se revalidaban en cada visita.
+            #
+            # OJO: aqui NO va "immutable" ni un año. El nombre del icono no
+            # cambia nunca, asi que con un año por delante un cambio de logo
+            # tardaria un año en llegar a quien ya hubiera entrado. Un mes es
+            # suficiente para que no se pida en cada visita, y corto para poder
+            # cambiar el logo sin dramas.
+            "source": "/(favicon.ico|apple-touch-icon.png|icon-192.png|icon-512.png|site.webmanifest)",
+            "headers": [{"key": "Cache-Control",
+                         "value": "public, max-age=2592000"}],
+        },
+        {
             # El HTML si cambia: se revalida siempre.
             "source": "/(.*)",
             "headers": [{"key": "X-Content-Type-Options", "value": "nosniff"},
@@ -130,9 +143,7 @@ def pagina_404(base):
 <title>Page not found | 3DVORTEX</title>
 <meta name="robots" content="noindex" />
 <link rel="stylesheet" href="/fonts/fonts.css"/>
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 {estilos}

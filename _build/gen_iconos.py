@@ -16,7 +16,9 @@ un degradado pierde el barrido azul-amarillo del logo de verdad.
 
 Salida en icons/out/:
   favicon.ico           16+32+48 dentro, que es lo que mira el navegador
-  favicon-16/32.png     los mismos, sueltos
+                        (los PNG sueltos de 16 y 32 se quitaron: no aportaban
+                        nada sobre el .ico y al escribirlos en el ordenador se
+                        les mete un trozo C2PA de 5,7 KB)
   apple-touch-icon.png  180 px, cuadrado y opaco: el redondeo lo pone iOS
   icon-192/512.png      para la pantalla de inicio en Android
 """
@@ -78,8 +80,6 @@ def main():
 
     disco(logo, 48).save(OUT / "favicon.ico", format="ICO",
                          sizes=[(16, 16), (32, 32), (48, 48)])
-    disco(logo, 32).save(OUT / "favicon-32.png")
-    disco(logo, 16).save(OUT / "favicon-16.png")
     disco(logo, 192).save(OUT / "icon-192.png")
     disco(logo, 512).save(OUT / "icon-512.png")
     cuadrado(logo, 180).convert("RGB").save(OUT / "apple-touch-icon.png", quality=95)
