@@ -162,6 +162,63 @@
   .shot .idx{position:absolute; top:16px; right:16px; z-index:2; font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; color:#fff; background:rgba(0,0,0,.4); padding:4px 8px; border-radius:100px; opacity:0; transition:opacity .3s}
   .shot:hover .idx{opacity:1}
 
+  /* ===== Boceto -> render: barrido horizontal =====
+     La tarjeta ensena el dibujo y, al pasar el raton, descubre el render de
+     izquierda a derecha. Las dos imagenes tienen el mismo encuadre y el mismo
+     object-fit, asi que el recorte coincide y la linea no salta. */
+  .shot.wipe picture{display:block; width:100%; height:100%}
+  /* El velo del rotulo (.shot::after, z-index 1) tiene que quedar por encima de
+     LAS DOS imagenes; si no, el rotulo se lee distinto antes y despues del
+     barrido. Y sobre un dibujo de lineas en blanco un velo del 55% pinta de gris
+     media tarjeta, asi que aqui se acorta. */
+  .shot.wipe::after{
+    height:18%;
+    background:linear-gradient(0deg, rgba(8,18,30,.52), rgba(8,18,30,0));
+  }
+  .shot.wipe .cap{text-shadow:0 1px 12px rgba(8,18,30,.70), 0 0 3px rgba(8,18,30,.50)}
+  .shot.wipe .w-b{
+    position:absolute; inset:0; z-index:0; overflow:hidden;
+    clip-path:inset(0 100% 0 0);
+    transition:clip-path 1.15s cubic-bezier(.66,0,.2,1);
+  }
+  .shot.wipe .w-b img{width:100%; height:100%; object-fit:cover}
+  .shot.wipe:hover .w-b, .shot.wipe:focus-visible .w-b{clip-path:inset(0 0 0 0)}
+  /* la linea que viaja con el borde del barrido */
+  .shot.wipe .w-edge{
+    position:absolute; top:0; bottom:0; left:0; width:2px; z-index:2;
+    background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.95) 16%, rgba(255,255,255,.95) 84%, rgba(255,255,255,.10));
+    box-shadow:0 0 20px rgba(10,26,42,.45);
+    opacity:0; pointer-events:none;
+    transition:left 1.15s cubic-bezier(.66,0,.2,1), opacity .3s;
+  }
+  .shot.wipe:hover .w-edge, .shot.wipe:focus-visible .w-edge{left:calc(100% - 2px); opacity:1}
+  .shot.wipe .w-hint{
+    position:absolute; top:16px; left:16px; z-index:3;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    color:#fff; background:rgba(10,26,42,.55); border-radius:100px; padding:5px 11px;
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    transition:opacity .3s; pointer-events:none;
+  }
+  .shot.wipe:hover .w-hint{opacity:0}
+  /* En tactil no hay raton: el barrido se ensena solo, en bucle lento. */
+  @media(hover:none){
+    .shot.wipe .w-b{animation:wipeAuto 7s cubic-bezier(.66,0,.2,1) 1.4s infinite}
+    .shot.wipe .w-edge{display:none}
+  }
+  @keyframes wipeAuto{
+    0%, 8%   {clip-path:inset(0 100% 0 0)}
+    42%, 62% {clip-path:inset(0 0 0 0)}
+    96%, 100%{clip-path:inset(0 100% 0 0)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .shot.wipe .w-b{transition:none; animation:none}
+    .shot.wipe .w-edge{transition:opacity .3s}
+  }
+
+  /* Fila de una sola foto vertical: media columna centrada, no el ancho entero
+     (un 3:4 a 1300 px de ancho es una pared). */
+  .cluster .row.solo{grid-template-columns:minmax(0,660px); justify-content:center}
+
   /* Aspect ratio helpers */
   .ar-32{aspect-ratio:3/2}
   .ar-43{aspect-ratio:4/3}
@@ -332,6 +389,15 @@
   .lb .nav-btn{position:absolute; top:50%; transform:translateY(-50%); color:var(--ink); font-family:var(--font-display); font-size:40px; font-style:italic; padding:20px; opacity:.6}
   .lb .nav-btn:hover{opacity:1}
   .lb .prev{left:20px}  .lb .next{right:20px}
+  /* comparador boceto/render a pantalla completa: la linea sigue al raton */
+  .lb-wipe{position:relative; line-height:0; cursor:ew-resize; box-shadow:0 30px 90px rgba(10,26,42,.20)}
+  .lb-wipe picture{display:block; position:absolute; inset:0}
+  .lb-wipe img{box-shadow:none; width:100%; height:100%; object-fit:cover; max-width:none; max-height:none}
+  .lb-wipe .lb-b{position:absolute; inset:0; overflow:hidden; clip-path:inset(0 calc(100% - var(--wx, 50%)) 0 0)}
+  .lb-wipe .lb-edge{
+    position:absolute; top:0; bottom:0; left:var(--wx, 50%); width:2px; margin-left:-1px;
+    background:rgba(255,255,255,.95); box-shadow:0 0 18px rgba(10,26,42,.5); pointer-events:none;
+  }
 
   /* ========== 360° TOUR ========== */
   .tour{padding:100px 0; border-top:1px solid var(--line)}
