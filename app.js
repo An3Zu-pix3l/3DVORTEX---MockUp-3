@@ -58,6 +58,11 @@ const P = {
   // la transicion salta.
   mrs: "/assets/maria-sketch.jpg",
   mrr: "/assets/maria-render.jpg",
+  // Variantes de material del mismo encuadre. Todas salen del mismo
+  // boceto, asi que el barrido cuadra igual con cualquiera.
+  mrc: "/assets/maria-concrete.jpg",
+  mrt: "/assets/maria-rattan.jpg",
+  mrg: "/assets/maria-sage.jpg",
   ph: "/assets/placeholder.svg"
 };
 const PN = {
@@ -205,6 +210,17 @@ const PANO_BY_ID = Object.fromEntries(PANORAMAS.map(p => [p.id, p]));
 
 // ========== PROJECTS ==========
 const SERVICES = [{"k": "all", "l": "All"}, {"k": "viz", "l": "Visualization"}, {"k": "print", "l": "3D Print Model"}, {"k": "tour", "l": "360° Virtual Tour"}, {"k": "ai", "l": "AI Visualization"}];
+// ========== VARIANTES DE MATERIAL ==========
+// Una escena puede tener varios acabados del mismo encuadre. Todas salen del
+// mismo boceto, asi que el barrido cuadra con cualquiera.
+const VARIANTES_MARIA = [
+  // l: lo que se lee en la pastilla — corto, para que las cuatro quepan en
+  // una fila. d: el nombre completo, para el lector de pantalla y el tooltip.
+  { k: "oak",      l: "Oak",      d: "Oak & white",       img: P.mrr },
+  { k: "concrete", l: "Concrete", d: "Concrete & oak",    img: P.mrc },
+  { k: "rattan",   l: "Rattan",   d: "Rattan & terrazzo", img: P.mrt },
+  { k: "sage",     l: "Sage",     d: "Sage & blush",      img: P.mrg }
+];
 const PROJECTS = [{
     slug: "graffio-viz",
     title: "Graffio",
@@ -902,6 +918,8 @@ const PROJECTS = [{
         {
         img: P.mrs,
         img2: P.mrr,
+        vars: VARIANTES_MARIA,
+        opts: true,
         t: "Stair hall",
         c: "Sketch \u2192 AI visualization",
         ar: "ar-34"
@@ -982,6 +1000,15 @@ const DE = {
   "360° Virtual Tour": "360°-Rundgang",
   "AI Visualization": "KI-Visualisierung",
   "Sketch \u2192 Render": "Skizze \u2192 Render",
+  "Material variants": "Materialvarianten",
+  "Oak": "Eiche",
+  "Concrete": "Beton",
+  "Rattan": "Rattan",
+  "Sage": "Salbei",
+  "Oak & white": "Eiche & Wei\u00df",
+  "Concrete & oak": "Beton & Eiche",
+  "Rattan & terrazzo": "Rattan & Terrazzo",
+  "Sage & blush": "Salbei & Ros\u00e9",
   "Sketch \u2192 AI visualization": "Skizze \u2192 KI-Visualisierung",
   "Stair hall": "Treppenhalle",
   "Competition": "Wettbewerb",
@@ -1197,7 +1224,7 @@ const FORM_ENDPOINT = "";
 // VAR dice, por imagen, su tamaño natural y que anchos existen; el navegador
 // elige el que necesita segun el hueco en pantalla y la densidad del aparato.
 // El JPEG original sigue ahi como ultimo recurso para quien no soporte ninguno.
-const VAR = {"/assets/altstetten-1.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-2.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-3.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/casa-lele-1.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-2.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-3.jpg":{"h":1080,"s":[500,800,1400,1920],"w":1920},"/assets/graffio-model-1.jpg":{"h":596,"s":[500,800,1134],"w":1134},"/assets/graffio-model-2.jpg":{"h":636,"s":[500,800,1134],"w":1134},"/assets/hero.jpg":{"h":1635,"s":[500,800,1400,2000],"w":2200},"/assets/lele-model-1.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-2.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-3.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-4.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-5.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-6.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-7.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-8.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-9.jpg":{"h":1080,"s":[500,608],"w":608},"/assets/maria-render.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-sketch.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/oerlikon-1.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/oerlikon-2.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/p1-2.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p1-3.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p2-1.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-2.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-3.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-4.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-5.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-6.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p2-7.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-8.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-2.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-3.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p5-1.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-2.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-3.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-4.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/pano-amb-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-03-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-03-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-04-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-04-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-hall-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-hall-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pult-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/viseu-1.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-2.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-3.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-4.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-5.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919}};
+const VAR = {"/assets/altstetten-1.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-2.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-3.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/casa-lele-1.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-2.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-3.jpg":{"h":1080,"s":[500,800,1400,1920],"w":1920},"/assets/graffio-model-1.jpg":{"h":596,"s":[500,800,1134],"w":1134},"/assets/graffio-model-2.jpg":{"h":636,"s":[500,800,1134],"w":1134},"/assets/hero.jpg":{"h":1635,"s":[500,800,1400,2000],"w":2200},"/assets/lele-model-1.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-2.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-3.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-4.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-5.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-6.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-7.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-8.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-9.jpg":{"h":1080,"s":[500,608],"w":608},"/assets/maria-concrete.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-rattan.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-render.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-sage.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-sketch.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/oerlikon-1.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/oerlikon-2.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/p1-2.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p1-3.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p2-1.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-2.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-3.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-4.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-5.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-6.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p2-7.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-8.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-2.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-3.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p5-1.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-2.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-3.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-4.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/pano-amb-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-03-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-03-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-04-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-04-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-hall-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-hall-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pult-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/viseu-1.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-2.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-3.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-4.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-5.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919}};
 
 // Cuanto mide la imagen en pantalla. Medido de verdad sobre el sitio:
 // una fila "full" ocupa hasta 1304 px; el resto van a dos columnas, 642 px.
@@ -1442,6 +1469,58 @@ function Statement({
     className: "tag"
   }, t("Scroll to explore →")))));
 }
+// El indice elegido vive FUERA de React: la tarjeta de la ficha y el lightbox
+// son dos arboles distintos y tienen que ensenar siempre la misma variante,
+// tambien cuando el lightbox se abre encima. Un unico selector basta mientras
+// solo haya una escena con variantes; con dos, esto pasa a ser un mapa por slug.
+const SEL_VAR = { i: 0, subs: new Set() };
+function ponVariante(i) {
+  SEL_VAR.i = i;
+  SEL_VAR.subs.forEach(f => f(i));
+}
+function useVariante() {
+  const [i, setI] = useState(SEL_VAR.i);
+  useEffect(() => {
+    SEL_VAR.subs.add(setI);
+    return () => SEL_VAR.subs.delete(setI);
+  }, []);
+  return i;
+}
+// Las capas van todas montadas y se cruzan con opacidad: asi el navegador ya
+// las tiene descargadas y cambiar de variante es instantaneo, sin parpadeo.
+function capasVariante(vars, activa, anchos, estilo) {
+  return vars.map((v, i) => /*#__PURE__*/React.createElement("div", {
+    key: v.k,
+    className: `w-lay ${i === activa ? 'on' : ''}`
+  }, /*#__PURE__*/React.createElement(Pic, {
+    src: v.img,
+    sizes: anchos,
+    alt: "",
+    loading: "lazy",
+    style: estilo
+  })));
+}
+function BotonesVariante({ vars, activa, clase }) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: clase,
+    role: "group",
+    "aria-label": t("Material variants")
+  }, vars.map((v, i) => /*#__PURE__*/React.createElement("button", {
+    key: v.k,
+    type: "button",
+    className: i === activa ? 'on' : '',
+    "aria-pressed": i === activa,
+    "aria-label": t(v.d),
+    title: t(v.d),
+    // La tarjeta entera abre el lightbox y en la portada es un enlace: sin
+    // esto, elegir una variante navegaria.
+    onClick: e => {
+      e.preventDefault();
+      e.stopPropagation();
+      ponVariante(i);
+    }
+  }, t(v.l))));
+}
 function Tile({
   data,
   onClick,
@@ -1461,8 +1540,15 @@ function Tile({
     transform: data.zoom ? 'scale(2.6)' : 'none'
   };
   const anchos = sizesDeFila(lay, factorFoto(data));
+  // data.vars: varios acabados del mismo encuadre. data.opts pide los botones,
+  // que solo tienen sentido donde la foto se mira de cerca — en la portada la
+  // tarjeta es un enlace y la fila entera mide 200 px de alto.
+  const vi = useVariante();
+  const vars = data.vars && data.vars.length > 1 ? data.vars : null;
+  const activa = vars ? Math.min(vi, vars.length - 1) : 0;
+  const img2 = vars ? vars[activa].img : data.img2;
   return /*#__PURE__*/React.createElement(href ? "a" : "div", {
-    className: `shot ${data.ar} ${always ? 'cover' : ''}${data.img2 ? ' wipe' : ''}`,
+    className: `shot ${data.ar} ${always ? 'cover' : ''}${img2 ? ' wipe' : ''}`,
     href: href,
     onClick: onClick
   }, /*#__PURE__*/React.createElement(Pic, {
@@ -1471,21 +1557,25 @@ function Tile({
     alt: data.alt || data.t,
     loading: "lazy",
     style: estiloFoto
-  }), data.img2 ? /*#__PURE__*/React.createElement("div", {
+  }), img2 ? /*#__PURE__*/React.createElement("div", {
     className: "w-b",
     "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement(Pic, {
-    src: data.img2,
+  }, vars ? capasVariante(vars, activa, anchos, estiloFoto) : /*#__PURE__*/React.createElement(Pic, {
+    src: img2,
     sizes: anchos,
     alt: "",
     loading: "lazy",
     style: estiloFoto
-  })) : null, data.img2 ? /*#__PURE__*/React.createElement("span", {
+  })) : null, img2 ? /*#__PURE__*/React.createElement("span", {
     className: "w-edge",
     "aria-hidden": "true"
-  }) : null, data.img2 ? /*#__PURE__*/React.createElement("span", {
+  }) : null, img2 ? /*#__PURE__*/React.createElement("span", {
     className: "w-hint"
-  }, t("Sketch \u2192 Render")) : null, data.pano ? /*#__PURE__*/React.createElement("div", {
+  }, t("Sketch \u2192 Render")) : null, vars && data.opts ? /*#__PURE__*/React.createElement(BotonesVariante, {
+    vars: vars,
+    activa: activa,
+    clase: "w-opts"
+  }) : null, data.pano ? /*#__PURE__*/React.createElement("div", {
     className: "deg-badge"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ic"
@@ -2365,6 +2455,9 @@ function LbWipe({
 }) {
   const ref = useRef(null);
   const [x, setX] = useState(50);
+  const vi = useVariante();
+  const vars = p.vars && p.vars.length > 1 ? p.vars : null;
+  const activa = vars ? Math.min(vi, vars.length - 1) : 0;
   const seguir = e => {
     const c = ref.current;
     if (!c) return;
@@ -2396,14 +2489,25 @@ function LbWipe({
   }), /*#__PURE__*/React.createElement("div", {
     className: "lb-b",
     "aria-hidden": "true"
+  }, vars ? vars.map((v, i) => /*#__PURE__*/React.createElement("div", {
+    key: v.k,
+    className: `w-lay ${i === activa ? 'on' : ''}`
   }, /*#__PURE__*/React.createElement(Pic, {
+    src: v.img,
+    sizes: SIZE_LB,
+    alt: ""
+  }))) : /*#__PURE__*/React.createElement(Pic, {
     src: p.img2,
     sizes: SIZE_LB,
     alt: ""
   })), /*#__PURE__*/React.createElement("span", {
     className: "lb-edge",
     "aria-hidden": "true"
-  }));
+  }), vars ? /*#__PURE__*/React.createElement(BotonesVariante, {
+    vars: vars,
+    activa: activa,
+    clase: "lb-opts"
+  }) : null);
 }
 function Lightbox({
   images,

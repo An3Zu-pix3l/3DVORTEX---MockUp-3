@@ -217,12 +217,57 @@
   /* la linea que viaja con el borde del barrido */
   .shot.wipe .w-edge{
     position:absolute; top:0; bottom:0; left:0; width:2px; z-index:2;
-    background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.95) 16%, rgba(255,255,255,.95) 84%, rgba(255,255,255,.10));
-    box-shadow:0 0 20px rgba(10,26,42,.45);
+    /* Tinta con halo claro: una linea blanca desaparece sobre el boceto, que es
+       blanco puro, y una oscura se pierde sobre la madera del render. */
+    background:rgba(10,26,42,.55);
+    box-shadow:0 0 0 1px rgba(255,255,255,.80), 0 0 16px rgba(255,255,255,.70);
     opacity:0; pointer-events:none;
     transition:left 1.15s cubic-bezier(.66,0,.2,1), opacity .3s;
   }
   .shot.wipe:hover .w-edge, .shot.wipe:focus-visible .w-edge{left:calc(100% - 2px); opacity:1}
+  /* Variantes de material: todas las capas montadas, se cruzan por opacidad. */
+  .shot.wipe .w-lay, .lb-wipe .lb-b .w-lay{
+    position:absolute; inset:0; opacity:0; transition:opacity .34s ease;
+  }
+  .shot.wipe .w-lay.on, .lb-wipe .lb-b .w-lay.on{opacity:1}
+  .shot.wipe .w-lay img{width:100%; height:100%; object-fit:cover}
+
+  /* Los botones van abajo a la derecha: arriba los taparia la cabecera fija
+     al hacer scroll, la pastilla "Sketch → Render" ocupa la esquina de arriba
+     y el rotulo la de abajo a la izquierda. Ahi ademas ya hay velo. */
+  .w-opts, .lb-opts{
+    position:absolute; bottom:16px; right:16px; z-index:4;
+    display:flex; flex-wrap:wrap; justify-content:flex-end; gap:6px; max-width:min(64%, 420px);
+  }
+  .w-opts button, .lb-opts button{
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+    color:#fff; background:rgba(10,26,42,.46); border:1px solid rgba(255,255,255,.30);
+    border-radius:100px; padding:6px 12px; cursor:pointer; white-space:nowrap;
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    transition:background .25s, border-color .25s, color .25s;
+  }
+  .w-opts button:hover, .lb-opts button:hover{background:rgba(10,26,42,.68)}
+  .w-opts button.on, .lb-opts button.on{
+    background:#fff; color:var(--ink); border-color:#fff; font-weight:600;
+  }
+  .w-opts button:focus-visible, .lb-opts button:focus-visible{outline:2px solid #fff; outline-offset:2px}
+  /* En reposo se ensena el boceto: sobre blanco puro las pastillas traslucidas
+     desaparecen, asi que ahi van en tinta solida — y la activa, que es blanca,
+     necesita contorno o se convierte en texto suelto sobre el dibujo. */
+  .shot.wipe:not(:hover) .w-opts button:not(.on){background:rgba(10,26,42,.72); border-color:transparent}
+  .shot.wipe:not(:hover) .w-opts button.on{border-color:var(--ink); box-shadow:0 2px 10px rgba(10,26,42,.14)}
+  /* el velo de .wipe es corto (18 %); con botones abajo conviene un pelin mas */
+  .shot.wipe:has(.w-opts)::after{height:26%}
+  @media(max-width:700px){
+    /* En pantalla estrecha la fila de botones y el rotulo se pisan en la misma
+       esquina: los botones suben un escalon y quedan justo encima. */
+    .w-opts{bottom:58px; right:12px; max-width:calc(100% - 24px)}
+    .lb-opts{bottom:74px; right:16px; max-width:calc(100% - 32px)}
+    .w-opts, .lb-opts{gap:5px}
+    .w-opts button, .lb-opts button{font-size:9px; padding:5px 9px; letter-spacing:.08em}
+    .shot.wipe:has(.w-opts)::after{height:34%}
+  }
+
   .shot.wipe .w-hint{
     position:absolute; top:16px; left:16px; z-index:3;
     font-family:var(--font-mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;

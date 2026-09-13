@@ -175,7 +175,34 @@
   ],
   "w": 608
  },
+ "assets/maria-concrete.jpg": {
+  "h": 1336,
+  "s": [
+   500,
+   800,
+   1024
+  ],
+  "w": 1024
+ },
+ "assets/maria-rattan.jpg": {
+  "h": 1336,
+  "s": [
+   500,
+   800,
+   1024
+  ],
+  "w": 1024
+ },
  "assets/maria-render.jpg": {
+  "h": 1336,
+  "s": [
+   500,
+   800,
+   1024
+  ],
+  "w": 1024
+ },
+ "assets/maria-sage.jpg": {
   "h": 1336,
   "s": [
    500,
