@@ -517,7 +517,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "arento-viz",
-    title: "Arento Multi-Family House",
+    title: "HüttenacherPLUS Residential Development",
     place: "Bäretswil (ZH)",
     cat: "Real Estate",
     service: "viz",
@@ -533,7 +533,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_1,
-        t: "Arento Multi-Family House",
+        t: "HüttenacherPLUS Residential Development",
         c: "Real Estate",
         ar: "ar-169"
       }
@@ -544,13 +544,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_2,
-        t: "Arento Multi-Family House",
+        t: "HüttenacherPLUS Residential Development",
         c: "Exterior & interior",
         ar: "ar-43"
       },
         {
         img: P.p5_3,
-        t: "Arento Multi-Family House",
+        t: "HüttenacherPLUS Residential Development",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -561,7 +561,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_4,
-        t: "Arento Multi-Family House",
+        t: "HüttenacherPLUS Residential Development",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -1097,7 +1097,7 @@ const DE = {
   "Casa Lele Single-Family House": "EFH Casa Lele",
   "Jaso Sports Hall": "Sporthalle Jaso",
   "Islas Ice Rink": "Eishalle Islas",
-  "Arento Multi-Family House": "Arento MFH",
+  "HüttenacherPLUS Residential Development": "Wohnüberbauung HüttenacherPLUS",
   "Kreuzgut Kindergarten": "Kindergarten Kreuzgut",
   "Altstetten Housing Estate": "Wohnsiedlung Altstetten",
   "Hagenholz High-Rise": "Hochhaus Hagenholz",
