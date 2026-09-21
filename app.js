@@ -1087,7 +1087,7 @@ const DE = {
   "All": "Alle",
   "Visualization": "Visualisierung",
   "3D Print Model": "3D-Druckmodell",
-  "360° Virtual Tour": "360°-Rundgang",
+  "360° Virtual Tour": "360° Virtual Tour",
   "AI Visualization": "KI-Visualisierung",
   "Sketch \u2192 Render": "Skizze \u2192 Render",
   "Material variants": "Materialvarianten",
@@ -1192,7 +1192,6 @@ const DE = {
   "Close ✕": "Schliessen ✕",
   " · 360° Tour": " · 360°-Tour",
   "⟳ Enter 360° Tour": "⟳ 360°-Rundgang starten",
-  "360° View": "360°-Ansicht",
   "Living Room": "Wohnzimmer",
   "Kitchen": "Küche",
   "Bar & Lounge": "Bar & Lounge",
@@ -1708,7 +1707,7 @@ function Tile({
     className: "deg-badge"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ic"
-  }, "⟳"), " ", t("360° View")) : idxText ? /*#__PURE__*/React.createElement("div", {
+  }, "⟳"), " ", t("360° Virtual Tour")) : idxText ? /*#__PURE__*/React.createElement("div", {
     className: "idx"
   }, idxText) : null, /*#__PURE__*/React.createElement("div", {
     className: "cap"
