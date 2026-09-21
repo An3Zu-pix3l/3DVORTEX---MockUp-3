@@ -13,7 +13,7 @@ El titulo y la descripcion NO se reescriben aqui: se leen de la propia
 aplicacion, abriendola en cada ruta. Asi no hay dos sitios que puedan
 contradecirse.
 """
-import asyncio, html, json, pathlib, shutil, sys
+import copy, asyncio, html, json, pathlib, shutil, sys
 from playwright.async_api import async_playwright
 
 EXE = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
@@ -63,12 +63,12 @@ async def extraer():
         # para la vista previa al compartir el enlace vende mas el render.
         datos = await pg.evaluate("""() => ({
           proyectos: PROJECTS.map(p => ({
-            slug: p.slug, title: p.title, place: p.place || '', cat: p.cat,
+            slug: p.slug, title: p.title, title_de: DE[p.title] || p.title, place: p.place || '', cat: p.cat,
             pending: !!p.pending, cover: p.cover.img2 || p.cover.img,
             imagenes: p.rows.flatMap(r => r.items.map(i => ({ img: i.img, c: i.c || '' })))
           })),
           servicios: SERVICES.map(s => ({ t: s.t, d: s.d })),
-          panoramas: PANORAMAS.map(s => ({ t: s.t, c: s.c, place: s.place }))
+          panoramas: PANORAMAS.map(s => ({ t: s.t, c: s.c, c_de: DE[s.c] || s.c, place: s.place }))
         })""")
 
         rutas = [("home", "/"), ("tour", "/tour")] + \
@@ -306,8 +306,18 @@ def main():
         shutil.rmtree(SITE / d, ignore_errors=True)
 
     escritas = []
+    base_datos = datos
     for lang, pref, locale in IDIOMAS:
         et = etiquetas[lang]
+        # Los nombres de proyecto se escriben en ingles y el diccionario DE los
+        # traduce: en las paginas alemanas van los nombres alemanes.
+        datos = copy.deepcopy(base_datos)
+        if lang == "de":
+            for q in datos["proyectos"]:
+                q["title"] = q["title_de"]
+            for q in datos["panoramas"]:
+                q["c"] = q["c_de"]
+        proyectos = {q["slug"]: q for q in datos["proyectos"]}
         rutas = [("home", "/"), ("tour", "/tour")] + \
                 [("proyecto", "/work/" + s) for s in proyectos]
         for tipo, ruta in rutas:
@@ -326,12 +336,13 @@ def main():
             if tipo == "proyecto":
                 p = proyectos[ruta.rsplit("/", 1)[1]]
                 pagina["imagen"] = p["cover"]
-                pagina["imagen_alt"] = f"{p['title']} — {p['cat']} by 3D Vortex"
+                pagina["imagen_alt"] = (f"{p['title']} — {et['cats'].get(p['cat'], p['cat'])} von 3D Vortex" if lang == "de"
+                                        else f"{p['title']} — {p['cat']} by 3D Vortex")
                 nuevo_json = jsonld_proyecto(p, pagina)
                 nuevo_nos = noscript_proyecto(p, pagina, et)
             else:
                 pagina["imagen"] = "/assets/og-cover.jpg"
-                pagina["imagen_alt"] = "Kindergarten Kreuzgut, competition visualization by 3D Vortex"
+                pagina["imagen_alt"] = "Kreuzgut Kindergarten, competition visualization by 3D Vortex"
                 nuevo_json = json_v          # la ficha del estudio, tal cual
                 nuevo_nos = (noscript_home(datos, pagina, et) if tipo == "home"
                              else noscript_tour(datos, pagina, et))

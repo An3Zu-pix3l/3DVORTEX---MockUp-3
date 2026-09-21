@@ -116,9 +116,9 @@ const PNM = {
 const PANORAMAS = [{
   id: "amb3",
   t: "Living Room",
-  c: "Graffio",
+  c: "Graffio Single-Family House",
   proj: "graffio",
-  place: "Golino",
+  place: "Golino (TI)",
   src: PN.amb3,
   thumb: PNT.amb3,
   mid: PNM.amb3,
@@ -127,9 +127,9 @@ const PANORAMAS = [{
 }, {
   id: "amb2",
   t: "Kitchen",
-  c: "Graffio",
+  c: "Graffio Single-Family House",
   proj: "graffio",
-  place: "Golino",
+  place: "Golino (TI)",
   src: PN.amb2,
   thumb: PNT.amb2,
   mid: PNM.amb2,
@@ -138,9 +138,9 @@ const PANORAMAS = [{
 }, {
   id: "amb4",
   t: "Bar & Lounge",
-  c: "Graffio",
+  c: "Graffio Single-Family House",
   proj: "graffio",
-  place: "Golino",
+  place: "Golino (TI)",
   src: PN.amb4,
   thumb: PNT.amb4,
   mid: PNM.amb4,
@@ -149,9 +149,9 @@ const PANORAMAS = [{
 }, {
   id: "amb1",
   t: "Bedroom & Bath",
-  c: "Graffio",
+  c: "Graffio Single-Family House",
   proj: "graffio",
-  place: "Golino",
+  place: "Golino (TI)",
   src: PN.amb1,
   thumb: PNT.amb1,
   mid: PNM.amb1,
@@ -160,9 +160,9 @@ const PANORAMAS = [{
 }, {
   id: "court1",
   t: "Ice Rink",
-  c: "Silserkugel",
+  c: "Islas Ice Rink",
   proj: "silserkugel",
-  place: "St. Moritz",
+  place: "St. Moritz (GR)",
   src: PN.court1,
   thumb: PNT.court1,
   mid: PNM.court1,
@@ -171,9 +171,9 @@ const PANORAMAS = [{
 }, {
   id: "court2",
   t: "Rink — Training",
-  c: "Silserkugel",
+  c: "Islas Ice Rink",
   proj: "silserkugel",
-  place: "St. Moritz",
+  place: "St. Moritz (GR)",
   src: PN.court2,
   thumb: PNT.court2,
   mid: PNM.court2,
@@ -182,9 +182,9 @@ const PANORAMAS = [{
 }, {
   id: "hall",
   t: "Restaurant",
-  c: "Silserkugel",
+  c: "Islas Ice Rink",
   proj: "silserkugel",
-  place: "St. Moritz",
+  place: "St. Moritz (GR)",
   src: PN.hall,
   thumb: PNT.hall,
   mid: PNM.hall,
@@ -205,7 +205,7 @@ function TourBar({
     className: "tb-proj"
   }, /*#__PURE__*/React.createElement("span", {
     className: "n"
-  }, current.c), /*#__PURE__*/React.createElement("span", {
+  }, t(current.c)), /*#__PURE__*/React.createElement("span", {
     className: "p"
   }, current.place, t(" · 360° Tour"))), /*#__PURE__*/React.createElement("div", {
     className: "tb-rooms"
@@ -252,8 +252,8 @@ const VARIANTES_MARIA_FACHADA = [
 ];
 const PROJECTS = [{
     slug: "graffio-viz",
-    title: "Graffio",
-    place: "Golino",
+    title: "Graffio Single-Family House",
+    place: "Golino (TI)",
     cat: "Visualization",
     service: "viz",
     pending: false,
@@ -268,7 +268,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_1,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Visualization",
         ar: "ar-169"
       }
@@ -279,13 +279,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_2,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       },
         {
         img: P.p2_3,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -296,13 +296,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_4,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       },
         {
         img: P.p2_5,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -313,13 +313,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_6,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       },
         {
         img: P.p2_7,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -330,7 +330,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_8,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -339,8 +339,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "viseu-viz",
-    title: "Viseu",
-    place: "Golino",
+    title: "Viseu Single-Family House",
+    place: "Golino (TI)",
     cat: "Visualization",
     service: "viz",
     pending: false,
@@ -355,7 +355,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs1,
-        t: "Viseu",
+        t: "Viseu Single-Family House",
         c: "Visualization",
         ar: "ar-169"
       }
@@ -366,7 +366,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs2,
-        t: "Viseu",
+        t: "Viseu Single-Family House",
         c: "Exterior & garden",
         ar: "ar-169"
       }
@@ -377,13 +377,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs3,
-        t: "Viseu",
+        t: "Viseu Single-Family House",
         c: "Pool & cascade",
         ar: "ar-34"
       },
         {
         img: P.vs4,
-        t: "Viseu",
+        t: "Viseu Single-Family House",
         c: "Pool & cascade",
         ar: "ar-34"
       }
@@ -394,7 +394,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs5,
-        t: "Viseu",
+        t: "Viseu Single-Family House",
         c: "Arrival & entrance",
         ar: "ar-169"
       }
@@ -403,8 +403,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "casa-lele-viz",
-    title: "Casa Lele",
-    place: "Cevio",
+    title: "Casa Lele Single-Family House",
+    place: "Cevio (TI)",
     cat: "Visualization",
     service: "viz",
     pending: false,
@@ -419,7 +419,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl1,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Visualization",
         ar: "ar-32"
       }
@@ -430,7 +430,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl2,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Living & fireplace",
         ar: "ar-32"
       }
@@ -441,7 +441,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl3,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Village context",
         ar: "ar-169"
       }
@@ -450,8 +450,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "football-pitch-viz",
-    title: "Football Pitch Roof",
-    place: "Pamplona",
+    title: "Jaso Sports Hall",
+    place: "Pamplona (ES)",
     cat: "Competition",
     service: "viz",
     pending: false,
@@ -466,7 +466,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.pult,
-        t: "Football Pitch Roof",
+        t: "Jaso Sports Hall",
         c: "Competition",
         ar: "ar-169"
       }
@@ -475,8 +475,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "silserkugel-viz",
-    title: "Silserkugel",
-    place: "St. Moritz",
+    title: "Islas Ice Rink",
+    place: "St. Moritz (GR)",
     cat: "Competition",
     service: "viz",
     pending: false,
@@ -491,7 +491,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p3_1,
-        t: "Silserkugel",
+        t: "Islas Ice Rink",
         c: "Competition",
         ar: "ar-169"
       }
@@ -502,13 +502,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p3_2,
-        t: "Silserkugel",
+        t: "Islas Ice Rink",
         c: "Interior atmosphere",
         ar: "ar-43"
       },
         {
         img: P.p3_3,
-        t: "Silserkugel",
+        t: "Islas Ice Rink",
         c: "Interior atmosphere",
         ar: "ar-43"
       }
@@ -517,8 +517,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "arento-viz",
-    title: "Arento MFH",
-    place: "Zürich",
+    title: "Arento Multi-Family House",
+    place: "Bäretswil (ZH)",
     cat: "Real Estate",
     service: "viz",
     pending: false,
@@ -533,7 +533,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_1,
-        t: "Arento MFH",
+        t: "Arento Multi-Family House",
         c: "Real Estate",
         ar: "ar-169"
       }
@@ -544,13 +544,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_2,
-        t: "Arento MFH",
+        t: "Arento Multi-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       },
         {
         img: P.p5_3,
-        t: "Arento MFH",
+        t: "Arento Multi-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -561,7 +561,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_4,
-        t: "Arento MFH",
+        t: "Arento Multi-Family House",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -570,8 +570,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "kindergarten-kreuzgut-viz",
-    title: "Kindergarten Kreuzgut",
-    place: "Kreuzgut",
+    title: "Kreuzgut Kindergarten",
+    place: "Kreuzgut (SH)",
     cat: "Competition",
     service: "viz",
     pending: false,
@@ -586,7 +586,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.hero,
-        t: "Kindergarten Kreuzgut",
+        t: "Kreuzgut Kindergarten",
         c: "Competition",
         ar: "ar-169"
       }
@@ -597,13 +597,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p1_2,
-        t: "Kindergarten Kreuzgut",
+        t: "Kreuzgut Kindergarten",
         c: "Exterior perspectives",
         ar: "ar-43"
       },
         {
         img: P.p1_3,
-        t: "Kindergarten Kreuzgut",
+        t: "Kreuzgut Kindergarten",
         c: "Exterior perspectives",
         ar: "ar-43"
       }
@@ -612,8 +612,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "altstetten-viz",
-    title: "Wohnungsbau Altstetten",
-    place: "Zürich",
+    title: "Altstetten Housing Estate",
+    place: "Zürich (ZH)",
     cat: "Competition",
     service: "viz",
     pending: false,
@@ -628,7 +628,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.al1,
-        t: "Wohnungsbau Altstetten",
+        t: "Altstetten Housing Estate",
         c: "Competition",
         ar: "ar-32"
       }
@@ -639,7 +639,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.al2,
-        t: "Wohnungsbau Altstetten",
+        t: "Altstetten Housing Estate",
         c: "Street at dusk",
         ar: "ar-32"
       }
@@ -650,7 +650,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.al3,
-        t: "Wohnungsbau Altstetten",
+        t: "Altstetten Housing Estate",
         c: "Access gallery",
         ar: "ar-32"
       }
@@ -659,8 +659,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "casa-lele-print",
-    title: "Casa Lele",
-    place: "Cevio",
+    title: "Casa Lele Single-Family House",
+    place: "Cevio (TI)",
     cat: "3D Print Model",
     service: "print",
     pending: false,
@@ -675,7 +675,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm1,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "3D Print Model",
         ar: "ar-32"
       }
@@ -686,7 +686,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm2,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Ground floor",
         ar: "ar-32"
       }
@@ -697,13 +697,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm3,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Plan detail",
         ar: "ar-32"
       },
         {
         img: P.lm4,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Sectioned elevation",
         ar: "ar-32"
       }
@@ -714,7 +714,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm5,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Bedroom",
         ar: "ar-32"
       }
@@ -725,13 +725,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm6,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Printed furniture",
         ar: "ar-32"
       },
         {
         img: P.lm7,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Kitchen island",
         ar: "ar-32"
       }
@@ -742,13 +742,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm8,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Kitchen through the railing",
         ar: "ar-34"
       },
         {
         img: P.lm9,
-        t: "Casa Lele",
+        t: "Casa Lele Single-Family House",
         c: "Assembly by hand",
         ar: "ar-34"
       }
@@ -757,8 +757,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "oerlikon-print",
-    title: "Oerlikon Facade",
-    place: "Zürich",
+    title: "Hagenholz High-Rise",
+    place: "Zürich (ZH)",
     cat: "3D Print Model",
     service: "print",
     pending: false,
@@ -773,13 +773,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.oe1,
-        t: "Oerlikon Facade",
+        t: "Hagenholz High-Rise",
         c: "3D Print Model",
         ar: "ar-23"
       },
         {
         img: P.oe2,
-        t: "Oerlikon Facade",
+        t: "Hagenholz High-Rise",
         c: "Grid detail",
         ar: "ar-23"
       }
@@ -788,8 +788,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "graffio-print",
-    title: "Graffio",
-    place: "Golino",
+    title: "Graffio Single-Family House",
+    place: "Golino (TI)",
     cat: "3D Print Model",
     service: "print",
     pending: false,
@@ -804,7 +804,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.gm1,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "3D Print Model",
         ar: "ar-169"
       }
@@ -815,7 +815,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.gm2,
-        t: "Graffio",
+        t: "Graffio Single-Family House",
         c: "Massing & site",
         ar: "ar-169"
       }
@@ -824,8 +824,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "graffio-360",
-    title: "Graffio",
-    place: "Golino",
+    title: "Graffio Single-Family House",
+    place: "Golino (TI)",
     cat: "360° Virtual Tour",
     service: "tour",
     pending: false,
@@ -882,8 +882,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "silserkugel-360",
-    title: "Silserkugel",
-    place: "St. Moritz",
+    title: "Islas Ice Rink",
+    place: "St. Moritz (GR)",
     cat: "360° Virtual Tour",
     service: "tour",
     pending: false,
@@ -928,8 +928,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "efh-maria-ai",
-    title: "EFH Maria",
-    place: "Liechtenstein",
+    title: "Schtubu Multi-Family House – Stairwell",
+    place: "Liechtenstein (FL)",
     cat: "AI Visualization",
     service: "ai",
     pending: false,
@@ -958,8 +958,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "efh-maria-living-ai",
-    title: "EFH Maria Wohnzimmer",
-    place: "Liechtenstein",
+    title: "Schtubu Multi-Family House – Living Room",
+    place: "Liechtenstein (FL)",
     cat: "AI Visualization",
     service: "ai",
     pending: false,
@@ -989,8 +989,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "efh-maria-facade-ai",
-    title: "EFH Maria Fassade",
-    place: "Liechtenstein",
+    title: "Schtubu Multi-Family House – Facade",
+    place: "Liechtenstein (FL)",
     cat: "AI Visualization",
     service: "ai",
     pending: false,
@@ -1091,6 +1091,19 @@ const DE = {
   "AI Visualization": "KI-Visualisierung",
   "Sketch \u2192 Render": "Skizze \u2192 Render",
   "Material variants": "Materialvarianten",
+  // nombres de proyecto (EN -> DE)
+  "Graffio Single-Family House": "EFH Graffio",
+  "Viseu Single-Family House": "EFH Viseu",
+  "Casa Lele Single-Family House": "EFH Casa Lele",
+  "Jaso Sports Hall": "Sporthalle Jaso",
+  "Islas Ice Rink": "Eishalle Islas",
+  "Arento Multi-Family House": "Arento MFH",
+  "Kreuzgut Kindergarten": "Kindergarten Kreuzgut",
+  "Altstetten Housing Estate": "Wohnsiedlung Altstetten",
+  "Hagenholz High-Rise": "Hochhaus Hagenholz",
+  "Schtubu Multi-Family House – Stairwell": "MFH Schtubu Treppenhaus",
+  "Schtubu Multi-Family House – Living Room": "MFH Schtubu Wohnzimmer",
+  "Schtubu Multi-Family House – Facade": "MFH Schtubu Fassade",
   "Living & kitchen": "Wohnen & K\u00fcche",
   "Garden facade": "Gartenfassade",
   "Timber": "Holz",
@@ -1245,8 +1258,8 @@ const DE = {
   "Privacy Policy": "Datenschutz",
   "Architectural Visualization Studio, Zürich | ": "Studio für Architekturvisualisierung, Zürich | ",
   "Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting.": "Studio für Architekturvisualisierung in Zürich: fotorealistische Renderings, KI-Visualisierung, 3D-Druckmodelle, 360°-Rundgänge und technisches Zeichnen.",
-  "360° Virtual Tours — Graffio & Silserkugel | ": "360°-Rundgänge — Graffio & Silserkugel | ",
-  "Walk through our architectural visualizations in 360°: the Graffio residence in Golino and the Silserkugel ice arena in St. Moritz.": "Gehen Sie durch unsere Architekturvisualisierungen in 360°: das Wohnhaus Graffio in Golino und die Eisarena Silserkugel in St. Moritz."
+  "360° Virtual Tours — Graffio House & Islas Ice Rink | ": "360°-Rundgänge — EFH Graffio & Eishalle Islas | ",
+  "Walk through our architectural visualizations in 360°: the Graffio single-family house in Golino and the Islas ice rink in St. Moritz.": "Gehen Sie durch unsere Architekturvisualisierungen in 360°: das Einfamilienhaus Graffio in Golino und die Eishalle Islas in St. Moritz."
 };
 
 let LANG = 'en';
@@ -1749,9 +1762,9 @@ function HomeGallery() {
       data: {
         ...pr.cover,
         ar: row.layout === 'full' ? 'ar-169' : 'ar-43',
-        t: pr.title,
+        t: t(pr.title),
         c: meta,
-        alt: `${pr.title}${pr.place ? ', ' + pr.place : ''} — ${t(pr.cat)} ${t("by 3D Vortex")}`
+        alt: `${t(pr.title)}${pr.place ? ', ' + pr.place : ''} — ${t(pr.cat)} ${t("by 3D Vortex")}`
       },
       href: urlProyecto(pr.slug)
     });
@@ -1780,7 +1793,7 @@ function ProjectPage({
     className: "bar"
   }), t("Project · "), String(pi + 1).padStart(2, '0'), " / ", String(PROJECTS.length).padStart(2, '0')), /*#__PURE__*/React.createElement("h1", {
     className: "reveal"
-  }, proj.title, /*#__PURE__*/React.createElement("span", {
+  }, t(proj.title), /*#__PURE__*/React.createElement("span", {
     className: "dot-end"
   }, ".")), /*#__PURE__*/React.createElement("div", {
     className: "pmeta reveal"
@@ -1803,7 +1816,7 @@ function ProjectPage({
     return /*#__PURE__*/React.createElement(Tile, {
       key: j,
       lay: row.layout,
-      data: { ...it, t: t(it.t), c: t(it.c), alt: `${proj.title}${proj.place ? ', ' + proj.place : ''} — ${t(it.t || proj.cat)}, ${t(proj.cat)} ${t("by 3D Vortex")}` },
+      data: { ...it, t: t(it.t), c: t(it.c), alt: `${t(proj.title)}${proj.place ? ', ' + proj.place : ''} — ${t(it.t || proj.cat)}, ${t(proj.cat)} ${t("by 3D Vortex")}` },
       idxText: `${String(idx + 1).padStart(2, '0')} / ${String(imgs.length).padStart(2, '0')}`,
       onClick: () => it.pano ? onPano(it.pano) : setLb({
         open: true,
@@ -1823,14 +1836,14 @@ function ProjectPage({
     className: "lbl"
   }, t("← Previous project")), /*#__PURE__*/React.createElement("span", {
     className: "t"
-  }, prev.title)), /*#__PURE__*/React.createElement("a", {
+  }, t(prev.title))), /*#__PURE__*/React.createElement("a", {
     className: "pn next",
     href: '#/p/' + next.slug
   }, /*#__PURE__*/React.createElement("span", {
     className: "lbl"
   }, t("Next project →")), /*#__PURE__*/React.createElement("span", {
     className: "t"
-  }, next.title))))), /*#__PURE__*/React.createElement(Lightbox, {
+  }, t(next.title)))))), /*#__PURE__*/React.createElement(Lightbox, {
     images: imgs,
     open: lb.open,
     idx: lb.idx,
@@ -2219,7 +2232,7 @@ function PanoOverlay({
     className: "t"
   }, t(pano.t)), /*#__PURE__*/React.createElement("div", {
     className: "c"
-  }, pano.c, t(" · 360° Tour"))), /*#__PURE__*/React.createElement("div", {
+  }, t(pano.c), t(" · 360° Tour"))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 10,
@@ -2829,13 +2842,13 @@ function App() {
     let title = t('Architectural Visualization Studio, Zürich | ') + site;
     let desc = t('Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting.');
     if (view === 'tour') {
-      title = t('360° Virtual Tours — Graffio & Silserkugel | ') + site;
-      desc = t('Walk through our architectural visualizations in 360°: the Graffio residence in Golino and the Silserkugel ice arena in St. Moritz.');
+      title = t('360° Virtual Tours — Graffio House & Islas Ice Rink | ') + site;
+      desc = t('Walk through our architectural visualizations in 360°: the Graffio single-family house in Golino and the Islas ice rink in St. Moritz.');
     } else if (view === 'project') {
       const p = PROJECTS.find(x => x.slug === slug);
       if (p) {
-        title = `${p.title}${p.place ? ' — ' + p.place : ''} · ${t(p.cat)} | ${site}`;
-        desc = lang === 'de' ? `${t(p.cat)} von ${p.title}${p.place ? ' in ' + p.place : ''} — 3D Vortex, Studio für Architekturvisualisierung in Zürich.` : `${p.cat} of ${p.title}${p.place ? ' in ' + p.place : ''} by 3D Vortex, architectural visualization studio in Zürich.`;
+        title = `${t(p.title)}${p.place ? ' — ' + p.place : ''} · ${t(p.cat)} | ${site}`;
+        desc = lang === 'de' ? `${t(p.cat)} von ${t(p.title)}${p.place ? ' in ' + p.place : ''} — 3D Vortex, Studio für Architekturvisualisierung in Zürich.` : `${p.cat} of ${p.title}${p.place ? ' in ' + p.place : ''} by 3D Vortex, architectural visualization studio in Zürich.`;
       }
     }
     document.title = title;
