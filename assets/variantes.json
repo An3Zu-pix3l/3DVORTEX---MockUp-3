@@ -184,6 +184,36 @@
   ],
   "w": 1024
  },
+ "assets/maria-fac-sketch.jpg": {
+  "h": 1704,
+  "s": [
+   800,
+   1400,
+   2000,
+   2394
+  ],
+  "w": 2394
+ },
+ "assets/maria-fac-stone.jpg": {
+  "h": 1704,
+  "s": [
+   800,
+   1400,
+   2000,
+   2394
+  ],
+  "w": 2394
+ },
+ "assets/maria-fac-timber.jpg": {
+  "h": 1704,
+  "s": [
+   800,
+   1400,
+   2000,
+   2394
+  ],
+  "w": 2394
+ },
  "assets/maria-liv-coastal.jpg": {
   "h": 630,
   "s": [

@@ -65,6 +65,10 @@ const P = {
   mrg: "/assets/maria-sage.jpg",
   // EFH Maria · Living: boceto a lapiz y ocho renders del mismo encuadre,
   // registrados contra el boceto para que el barrido cuadre (2842 x 630).
+  // EFH Maria · Fassade: boceto a lapiz y dos renders registrados (2394 x 1704).
+  mfs: "/assets/maria-fac-sketch.jpg",
+  mf1: "/assets/maria-fac-timber.jpg",
+  mf2: "/assets/maria-fac-stone.jpg",
   mls: "/assets/maria-liv-sketch.jpg",
   ml1: "/assets/maria-liv-terracotta.jpg",
   ml2: "/assets/maria-liv-oak.jpg",
@@ -241,6 +245,10 @@ const VARIANTES_MARIA_LIVING = [
   { k: "olive",      l: "Olive",      d: "Olive & tropical green",  img: P.ml6 },
   { k: "coastal",    l: "Coastal",    d: "Coastal light",           img: P.ml7 },
   { k: "minimal",    l: "Minimal",    d: "Minimal white",           img: P.ml8 }
+];
+const VARIANTES_MARIA_FACHADA = [
+  { k: "timber", l: "Timber", d: "Timber attic",         img: P.mf1 },
+  { k: "stone",  l: "Stone",  d: "Stone base & plaster", img: P.mf2 }
 ];
 const PROJECTS = [{
     slug: "graffio-viz",
@@ -979,6 +987,36 @@ const PROJECTS = [{
       ]
     }
     ]
+  }, {
+    slug: "efh-maria-facade-ai",
+    title: "EFH Maria Fassade",
+    place: "Liechtenstein",
+    cat: "AI Visualization",
+    service: "ai",
+    pending: false,
+    cover: {
+      img: P.mfs,
+      img2: P.mf1,
+      ar: "ar-43",
+      fit: "50% 15%"
+    },
+    has360: false,
+    rows: [
+      {
+      layout: "full",
+      items: [
+        {
+        img: P.mfs,
+        img2: P.mf1,
+        vars: VARIANTES_MARIA_FACHADA,
+        opts: true,
+        t: "Garden facade",
+        c: "Sketch \u2192 AI visualization",
+        ar: "ar-fac"
+      }
+      ]
+    }
+    ]
   }];
 const PROJECT_BY_SLUG = Object.fromEntries(PROJECTS.map(p => [p.slug, p]));
 
@@ -1054,6 +1092,11 @@ const DE = {
   "Sketch \u2192 Render": "Skizze \u2192 Render",
   "Material variants": "Materialvarianten",
   "Living & kitchen": "Wohnen & K\u00fcche",
+  "Garden facade": "Gartenfassade",
+  "Timber": "Holz",
+  "Stone": "Stein",
+  "Timber attic": "Attika in Holz",
+  "Stone base & plaster": "Steinsockel & Putz",
   "Terracotta": "Terrakotta",
   "Evening": "Abend",
   "Nordic": "Nordisch",
@@ -1290,7 +1333,7 @@ const FORM_ENDPOINT = "";
 // VAR dice, por imagen, su tamaño natural y que anchos existen; el navegador
 // elige el que necesita segun el hueco en pantalla y la densidad del aparato.
 // El JPEG original sigue ahi como ultimo recurso para quien no soporte ninguno.
-const VAR = {"/assets/altstetten-1.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-2.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-3.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/casa-lele-1.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-2.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-3.jpg":{"h":1080,"s":[500,800,1400,1920],"w":1920},"/assets/graffio-model-1.jpg":{"h":596,"s":[500,800,1134],"w":1134},"/assets/graffio-model-2.jpg":{"h":636,"s":[500,800,1134],"w":1134},"/assets/hero.jpg":{"h":1635,"s":[500,800,1400,2000],"w":2200},"/assets/lele-model-1.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-2.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-3.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-4.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-5.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-6.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-7.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-8.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-9.jpg":{"h":1080,"s":[500,608],"w":608},"/assets/maria-liv-sketch.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-terracotta.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-oak.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-evening.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-terrazzo.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-nordic.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-olive.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-coastal.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-minimal.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-concrete.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-rattan.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-render.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-sage.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-sketch.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/oerlikon-1.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/oerlikon-2.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/p1-2.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p1-3.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p2-1.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-2.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-3.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-4.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-5.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-6.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p2-7.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-8.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-2.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-3.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p5-1.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-2.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-3.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-4.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/pano-amb-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-03-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-03-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-04-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-04-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-hall-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-hall-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pult-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/viseu-1.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-2.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-3.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-4.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-5.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919}};
+const VAR = {"/assets/altstetten-1.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-2.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/altstetten-3.jpg":{"h":1333,"s":[500,800,1400,2000],"w":2000},"/assets/casa-lele-1.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-2.jpg":{"h":1080,"s":[500,800,1400,1625],"w":1625},"/assets/casa-lele-3.jpg":{"h":1080,"s":[500,800,1400,1920],"w":1920},"/assets/graffio-model-1.jpg":{"h":596,"s":[500,800,1134],"w":1134},"/assets/graffio-model-2.jpg":{"h":636,"s":[500,800,1134],"w":1134},"/assets/hero.jpg":{"h":1635,"s":[500,800,1400,2000],"w":2200},"/assets/lele-model-1.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-2.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-3.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-4.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-5.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-6.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-7.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-8.jpg":{"h":1080,"s":[500,800,1400,1620],"w":1620},"/assets/lele-model-9.jpg":{"h":1080,"s":[500,608],"w":608},"/assets/maria-liv-sketch.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-terracotta.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-oak.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-evening.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-terrazzo.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-nordic.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-olive.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-coastal.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-liv-minimal.jpg":{"h":630,"s":[800,1400,2000,2842],"w":2842},"/assets/maria-fac-sketch.jpg":{"h":1704,"s":[800,1400,2000,2394],"w":2394},"/assets/maria-fac-timber.jpg":{"h":1704,"s":[800,1400,2000,2394],"w":2394},"/assets/maria-fac-stone.jpg":{"h":1704,"s":[800,1400,2000,2394],"w":2394},"/assets/maria-concrete.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-rattan.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-render.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-sage.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/maria-sketch.jpg":{"h":1336,"s":[500,800,1024],"w":1024},"/assets/oerlikon-1.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/oerlikon-2.jpg":{"h":1422,"s":[500,800],"w":800},"/assets/p1-2.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p1-3.jpg":{"h":1486,"s":[500,800,1400,2000],"w":2000},"/assets/p2-1.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-2.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-3.jpg":{"h":2000,"s":[500,800,1400,2000],"w":2000},"/assets/p2-4.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-5.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-6.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p2-7.jpg":{"h":2000,"s":[500,800,1125],"w":1125},"/assets/p2-8.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-2.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p3-3.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/p5-1.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-2.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-3.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/p5-4.jpg":{"h":1125,"s":[500,800,1400,2000],"w":2000},"/assets/pano-amb-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-03-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-03-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-amb-04-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-amb-04-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-01-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-01-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-court-02-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-court-02-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pano-hall-m.jpg":{"h":1200,"s":[500,800,1600],"w":1600},"/assets/pano-hall-t.jpg":{"h":299,"s":[160,320],"w":320},"/assets/pult-1.jpg":{"h":2000,"s":[500,800,1400],"w":1600},"/assets/viseu-1.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-2.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919},"/assets/viseu-3.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-4.jpg":{"h":1080,"s":[500,800],"w":864},"/assets/viseu-5.jpg":{"h":1080,"s":[500,800,1400,1919],"w":1919}};
 
 // Cuanto mide la imagen en pantalla. Medido de verdad sobre el sitio:
 // una fila "full" ocupa hasta 1304 px; el resto van a dos columnas, 642 px.
@@ -1299,7 +1342,7 @@ const SIZE_ESCENA = "(max-width: 760px) 96vw, 800px";
 const SIZE_CHIP = "42px";
 
 // Proporcion de cada marco, la que fija la clase ar-* en el CSS.
-const AR = { 'ar-pano': 2842 / 630, 'ar-32': 1.5, 'ar-43': 4 / 3, 'ar-169': 16 / 9, 'ar-219': 21 / 9,
+const AR = { 'ar-fac': 2394 / 1704, 'ar-pano': 2842 / 630, 'ar-32': 1.5, 'ar-43': 4 / 3, 'ar-169': 16 / 9, 'ar-219': 21 / 9,
              'ar-11': 1, 'ar-34': 0.75, 'ar-23': 2 / 3 };
 
 // Con object-fit:cover, si la foto es MAS APAISADA que su marco el navegador la
