@@ -250,6 +250,127 @@ const VARIANTES_MARIA_FACHADA = [
   { k: "timber", l: "Timber", d: "Timber attic",         img: P.mf1 },
   { k: "stone",  l: "Stone",  d: "Stone base & plaster", img: P.mf2 }
 ];
+// Texto y ficha tecnica por proyecto (formulario de Adrian, 21-09-2026).
+const INFO = {
+ "graffio-viz": {
+  "client": "Private client",
+  "year": "2023",
+  "ctx": "Preliminary design, presentation to the client",
+  "sub": "A single-family house in Golino, Ticino, at preliminary-design stage",
+  "desc": "Visualizations of the preliminary design for a private client in Golino. They let the client see the house in its setting and discuss the design before it was developed further."
+ },
+ "graffio-print": {
+  "client": "Private client",
+  "year": "2023",
+  "ctx": "Preliminary design, presentation to the client",
+  "sub": "A single-family house in Golino, Ticino, at preliminary-design stage",
+  "desc": "Visualizations of the preliminary design for a private client in Golino. They let the client see the house in its setting and discuss the design before it was developed further."
+ },
+ "graffio-360": {
+  "client": "Private client",
+  "year": "2023",
+  "ctx": "Preliminary design, presentation to the client",
+  "sub": "A single-family house in Golino, Ticino, at preliminary-design stage",
+  "desc": "Visualizations of the preliminary design for a private client in Golino. They let the client see the house in its setting and discuss the design before it was developed further."
+ },
+ "viseu-viz": {
+  "client": "Private client",
+  "year": "2023",
+  "ctx": "Preliminary design, presentation to the client",
+  "svc": "Exterior visualizations",
+  "sub": "A single-family house in Golino, Ticino, seen from outside",
+  "desc": "Exterior visualizations of the preliminary design, prepared for the presentation to the private client in Golino."
+ },
+ "casa-lele-viz": {
+  "client": "Private client",
+  "year": "2023",
+  "ctx": "Final visualizations: materials and furnishings",
+  "svc": "Interior and exterior visualizations, 360° virtual tour and 3D-printed model",
+  "sub": "Materials and furnishings for a single-family house in Cevio, Ticino",
+  "desc": "Final visualizations to decide materials and furnishings with the private client, inside and out, together with a 360° virtual tour and a 3D-printed model of the house."
+ },
+ "casa-lele-print": {
+  "client": "Private client",
+  "year": "2023",
+  "ctx": "Final visualizations: materials and furnishings",
+  "svc": "Interior and exterior visualizations, 360° virtual tour and 3D-printed model",
+  "sub": "Materials and furnishings for a single-family house in Cevio, Ticino",
+  "desc": "Final visualizations to decide materials and furnishings with the private client, inside and out, together with a 360° virtual tour and a 3D-printed model of the house."
+ },
+ "football-pitch-viz": {
+  "client": "Colegio Jaso (private school), Pamplona",
+  "year": "2024",
+  "ctx": "Competition",
+  "sub": "Competition entry for a sports hall for Colegio Jaso in Pamplona",
+  "desc": "Visualizations for a competition held by Colegio Jaso, a private school in Pamplona, for a new sports hall."
+ },
+ "silserkugel-viz": {
+  "by": {
+   "n": "Fuchs Architekten AG",
+   "url": "https://www.fuchs-architekten.ch/"
+  },
+  "year": "2025",
+  "ctx": "Competition",
+  "svc": "Interior and exterior visualizations and a 360° virtual tour",
+  "sub": "Competition entry for an ice rink in St. Moritz",
+  "desc": "Interior and exterior visualizations and a 360° virtual tour for Fuchs Architekten's competition entry for an ice rink in St. Moritz."
+ },
+ "silserkugel-360": {
+  "by": {
+   "n": "Fuchs Architekten AG",
+   "url": "https://www.fuchs-architekten.ch/"
+  },
+  "year": "2025",
+  "ctx": "Competition",
+  "svc": "Interior and exterior visualizations and a 360° virtual tour",
+  "sub": "Competition entry for an ice rink in St. Moritz",
+  "desc": "Interior and exterior visualizations and a 360° virtual tour for Fuchs Architekten's competition entry for an ice rink in St. Moritz."
+ },
+ "arento-viz": {
+  "by": {
+   "n": "Arento AG",
+   "url": "https://arento.ch/"
+  },
+  "year": "2025",
+  "ctx": "Marketing and sales",
+  "svc": "Interior and exterior visualizations and presentation videos",
+  "sub": "Residential development in Bäretswil, visualized for sale",
+  "desc": "Interior and exterior visualizations and presentation videos for the marketing of the HüttenacherPLUS residential development in Bäretswil, commissioned by Arento AG."
+ },
+ "kindergarten-kreuzgut-viz": {
+  "by": {
+   "n": "Fuchs Architekten AG",
+   "url": "https://www.fuchs-architekten.ch/"
+  },
+  "year": "2026",
+  "ctx": "Competition",
+  "svc": "Exterior visualization",
+  "sub": "Competition entry for a kindergarten",
+  "desc": "Exterior visualization for Fuchs Architekten's competition entry for the Kreuzgut kindergarten."
+ },
+ "altstetten-viz": {
+  "by": {
+   "n": "Fuchs Architekten AG",
+   "url": "https://www.fuchs-architekten.ch/"
+  },
+  "year": "2026",
+  "ctx": "Competition",
+  "svc": "Exterior visualizations",
+  "sub": "Competition entry for a housing estate in Zürich-Altstetten",
+  "desc": "Exterior renderings for Fuchs Architekten's competition entry for a housing estate in Zürich-Altstetten."
+ },
+ "oerlikon-print": {
+  "by": {
+   "n": "Fuchs Architekten AG",
+   "url": "https://www.fuchs-architekten.ch/"
+  },
+  "year": "2024",
+  "ctx": "Competition",
+  "svc": "3D-printed facade model",
+  "sub": "Competition entry for a high-rise at Hagenholz, Zürich",
+  "desc": "A 3D-printed model of the facade for Fuchs Architekten's competition entry for a high-rise at Hagenholz in Zürich."
+ }
+};
 const PROJECTS = [{
     slug: "graffio-viz",
     title: "Graffio Single-Family House",
@@ -1091,6 +1212,43 @@ const DE = {
   "AI Visualization": "KI-Visualisierung",
   "Sketch \u2192 Render": "Skizze \u2192 Render",
   "Material variants": "Materialvarianten",
+  // fichas: texto y ficha tecnica
+  "Private client": "Private Bauherrschaft",
+  "Colegio Jaso (private school), Pamplona": "Colegio Jaso (Privatschule), Pamplona",
+  "Preliminary design, presentation to the client": "Vorprojekt, Präsentation für die Bauherrschaft",
+  "Final visualizations: materials and furnishings": "Schlussvisualisierungen: Materialisierung und Möblierung",
+  "Competition": "Wettbewerb",
+  "Marketing and sales": "Vermarktung und Verkauf",
+  "Exterior visualizations": "Aussenvisualisierungen",
+  "Exterior visualization": "Aussenvisualisierung",
+  "Interior and exterior visualizations, 360° virtual tour and 3D-printed model": "Innen- und Aussenvisualisierungen, 360° Virtual Tour und 3D-Druckmodell",
+  "Interior and exterior visualizations and a 360° virtual tour": "Innen- und Aussenvisualisierungen sowie 360° Virtual Tour",
+  "Interior and exterior visualizations and presentation videos": "Innen- und Aussenvisualisierungen sowie Präsentationsvideos",
+  "3D-printed facade model": "3D-Druckmodell der Fassade",
+  "A single-family house in Golino, Ticino, at preliminary-design stage": "Ein Einfamilienhaus in Golino (TI) in der Vorprojektphase",
+  "A single-family house in Golino, Ticino, seen from outside": "Ein Einfamilienhaus in Golino (TI), von aussen gesehen",
+  "Materials and furnishings for a single-family house in Cevio, Ticino": "Materialisierung und Möblierung eines Einfamilienhauses in Cevio (TI)",
+  "Competition entry for a sports hall for Colegio Jaso in Pamplona": "Wettbewerbsbeitrag für eine Sporthalle des Colegio Jaso in Pamplona",
+  "Competition entry for an ice rink in St. Moritz": "Wettbewerbsbeitrag für eine Eishalle in St. Moritz",
+  "Residential development in Bäretswil, visualized for sale": "Wohnüberbauung in Bäretswil, visualisiert für den Verkauf",
+  "Competition entry for a kindergarten": "Wettbewerbsbeitrag für einen Kindergarten",
+  "Competition entry for a housing estate in Zürich-Altstetten": "Wettbewerbsbeitrag für eine Wohnsiedlung in Zürich-Altstetten",
+  "Competition entry for a high-rise at Hagenholz, Zürich": "Wettbewerbsbeitrag für ein Hochhaus im Hagenholz, Zürich",
+  "Visualizations of the preliminary design for a private client in Golino. They let the client see the house in its setting and discuss the design before it was developed further.": "Visualisierungen des Vorprojekts für eine private Bauherrschaft in Golino. Sie zeigen das Haus in seiner Umgebung und dienten als Grundlage, um den Entwurf vor der Weiterbearbeitung zu besprechen.",
+  "Exterior visualizations of the preliminary design, prepared for the presentation to the private client in Golino.": "Aussenvisualisierungen des Vorprojekts, erstellt für die Präsentation bei der privaten Bauherrschaft in Golino.",
+  "Final visualizations to decide materials and furnishings with the private client, inside and out, together with a 360° virtual tour and a 3D-printed model of the house.": "Schlussvisualisierungen, mit denen die private Bauherrschaft Materialisierung und Möblierung innen wie aussen festlegen konnte – ergänzt durch eine 360° Virtual Tour und ein 3D-Druckmodell des Hauses.",
+  "Visualizations for a competition held by Colegio Jaso, a private school in Pamplona, for a new sports hall.": "Visualisierungen für einen Wettbewerb des Colegio Jaso, einer Privatschule in Pamplona, für eine neue Sporthalle.",
+  "Interior and exterior visualizations and a 360° virtual tour for Fuchs Architekten's competition entry for an ice rink in St. Moritz.": "Innen- und Aussenvisualisierungen sowie eine 360° Virtual Tour für den Wettbewerbsbeitrag von Fuchs Architekten für eine Eishalle in St. Moritz.",
+  "Interior and exterior visualizations and presentation videos for the marketing of the HüttenacherPLUS residential development in Bäretswil, commissioned by Arento AG.": "Innen- und Aussenvisualisierungen sowie Präsentationsvideos für die Vermarktung der Wohnüberbauung HüttenacherPLUS in Bäretswil, im Auftrag der Arento AG.",
+  "Exterior visualization for Fuchs Architekten's competition entry for the Kreuzgut kindergarten.": "Aussenvisualisierung für den Wettbewerbsbeitrag von Fuchs Architekten für den Kindergarten Kreuzgut.",
+  "Exterior renderings for Fuchs Architekten's competition entry for a housing estate in Zürich-Altstetten.": "Aussenvisualisierungen für den Wettbewerbsbeitrag von Fuchs Architekten für eine Wohnsiedlung in Zürich-Altstetten.",
+  "A 3D-printed model of the facade for Fuchs Architekten's competition entry for a high-rise at Hagenholz in Zürich.": "Ein 3D-Druckmodell der Fassade für den Wettbewerbsbeitrag von Fuchs Architekten für ein Hochhaus im Hagenholz in Zürich.",
+  "Commissioned by": "Im Auftrag von",
+  "Client": "Bauherrschaft",
+  "Location": "Ort",
+  "Year": "Jahr",
+  "Brief": "Auftrag",
+  "Our work": "Leistungen",
   // nombres de proyecto (EN -> DE)
   "Graffio Single-Family House": "EFH Graffio",
   "Viseu Single-Family House": "EFH Viseu",
@@ -1767,6 +1925,25 @@ function HomeGallery() {
     });
   })))));
 }
+function ProjectInfo({ proj }) {
+  const i = INFO[proj.slug];
+  if (!i) return null;
+  const e = React.createElement;
+  const filas = [
+    i.by ? [t("Commissioned by"), i.by.url ? e("a", { href: i.by.url, target: "_blank", rel: "noopener" }, i.by.n, " \u2197") : i.by.n] : null,
+    i.client ? [t("Client"), t(i.client)] : null,
+    proj.place ? [t("Location"), proj.place] : null,
+    i.year ? [t("Year"), i.year] : null,
+    i.ctx ? [t("Brief"), t(i.ctx)] : null,
+    i.svc ? [t("Our work"), t(i.svc)] : null
+  ].filter(Boolean);
+  return e("div", { className: "pinfo reveal" },
+    e("div", { className: "pi-txt" },
+      i.sub ? e("p", { className: "pi-sub" }, t(i.sub)) : null,
+      i.desc ? e("p", { className: "pi-desc" }, t(i.desc)) : null),
+    filas.length ? e("dl", { className: "pi-dl" }, filas.map(([k, v]) =>
+      e(React.Fragment, { key: k }, e("dt", null, k), e("dd", null, v)))) : null);
+}
 function ProjectPage({
   slug,
   onPano
@@ -1801,7 +1978,9 @@ function ProjectPage({
       const first = proj.rows.flatMap(r => r.items).find(x => x.pano);
       if (first) onPano(first.pano);
     }
-  }, t("⟳ Enter 360° Tour"))))), /*#__PURE__*/React.createElement("section", {
+  }, t("⟳ Enter 360° Tour"))), /*#__PURE__*/React.createElement(ProjectInfo, {
+    proj: proj
+  }))), /*#__PURE__*/React.createElement("section", {
     className: "cluster"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wrap"
@@ -2845,7 +3024,8 @@ function App() {
       const p = PROJECTS.find(x => x.slug === slug);
       if (p) {
         title = `${t(p.title)}${p.place ? ' — ' + p.place : ''} · ${t(p.cat)} | ${site}`;
-        desc = lang === 'de' ? `${t(p.cat)} von ${t(p.title)}${p.place ? ' in ' + p.place : ''} — 3D Vortex, Studio für Architekturvisualisierung in Zürich.` : `${p.cat} of ${p.title}${p.place ? ' in ' + p.place : ''} by 3D Vortex, architectural visualization studio in Zürich.`;
+        const inf = INFO[p.slug];
+        desc = inf && inf.desc ? t(p.cat) + ' · ' + t(inf.desc) + (lang === 'de' ? ' 3D Vortex, Studio für Architekturvisualisierung in Zürich.' : ' 3D Vortex, architectural visualization studio in Zürich.') : lang === 'de' ? `${t(p.cat)} von ${t(p.title)}${p.place ? ' in ' + p.place : ''} — 3D Vortex, Studio für Architekturvisualisierung in Zürich.` : `${p.cat} of ${p.title}${p.place ? ' in ' + p.place : ''} by 3D Vortex, architectural visualization studio in Zürich.`;
       }
     }
     document.title = title;
