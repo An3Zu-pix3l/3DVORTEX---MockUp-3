@@ -1961,7 +1961,18 @@ function ProjectPage({
     className: "pview"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wrap"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("nav", {
+    className: "pnav-top",
+    "aria-label": t("Projects")
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "pt prev",
+    href: urlProyecto(prev.slug),
+    title: t(prev.title)
+  }, "\u2190 ", /*#__PURE__*/React.createElement("span", null, t(prev.title))), /*#__PURE__*/React.createElement("a", {
+    className: "pt next",
+    href: urlProyecto(next.slug),
+    title: t(next.title)
+  }, /*#__PURE__*/React.createElement("span", null, t(next.title)), " \u2192")), /*#__PURE__*/React.createElement("div", {
     className: "kicker reveal"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
@@ -2007,14 +2018,14 @@ function ProjectPage({
     className: "pnav-in"
   }, /*#__PURE__*/React.createElement("a", {
     className: "pn",
-    href: '#/p/' + prev.slug
+    href: urlProyecto(prev.slug)
   }, /*#__PURE__*/React.createElement("span", {
     className: "lbl"
   }, t("← Previous project")), /*#__PURE__*/React.createElement("span", {
     className: "t"
   }, t(prev.title))), /*#__PURE__*/React.createElement("a", {
     className: "pn next",
-    href: '#/p/' + next.slug
+    href: urlProyecto(next.slug)
   }, /*#__PURE__*/React.createElement("span", {
     className: "lbl"
   }, t("Next project →")), /*#__PURE__*/React.createElement("span", {

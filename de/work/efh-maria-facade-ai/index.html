@@ -477,6 +477,12 @@
   .pinfo dd a:hover{text-decoration-color:currentColor}
   @media(max-width:860px){ .pinfo{grid-template-columns:1fr; gap:26px; padding-top:26px} }
   .pnav{padding:30px 0 90px}
+  /* anterior / siguiente, arriba */
+  .pnav-top{display:flex; justify-content:space-between; gap:24px; margin:-40px 0 44px; padding-bottom:14px; border-bottom:1px solid var(--line); font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase}
+  .pnav-top .pt{display:inline-flex; gap:6px; align-items:baseline; color:var(--muted); min-width:0; max-width:48%; transition:color .25s}
+  .pnav-top .pt span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .pnav-top .pt:hover{color:var(--ink)}
+  @media(max-width:560px){ .pnav-top{margin:-24px 0 30px; font-size:10px; letter-spacing:.1em} }
   .pnav-in{display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--line); padding-top:28px}
   .pnav .pn{display:flex; flex-direction:column; gap:8px}
   .pnav .pn.next{text-align:right; align-items:flex-end}
