@@ -1705,9 +1705,7 @@ function Nav({ lang, setLang }) {
     className: "nav-right"
   }, /*#__PURE__*/React.createElement(Lang, {
     cls: "lang"
-  }), /*#__PURE__*/React.createElement("a", {
-    className: "cart"
-  }, t("Studio · Zürich ↗"))), /*#__PURE__*/React.createElement("button", {
+  })), /*#__PURE__*/React.createElement("button", {
     className: `burger ${open ? 'on' : ''}`,
     onClick: () => setOpen(o => !o),
     "aria-label": "Menu"
