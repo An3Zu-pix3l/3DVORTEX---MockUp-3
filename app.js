@@ -711,6 +711,16 @@ const PROJECTS = [{
         ar: "ar-169"
       }
       ]
+    },
+      {
+      layout: "video",
+      items: [],
+      video: {
+        hd: "/assets/v/hp-video-1080.mp4",
+        sd: "/assets/v/hp-video-720.mp4",
+        poster: "/assets/v/hp-video-poster.jpg",
+        c: "Presentation video"
+      }
     }
     ]
   }, {
@@ -1236,6 +1246,7 @@ const DE = {
   "AI Visualization": "KI-Visualisierung",
   "Sketch \u2192 Render": "Skizze \u2192 Render",
   "Material variants": "Materialvarianten",
+  "Presentation video": "Präsentationsvideo",
   // fichas: texto y ficha tecnica
   "Private client": "Private Bauherrschaft",
   "Colegio Jaso (private school), Pamplona": "Colegio Jaso (Privatschule), Pamplona",
@@ -1966,6 +1977,37 @@ function ProjectInfo({ proj }) {
     filas.length ? e("dl", { className: "pi-dl" }, filas.map(([k, v]) =>
       e(React.Fragment, { key: k }, e("dt", null, k), e("dd", null, v)))) : null);
 }
+function VideoBlock({ v, title }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const conn = navigator.connection || {};
+    const pequeno = window.innerWidth < 900 || conn.saveData;
+    let cargado = false;
+    const cargar = () => {
+      if (cargado) return;
+      cargado = true;
+      el.src = pequeno ? v.sd : v.hd;
+    };
+    if (!('IntersectionObserver' in window)) { cargar(); return; }
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) {
+        cargar();
+        if (!reduce) { const p = el.play(); if (p && p.catch) p.catch(() => {}); }
+      } else if (!el.paused) el.pause();
+    }), { rootMargin: '200px 0px', threshold: 0.25 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [v]);
+  return React.createElement("figure", { className: "pvideo" },
+    React.createElement("video", {
+      ref: ref, poster: v.poster, muted: true, loop: true, playsInline: true,
+      preload: "none", controls: true, "aria-label": `${title} — ${t(v.c)}`
+    }),
+    React.createElement("figcaption", null, t(v.c)));
+}
 function ProjectPage({
   slug,
   onPano
@@ -2006,7 +2048,11 @@ function ProjectPage({
     className: "cluster"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wrap"
-  }, proj.rows.map((row, ri) => /*#__PURE__*/React.createElement("div", {
+  }, proj.rows.map((row, ri) => row.video ? /*#__PURE__*/React.createElement(VideoBlock, {
+    key: ri,
+    v: row.video,
+    title: t(proj.title)
+  }) : /*#__PURE__*/React.createElement("div", {
     key: ri,
     className: `row ${row.layout} reveal`
   }, row.items.map((it, j) => {

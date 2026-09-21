@@ -476,6 +476,10 @@
   .pinfo dd a{color:inherit; text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--line)}
   .pinfo dd a:hover{text-decoration-color:currentColor}
   @media(max-width:860px){ .pinfo{grid-template-columns:1fr; gap:26px; padding-top:26px} }
+  /* video de presentacion en la ficha */
+  .pvideo{margin:0 0 20px}
+  .pvideo video{display:block; width:100%; aspect-ratio:16/9; background:#0a1a2a; object-fit:cover; border-radius:2px}
+  .pvideo figcaption{font-family:var(--font-mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); padding-top:10px}
   .pnav{padding:30px 0 90px}
   .pnav-in{display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--line); padding-top:28px}
   .pnav .pn{display:flex; flex-direction:column; gap:8px}
