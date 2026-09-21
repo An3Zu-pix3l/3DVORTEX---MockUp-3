@@ -345,8 +345,8 @@ const INFO = {
   "year": "2026",
   "ctx": "Competition",
   "svc": "Exterior visualization",
-  "sub": "Competition entry for a kindergarten",
-  "desc": "Exterior visualization for Fuchs Architekten's competition entry for the Kreuzgut kindergarten."
+  "sub": "Competition entry for a triple kindergarten in Schaffhausen",
+  "desc": "Exterior visualization for Fuchs Architekten's competition entry for the Kreuzgut triple kindergarten in Schaffhausen."
  },
  "altstetten-viz": {
   "by": {
@@ -367,8 +367,8 @@ const INFO = {
   "year": "2024",
   "ctx": "Competition",
   "svc": "3D-printed facade model",
-  "sub": "Competition entry for a high-rise at Hagenholz, Zürich",
-  "desc": "A 3D-printed model of the facade for Fuchs Architekten's competition entry for a high-rise at Hagenholz in Zürich."
+  "sub": "Competition entry for the facade renovation of a residential tower in Zürich",
+  "desc": "A 3D-printed model of the new facade for Fuchs Architekten's competition entry for the facade renovation of the Hagenholz residential tower in Zürich."
  }
 };
 const PROJECTS = [{
@@ -691,8 +691,8 @@ const PROJECTS = [{
     ]
   }, {
     slug: "kindergarten-kreuzgut-viz",
-    title: "Kreuzgut Kindergarten",
-    place: "Kreuzgut (SH)",
+    title: "Kreuzgut Triple Kindergarten",
+    place: "Schaffhausen (SH)",
     cat: "Competition",
     service: "viz",
     pending: false,
@@ -707,7 +707,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.hero,
-        t: "Kreuzgut Kindergarten",
+        t: "Kreuzgut Triple Kindergarten",
         c: "Competition",
         ar: "ar-169"
       }
@@ -718,13 +718,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p1_2,
-        t: "Kreuzgut Kindergarten",
+        t: "Kreuzgut Triple Kindergarten",
         c: "Exterior perspectives",
         ar: "ar-43"
       },
         {
         img: P.p1_3,
-        t: "Kreuzgut Kindergarten",
+        t: "Kreuzgut Triple Kindergarten",
         c: "Exterior perspectives",
         ar: "ar-43"
       }
@@ -1231,18 +1231,18 @@ const DE = {
   "Competition entry for a sports hall for Colegio Jaso in Pamplona": "Wettbewerbsbeitrag für eine Sporthalle des Colegio Jaso in Pamplona",
   "Competition entry for an ice rink in St. Moritz": "Wettbewerbsbeitrag für eine Eishalle in St. Moritz",
   "Residential development in Bäretswil, visualized for sale": "Wohnüberbauung in Bäretswil, visualisiert für den Verkauf",
-  "Competition entry for a kindergarten": "Wettbewerbsbeitrag für einen Kindergarten",
+  "Competition entry for a triple kindergarten in Schaffhausen": "Wettbewerbsbeitrag für einen Dreifachkindergarten in Schaffhausen",
   "Competition entry for a housing estate in Zürich-Altstetten": "Wettbewerbsbeitrag für eine Wohnsiedlung in Zürich-Altstetten",
-  "Competition entry for a high-rise at Hagenholz, Zürich": "Wettbewerbsbeitrag für ein Hochhaus im Hagenholz, Zürich",
+  "Competition entry for the facade renovation of a residential tower in Zürich": "Wettbewerbsbeitrag für die Fassadensanierung eines Wohnturms in Zürich",
   "Visualizations of the preliminary design for a private client in Golino. They let the client see the house in its setting and discuss the design before it was developed further.": "Visualisierungen des Vorprojekts für eine private Bauherrschaft in Golino. Sie zeigen das Haus in seiner Umgebung und dienten als Grundlage, um den Entwurf vor der Weiterbearbeitung zu besprechen.",
   "Exterior visualizations of the preliminary design, prepared for the presentation to the private client in Golino.": "Aussenvisualisierungen des Vorprojekts, erstellt für die Präsentation bei der privaten Bauherrschaft in Golino.",
   "Final visualizations to decide materials and furnishings with the private client, inside and out, together with a 360° virtual tour and a 3D-printed model of the house.": "Schlussvisualisierungen, mit denen die private Bauherrschaft Materialisierung und Möblierung innen wie aussen festlegen konnte – ergänzt durch eine 360° Virtual Tour und ein 3D-Druckmodell des Hauses.",
   "Visualizations for a competition held by Colegio Jaso, a private school in Pamplona, for a new sports hall.": "Visualisierungen für einen Wettbewerb des Colegio Jaso, einer Privatschule in Pamplona, für eine neue Sporthalle.",
   "Interior and exterior visualizations and a 360° virtual tour for Fuchs Architekten's competition entry for an ice rink in St. Moritz.": "Innen- und Aussenvisualisierungen sowie eine 360° Virtual Tour für den Wettbewerbsbeitrag von Fuchs Architekten für eine Eishalle in St. Moritz.",
   "Interior and exterior visualizations and presentation videos for the marketing of the HüttenacherPLUS residential development in Bäretswil, commissioned by Arento AG.": "Innen- und Aussenvisualisierungen sowie Präsentationsvideos für die Vermarktung der Wohnüberbauung HüttenacherPLUS in Bäretswil, im Auftrag der Arento AG.",
-  "Exterior visualization for Fuchs Architekten's competition entry for the Kreuzgut kindergarten.": "Aussenvisualisierung für den Wettbewerbsbeitrag von Fuchs Architekten für den Kindergarten Kreuzgut.",
+  "Exterior visualization for Fuchs Architekten's competition entry for the Kreuzgut triple kindergarten in Schaffhausen.": "Aussenvisualisierung für den Wettbewerbsbeitrag von Fuchs Architekten für den Dreifachkindergarten Kreuzgut in Schaffhausen.",
   "Exterior renderings for Fuchs Architekten's competition entry for a housing estate in Zürich-Altstetten.": "Aussenvisualisierungen für den Wettbewerbsbeitrag von Fuchs Architekten für eine Wohnsiedlung in Zürich-Altstetten.",
-  "A 3D-printed model of the facade for Fuchs Architekten's competition entry for a high-rise at Hagenholz in Zürich.": "Ein 3D-Druckmodell der Fassade für den Wettbewerbsbeitrag von Fuchs Architekten für ein Hochhaus im Hagenholz in Zürich.",
+  "A 3D-printed model of the new facade for Fuchs Architekten's competition entry for the facade renovation of the Hagenholz residential tower in Zürich.": "Ein 3D-Druckmodell der neuen Fassade für den Wettbewerbsbeitrag von Fuchs Architekten zur Fassadensanierung des Wohnturms Hagenholz in Zürich.",
   "Commissioned by": "Im Auftrag von",
   "Client": "Bauherrschaft",
   "Location": "Ort",
@@ -1256,7 +1256,7 @@ const DE = {
   "Jaso Sports Hall": "Sporthalle Jaso",
   "Islas Ice Rink": "Eishalle Islas",
   "HüttenacherPLUS Residential Development": "Wohnüberbauung HüttenacherPLUS",
-  "Kreuzgut Kindergarten": "Kindergarten Kreuzgut",
+  "Kreuzgut Triple Kindergarten": "Dreifachkindergarten Kreuzgut",
   "Altstetten Housing Estate": "Wohnsiedlung Altstetten",
   "Hagenholz High-Rise": "Hochhaus Hagenholz",
   "Schtubu Multi-Family House – Stairwell": "MFH Schtubu Treppenhaus",

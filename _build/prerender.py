@@ -342,7 +342,7 @@ def main():
                 nuevo_nos = noscript_proyecto(p, pagina, et)
             else:
                 pagina["imagen"] = "/assets/og-cover.jpg"
-                pagina["imagen_alt"] = "Kreuzgut Kindergarten, competition visualization by 3D Vortex"
+                pagina["imagen_alt"] = "Kreuzgut Triple Kindergarten, competition visualization by 3D Vortex"
                 nuevo_json = json_v          # la ficha del estudio, tal cual
                 nuevo_nos = (noscript_home(datos, pagina, et) if tipo == "home"
                              else noscript_tour(datos, pagina, et))
