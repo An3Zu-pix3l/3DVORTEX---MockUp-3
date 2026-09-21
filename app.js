@@ -1506,7 +1506,7 @@ function Nav({ lang, setLang }) {
   // El prefijo se calcula AQUI, en cada pintado, no al cargar el archivo:
   // en /de/... el menu tiene que apuntar al aleman.
   const pref = prefijoIdioma();
-  const links = [[pref + "/", "Home"], [pref + "/#portfolio", "Projects"], [pref + "/tour", "360° Tour"], [pref + "/#services", "Services"], [pref + "/#about", "About"], [pref + "/#contact", "Contact"]];
+  const links = [[pref + "/", "Home"], [pref + "/#portfolio", "Projects"], [pref + "/#services", "Services"], [pref + "/#about", "About"], [pref + "/#contact", "Contact"]];
   const Lang = ({ cls }) => /*#__PURE__*/React.createElement("span", {
     className: cls
   }, ["en", "de"].map((l, i) => /*#__PURE__*/React.createElement(React.Fragment, {
@@ -1529,8 +1529,6 @@ function Nav({ lang, setLang }) {
   }, t("Home")), /*#__PURE__*/React.createElement("a", {
     href: prefijoIdioma() + "/#portfolio"
   }, t("Projects")), /*#__PURE__*/React.createElement("a", {
-    href: urlTour()
-  }, t("360° Tour")), /*#__PURE__*/React.createElement("a", {
     href: prefijoIdioma() + "/#services"
   }, t("Services")), /*#__PURE__*/React.createElement("a", {
     href: prefijoIdioma() + "/#about"
