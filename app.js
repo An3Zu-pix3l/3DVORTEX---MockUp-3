@@ -950,7 +950,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "efh-maria-living-ai",
-    title: "EFH Maria \u00b7 Living",
+    title: "EFH Maria Wohnzimmer",
     place: "Liechtenstein",
     cat: "AI Visualization",
     service: "ai",
