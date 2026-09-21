@@ -46,6 +46,10 @@ async def espera_app(pg, seg=20):
         await pg.wait_for_timeout(200)
     raise RuntimeError("app.js no ha arrancado")
 
+async def pestana_limpia(br):
+    ctx = await br.new_context(viewport={"width": 1440, "height": 900}, ignore_https_errors=True)
+    return await ctx.new_page()
+
 async def extraer():
     """Lee los datos y los metadatos de la propia aplicacion, ruta por ruta."""
     async with async_playwright() as pw:
@@ -55,10 +59,12 @@ async def extraer():
         await pg.goto(LOCAL + "/", wait_until="networkidle", timeout=120000)
         await pg.wait_for_timeout(1200)
 
+        # cover.img2: en las fichas boceto->render la portada es el boceto, pero
+        # para la vista previa al compartir el enlace vende mas el render.
         datos = await pg.evaluate("""() => ({
           proyectos: PROJECTS.map(p => ({
             slug: p.slug, title: p.title, place: p.place || '', cat: p.cat,
-            pending: !!p.pending, cover: p.cover.img,
+            pending: !!p.pending, cover: p.cover.img2 || p.cover.img,
             imagenes: p.rows.flatMap(r => r.items.map(i => ({ img: i.img, c: i.c || '' })))
           })),
           servicios: SERVICES.map(s => ({ t: s.t, d: s.d })),
@@ -73,11 +79,20 @@ async def extraer():
             # OJO: para extraer NO se navega a /de/... — todavia no existe, es lo
             # que estamos generando. Se abre la portada con ?lang=de y se recorren
             # las rutas sin prefijo; el idioma ya esta puesto en la aplicacion.
+            # Pestana limpia por idioma: la aplicacion guarda el idioma elegido y
+            # en la raiz esa preferencia manda. Reutilizando la misma pestana, lo
+            # que se extraia en ingles salia en aleman (y al reves).
+            pg = await pestana_limpia(br)
             await pg.goto(LOCAL + "/" + ("?lang=de" if lang == "de" else ""),
                           wait_until="networkidle", timeout=120000)
             await espera_app(pg)
             for tipo, ruta in rutas:
-                await pg.evaluate("u => irA(u)", ruta)
+                # Con el prefijo del idioma: desde el 10-09 es la DIRECCION la que
+                # manda el idioma, y sin /de la aplicacion volvia al ingles — las
+                # paginas alemanas salian con titulo y descripcion en ingles.
+                # irA() navega dentro de la aplicacion, asi que /de/... no necesita
+                # existir todavia como archivo.
+                await pg.evaluate("u => irA(u)", (pref + ruta) if ruta != "/" else (pref or "/"))
                 await pg.wait_for_timeout(450)
                 metadatos[(lang, ruta)] = {
                     "title": await pg.title(),
@@ -87,6 +102,10 @@ async def extraer():
         # los textos de interfaz que hacen falta en el <noscript> aleman
         etiquetas = {}
         for lang, pref, _ in IDIOMAS:
+            # Pestana limpia por idioma: la aplicacion guarda el idioma elegido y
+            # en la raiz esa preferencia manda. Reutilizando la misma pestana, lo
+            # que se extraia en ingles salia en aleman (y al reves).
+            pg = await pestana_limpia(br)
             await pg.goto(LOCAL + "/" + ("?lang=de" if lang == "de" else ""),
                           wait_until="networkidle", timeout=120000)
             await espera_app(pg)

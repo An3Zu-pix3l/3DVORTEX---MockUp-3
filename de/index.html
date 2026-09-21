@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Architectural Visualization Studio, Zürich | 3DVORTEX</title>
-<meta name="description" content="Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting." />
+<title>Studio für Architekturvisualisierung, Zürich | 3DVORTEX</title>
+<meta name="description" content="Studio für Architekturvisualisierung in Zürich: fotorealistische Renderings, KI-Visualisierung, 3D-Druckmodelle, 360°-Rundgänge und technisches Zeichnen." />
 
 <!-- canonical y hreflang apuntan al dominio final; og:url y las imagenes, a
      donde vive ahora, para que la vista previa al compartir funcione ya.
@@ -19,15 +19,15 @@
 <meta property="og:site_name"      content="3D Vortex" />
 <meta property="og:locale"         content="de_CH" />
 <meta property="og:url"            content="https://3-dvortex-mock-up-3-a.vercel.app/de" />
-<meta property="og:title"          content="Architectural Visualization Studio, Zürich | 3DVORTEX" />
-<meta property="og:description"    content="Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting." />
+<meta property="og:title"          content="Studio für Architekturvisualisierung, Zürich | 3DVORTEX" />
+<meta property="og:description"    content="Studio für Architekturvisualisierung in Zürich: fotorealistische Renderings, KI-Visualisierung, 3D-Druckmodelle, 360°-Rundgänge und technisches Zeichnen." />
 <meta property="og:image"          content="https://3-dvortex-mock-up-3-a.vercel.app/assets/og-cover.jpg" />
 <meta property="og:image:alt"      content="Kindergarten Kreuzgut, competition visualization by 3D Vortex" />
 
 <!-- Twitter / X -->
 <meta name="twitter:card"        content="summary_large_image" />
-<meta name="twitter:title"       content="Architectural Visualization Studio, Zürich | 3DVORTEX" />
-<meta name="twitter:description" content="Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting." />
+<meta name="twitter:title"       content="Studio für Architekturvisualisierung, Zürich | 3DVORTEX" />
+<meta name="twitter:description" content="Studio für Architekturvisualisierung in Zürich: fotorealistische Renderings, KI-Visualisierung, 3D-Druckmodelle, 360°-Rundgänge und technisches Zeichnen." />
 <meta name="twitter:image"       content="https://3-dvortex-mock-up-3-a.vercel.app/assets/og-cover.jpg" />
 
 <meta name="theme-color" content="#ffffff" />
@@ -303,6 +303,34 @@
   .ar-11{aspect-ratio:1/1}
   .ar-34{aspect-ratio:3/4}
   .ar-23{aspect-ratio:2/3}
+  /* Panoramica (EFH Maria · Living, 2842 x 630). En movil, a 4,5:1 la imagen
+     mediria 86 px de alto: se recorta a 2:1 por el centro. El barrido sigue
+     cuadrando porque las dos capas comparten recorte. */
+  .ar-pano{aspect-ratio:2842/630}
+  @media(max-width:720px){ .ar-pano{aspect-ratio:2/1} }
+
+  /* Muchas variantes (> 4): sobre la foto solo en pantallas anchas, con sitio
+     a la izquierda para el rotulo; en el resto, fila propia bajo la imagen. */
+  .w-opts.many{max-width:calc(100% - 440px)}
+  .w-opts-out{display:none}
+  @media(max-width:1180px){
+    .w-opts.many{display:none}
+    .w-opts-out{display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-top:-6px}
+  }
+  .w-opts-out button{
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink); background:transparent; border:1px solid var(--line);
+    border-radius:100px; padding:7px 13px; cursor:pointer; white-space:nowrap;
+    transition:background .25s, border-color .25s, color .25s;
+  }
+  .w-opts-out button:hover{border-color:var(--ink)}
+  .w-opts-out button.on{background:var(--ink); color:#fff; border-color:var(--ink); font-weight:600}
+  .w-opts-out button:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+  /* A pantalla completa una panoramica deja mucho aire debajo: ahi van */
+  .lb-opts.many{top:calc(100% + 16px); bottom:auto; left:0; right:0; max-width:none; justify-content:center}
+  .lb-opts.many button{background:transparent; color:var(--ink); border-color:rgba(10,26,42,.22)}
+  .lb-opts.many button:hover{border-color:var(--ink); background:transparent}
+  .lb-opts.many button.on{background:var(--ink); color:#fff; border-color:var(--ink)}
 
   /* ========== PULLQUOTE BLOCK (Vizio: centered big-serif text between galleries) ========== */
   .pull{padding:100px 0 80px}
@@ -671,8 +699,8 @@
 
   <noscript>
     <div style="max-width:760px;margin:0 auto;padding:48px 24px;font-family:system-ui,sans-serif;line-height:1.6;color:#0a1a2a">
-    <h1>Architectural Visualization Studio, Zürich</h1>
-    <p>Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting.</p>
+    <h1>Studio für Architekturvisualisierung, Zürich</h1>
+    <p>Studio für Architekturvisualisierung in Zürich: fotorealistische Renderings, KI-Visualisierung, 3D-Druckmodelle, 360°-Rundgänge und technisches Zeichnen.</p>
 
     <h2>Leistungen</h2>
     <ul>
@@ -699,6 +727,7 @@
       <li><a href="/de/work/graffio-360">Graffio, Golino — 360°-Rundgang</a></li>
       <li><a href="/de/work/silserkugel-360">Silserkugel, St. Moritz — 360°-Rundgang</a></li>
       <li><a href="/de/work/efh-maria-ai">EFH Maria, Liechtenstein — KI-Visualisierung</a></li>
+      <li><a href="/de/work/efh-maria-living-ai">EFH Maria · Living, Liechtenstein — KI-Visualisierung</a></li>
     </ul>
 
     <h2>Studio</h2>

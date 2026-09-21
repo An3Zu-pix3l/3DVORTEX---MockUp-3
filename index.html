@@ -303,6 +303,34 @@
   .ar-11{aspect-ratio:1/1}
   .ar-34{aspect-ratio:3/4}
   .ar-23{aspect-ratio:2/3}
+  /* Panoramica (EFH Maria · Living, 2842 x 630). En movil, a 4,5:1 la imagen
+     mediria 86 px de alto: se recorta a 2:1 por el centro. El barrido sigue
+     cuadrando porque las dos capas comparten recorte. */
+  .ar-pano{aspect-ratio:2842/630}
+  @media(max-width:720px){ .ar-pano{aspect-ratio:2/1} }
+
+  /* Muchas variantes (> 4): sobre la foto solo en pantallas anchas, con sitio
+     a la izquierda para el rotulo; en el resto, fila propia bajo la imagen. */
+  .w-opts.many{max-width:calc(100% - 440px)}
+  .w-opts-out{display:none}
+  @media(max-width:1180px){
+    .w-opts.many{display:none}
+    .w-opts-out{display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-top:-6px}
+  }
+  .w-opts-out button{
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink); background:transparent; border:1px solid var(--line);
+    border-radius:100px; padding:7px 13px; cursor:pointer; white-space:nowrap;
+    transition:background .25s, border-color .25s, color .25s;
+  }
+  .w-opts-out button:hover{border-color:var(--ink)}
+  .w-opts-out button.on{background:var(--ink); color:#fff; border-color:var(--ink); font-weight:600}
+  .w-opts-out button:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+  /* A pantalla completa una panoramica deja mucho aire debajo: ahi van */
+  .lb-opts.many{top:calc(100% + 16px); bottom:auto; left:0; right:0; max-width:none; justify-content:center}
+  .lb-opts.many button{background:transparent; color:var(--ink); border-color:rgba(10,26,42,.22)}
+  .lb-opts.many button:hover{border-color:var(--ink); background:transparent}
+  .lb-opts.many button.on{background:var(--ink); color:#fff; border-color:var(--ink)}
 
   /* ========== PULLQUOTE BLOCK (Vizio: centered big-serif text between galleries) ========== */
   .pull{padding:100px 0 80px}
@@ -699,6 +727,7 @@
       <li><a href="/work/graffio-360">Graffio, Golino — 360° Virtual Tour</a></li>
       <li><a href="/work/silserkugel-360">Silserkugel, St. Moritz — 360° Virtual Tour</a></li>
       <li><a href="/work/efh-maria-ai">EFH Maria, Liechtenstein — AI Visualization</a></li>
+      <li><a href="/work/efh-maria-living-ai">EFH Maria · Living, Liechtenstein — AI Visualization</a></li>
     </ul>
 
     <h2>Studio</h2>
