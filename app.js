@@ -1961,18 +1961,7 @@ function ProjectPage({
     className: "pview"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wrap"
-  }, /*#__PURE__*/React.createElement("nav", {
-    className: "pnav-top",
-    "aria-label": t("Projects")
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "pt prev",
-    href: urlProyecto(prev.slug),
-    title: t(prev.title)
-  }, "\u2190 ", /*#__PURE__*/React.createElement("span", null, t(prev.title))), /*#__PURE__*/React.createElement("a", {
-    className: "pt next",
-    href: urlProyecto(next.slug),
-    title: t(next.title)
-  }, /*#__PURE__*/React.createElement("span", null, t(next.title)), " \u2192")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "kicker reveal"
   }, /*#__PURE__*/React.createElement("span", {
     className: "bar"
