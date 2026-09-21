@@ -1173,6 +1173,11 @@ const PROJECTS = [{
     }
     ]
   }];
+// Orden del portfolio (Adrian, 21-09-2026); el resto, detras y en su orden.
+const ORDEN_PORTFOLIO = ["graffio-viz", "silserkugel-viz", "casa-lele-viz", "altstetten-viz", "casa-lele-print", "kindergarten-kreuzgut-viz", "arento-viz", "football-pitch-viz"];
+(() => { const pos = new Map(PROJECTS.map((p, i) => [p.slug, i]));
+  const r = p => { const k = ORDEN_PORTFOLIO.indexOf(p.slug); return k < 0 ? 1000 + pos.get(p.slug) : k; };
+  PROJECTS.sort((x, y) => r(x) - r(y)); })();
 const PROJECT_BY_SLUG = Object.fromEntries(PROJECTS.map(p => [p.slug, p]));
 
 // Filas de la home a partir de la lista filtrada (ritmo full / pair / pair)
