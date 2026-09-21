@@ -655,6 +655,45 @@ const PROJECTS = [{
       layout: "full",
       items: [
         {
+        img: P.p5_1,
+        t: "HüttenacherPLUS Residential Development",
+        c: "Interior atmosphere",
+        ar: "ar-169"
+      }
+      ]
+    },
+      {
+      layout: "pair",
+      items: [
+        {
+        img: P.p5_2,
+        t: "HüttenacherPLUS Residential Development",
+        c: "Interior atmosphere",
+        ar: "ar-43"
+      },
+        {
+        img: P.p5_3,
+        t: "HüttenacherPLUS Residential Development",
+        c: "Interior atmosphere",
+        ar: "ar-43"
+      }
+      ]
+    },
+      {
+      layout: "full",
+      items: [
+        {
+        img: P.p5_4,
+        t: "HüttenacherPLUS Residential Development",
+        c: "Interior atmosphere",
+        ar: "ar-169"
+      }
+      ]
+    },
+      {
+      layout: "full",
+      items: [
+        {
         img: P.hp_e1,
         t: "HüttenacherPLUS Residential Development",
         c: "Exterior perspectives",
@@ -670,40 +709,6 @@ const PROJECTS = [{
         t: "HüttenacherPLUS Residential Development",
         c: "Exterior & garden",
         ar: "ar-169"
-      }
-      ]
-    },
-      {
-      layout: "pair",
-      items: [
-        {
-        img: P.p5_1,
-        t: "HüttenacherPLUS Residential Development",
-        c: "Interior atmosphere",
-        ar: "ar-43"
-      },
-        {
-        img: P.p5_2,
-        t: "HüttenacherPLUS Residential Development",
-        c: "Interior atmosphere",
-        ar: "ar-43"
-      }
-      ]
-    },
-      {
-      layout: "pair",
-      items: [
-        {
-        img: P.p5_3,
-        t: "HüttenacherPLUS Residential Development",
-        c: "Interior atmosphere",
-        ar: "ar-43"
-      },
-        {
-        img: P.p5_4,
-        t: "HüttenacherPLUS Residential Development",
-        c: "Interior atmosphere",
-        ar: "ar-43"
       }
       ]
     }
