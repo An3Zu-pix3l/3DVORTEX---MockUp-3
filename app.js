@@ -307,7 +307,7 @@ const INFO = {
  "silserkugel-viz": {
   "by": {
    "n": "Fuchs Architekten AG",
-   "url": "https://www.fuchs-architekten.ch/"
+   "url": "https://www.fuchs-architekten.ch/projekte/w-eishalle-st-moritz/"
   },
   "year": "2025",
   "ctx": "Competition",
@@ -318,7 +318,7 @@ const INFO = {
  "silserkugel-360": {
   "by": {
    "n": "Fuchs Architekten AG",
-   "url": "https://www.fuchs-architekten.ch/"
+   "url": "https://www.fuchs-architekten.ch/projekte/w-eishalle-st-moritz/"
   },
   "year": "2025",
   "ctx": "Competition",
@@ -329,7 +329,7 @@ const INFO = {
  "arento-viz": {
   "by": {
    "n": "Arento AG",
-   "url": "https://arento.ch/"
+   "url": "https://arento.ch/projekte/wohnueberbauung-huettenacherplus-baeretswil"
   },
   "year": "2025",
   "ctx": "Marketing and sales",
@@ -340,7 +340,7 @@ const INFO = {
  "kindergarten-kreuzgut-viz": {
   "by": {
    "n": "Fuchs Architekten AG",
-   "url": "https://www.fuchs-architekten.ch/"
+   "url": "https://www.fuchs-architekten.ch/projekte/w-dreifachkindergarten-schaffhausen/"
   },
   "year": "2026",
   "ctx": "Competition",
@@ -351,7 +351,7 @@ const INFO = {
  "altstetten-viz": {
   "by": {
    "n": "Fuchs Architekten AG",
-   "url": "https://www.fuchs-architekten.ch/"
+   "url": "https://www.fuchs-architekten.ch/projekte/w-wohnsiedlung-altstetten/"
   },
   "year": "2026",
   "ctx": "Competition",
@@ -362,7 +362,7 @@ const INFO = {
  "oerlikon-print": {
   "by": {
    "n": "Fuchs Architekten AG",
-   "url": "https://www.fuchs-architekten.ch/"
+   "url": "https://www.fuchs-architekten.ch/projekte/fassadensanierung-wohnturm-zuerich/"
   },
   "year": "2024",
   "ctx": "Competition",
