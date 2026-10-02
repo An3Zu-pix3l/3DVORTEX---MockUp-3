@@ -142,7 +142,7 @@ const PANORAMAS = [{
   pitch: -2
 }, {
   id: "amb4",
-  t: "Bar & Lounge",
+  t: "Office & Reading Room",
   c: "Graffio Single-Family House",
   proj: "graffio",
   place: "Golino (TI)",
@@ -153,7 +153,7 @@ const PANORAMAS = [{
   pitch: -2
 }, {
   id: "amb1",
-  t: "Bedroom & Bath",
+  t: "Master Bedroom",
   c: "Graffio Single-Family House",
   proj: "graffio",
   place: "Golino (TI)",
@@ -999,7 +999,7 @@ const PROJECTS = [{
         {
         img: PNM.amb1,
         pano: "amb1",
-        t: "Bedroom & Bath",
+        t: "Master Bedroom",
         c: "Enter the 360° tour",
         ar: "ar-169"
       }
@@ -1030,7 +1030,7 @@ const PROJECTS = [{
         {
         img: PNM.amb4,
         pano: "amb4",
-        t: "Bar & Lounge",
+        t: "Office & Reading Room",
         c: "Enter the 360° tour",
         ar: "ar-43"
       }
@@ -1393,8 +1393,8 @@ const DE = {
   "⟳ Enter 360° Tour": "⟳ 360°-Rundgang starten",
   "Living Room": "Wohnzimmer",
   "Kitchen": "Küche",
-  "Bar & Lounge": "Bar & Lounge",
-  "Bedroom & Bath": "Schlafen & Bad",
+  "Office & Reading Room": "Büro & Lesezimmer",
+  "Master Bedroom": "Masterzimmer",
   "Ice Rink": "Eisfeld",
   "Rink — Training": "Eisfeld — Training",
   "Restaurant": "Restaurant",
