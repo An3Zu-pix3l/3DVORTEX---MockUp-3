@@ -2873,7 +2873,7 @@ function LbWipe({
   }, /*#__PURE__*/React.createElement(Pic, {
     src: p.img,
     sizes: SIZE_LB,
-    alt: p.t
+    alt: t(p.t)
   }), /*#__PURE__*/React.createElement("div", {
     className: "lb-b",
     "aria-hidden": "true"
@@ -2923,7 +2923,7 @@ function Lightbox({
   }) : /*#__PURE__*/React.createElement(Pic, {
     src: p.img,
     sizes: SIZE_LB,
-    alt: p.t,
+    alt: t(p.t),
     onClick: e => e.stopPropagation()
   });
   return /*#__PURE__*/React.createElement("div", {
@@ -2935,7 +2935,7 @@ function Lightbox({
       e.stopPropagation();
       onClose();
     }
-  }, "Close ✕"), /*#__PURE__*/React.createElement("button", {
+  }, t("Close ✕")), /*#__PURE__*/React.createElement("button", {
     className: "nav-btn prev",
     onClick: e => {
       e.stopPropagation();
@@ -2951,9 +2951,9 @@ function Lightbox({
     className: "meta"
   }, /*#__PURE__*/React.createElement("div", {
     className: "t"
-  }, p.t), /*#__PURE__*/React.createElement("div", {
+  }, t(p.t)), /*#__PURE__*/React.createElement("div", {
     className: "c"
-  }, p.c)));
+  }, t(p.c))));
 }
 function Tweaks({
   values,
