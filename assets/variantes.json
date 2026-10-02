@@ -667,6 +667,26 @@
   ],
   "w": 1600
  },
+ "assets/tour-graffio-cover.jpg": {
+  "h": 1333,
+  "s": [
+   500,
+   800,
+   1400,
+   2000
+  ],
+  "w": 2000
+ },
+ "assets/tour-islas-cover.jpg": {
+  "h": 1333,
+  "s": [
+   500,
+   800,
+   1400,
+   2000
+  ],
+  "w": 2000
+ },
  "assets/viseu-1.jpg": {
   "h": 1080,
   "s": [
