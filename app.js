@@ -121,7 +121,7 @@ const PNM = {
 const PANORAMAS = [{
   id: "amb3",
   t: "Living Room",
-  c: "Graffio Single-Family House",
+  c: "Graffio - Private residence",
   proj: "graffio",
   place: "Golino (TI)",
   src: PN.amb3,
@@ -132,7 +132,7 @@ const PANORAMAS = [{
 }, {
   id: "amb2",
   t: "Kitchen",
-  c: "Graffio Single-Family House",
+  c: "Graffio - Private residence",
   proj: "graffio",
   place: "Golino (TI)",
   src: PN.amb2,
@@ -143,7 +143,7 @@ const PANORAMAS = [{
 }, {
   id: "amb4",
   t: "Office & Reading Room",
-  c: "Graffio Single-Family House",
+  c: "Graffio - Private residence",
   proj: "graffio",
   place: "Golino (TI)",
   src: PN.amb4,
@@ -154,7 +154,7 @@ const PANORAMAS = [{
 }, {
   id: "amb1",
   t: "Master Bedroom",
-  c: "Graffio Single-Family House",
+  c: "Graffio - Private residence",
   proj: "graffio",
   place: "Golino (TI)",
   src: PN.amb1,
@@ -165,7 +165,7 @@ const PANORAMAS = [{
 }, {
   id: "court1",
   t: "Ice Rink",
-  c: "Islas Ice Rink",
+  c: "Islas - Ice Arena",
   proj: "silserkugel",
   place: "St. Moritz (GR)",
   src: PN.court1,
@@ -176,7 +176,7 @@ const PANORAMAS = [{
 }, {
   id: "court2",
   t: "Rink — Training",
-  c: "Islas Ice Rink",
+  c: "Islas - Ice Arena",
   proj: "silserkugel",
   place: "St. Moritz (GR)",
   src: PN.court2,
@@ -187,7 +187,7 @@ const PANORAMAS = [{
 }, {
   id: "hall",
   t: "Restaurant",
-  c: "Islas Ice Rink",
+  c: "Islas - Ice Arena",
   proj: "silserkugel",
   place: "St. Moritz (GR)",
   src: PN.hall,
@@ -378,7 +378,7 @@ const INFO = {
 };
 const PROJECTS = [{
     slug: "graffio-viz",
-    title: "Graffio Single-Family House",
+    title: "Graffio - Private residence",
     place: "Golino (TI)",
     cat: "Visualization",
     service: "viz",
@@ -394,7 +394,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_1,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Visualization",
         ar: "ar-169"
       }
@@ -405,13 +405,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_2,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Exterior & interior",
         ar: "ar-43"
       },
         {
         img: P.p2_3,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -422,13 +422,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_4,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Exterior & interior",
         ar: "ar-43"
       },
         {
         img: P.p2_5,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -439,13 +439,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_6,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Exterior & interior",
         ar: "ar-43"
       },
         {
         img: P.p2_7,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -456,7 +456,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_8,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Exterior & interior",
         ar: "ar-43"
       }
@@ -465,7 +465,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "viseu-viz",
-    title: "Viseu Single-Family House",
+    title: "Viseu - Private residence",
     place: "Golino (TI)",
     cat: "Visualization",
     service: "viz",
@@ -481,7 +481,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs1,
-        t: "Viseu Single-Family House",
+        t: "Viseu - Private residence",
         c: "Visualization",
         ar: "ar-169"
       }
@@ -492,7 +492,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs2,
-        t: "Viseu Single-Family House",
+        t: "Viseu - Private residence",
         c: "Exterior & garden",
         ar: "ar-169"
       }
@@ -503,13 +503,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs3,
-        t: "Viseu Single-Family House",
+        t: "Viseu - Private residence",
         c: "Pool & cascade",
         ar: "ar-34"
       },
         {
         img: P.vs4,
-        t: "Viseu Single-Family House",
+        t: "Viseu - Private residence",
         c: "Pool & cascade",
         ar: "ar-34"
       }
@@ -520,7 +520,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs5,
-        t: "Viseu Single-Family House",
+        t: "Viseu - Private residence",
         c: "Arrival & entrance",
         ar: "ar-169"
       }
@@ -529,7 +529,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "casa-lele-viz",
-    title: "Casa Lele Single-Family House",
+    title: "Casa Lele - Private residence",
     place: "Cevio (TI)",
     cat: "Visualization",
     service: "viz",
@@ -545,7 +545,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl1,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Visualization",
         ar: "ar-32"
       }
@@ -556,7 +556,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl2,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Living & fireplace",
         ar: "ar-32"
       }
@@ -567,7 +567,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl3,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Village context",
         ar: "ar-169"
       }
@@ -576,7 +576,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "football-pitch-viz",
-    title: "Jaso Sports Hall",
+    title: "Jaso primary school - Sports Hall",
     place: "Pamplona (ES)",
     cat: "Competition",
     service: "viz",
@@ -592,7 +592,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.pult,
-        t: "Jaso Sports Hall",
+        t: "Jaso primary school - Sports Hall",
         c: "Competition",
         ar: "ar-169"
       }
@@ -601,7 +601,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "silserkugel-viz",
-    title: "Islas Ice Rink",
+    title: "Islas - Ice Arena",
     place: "St. Moritz (GR)",
     cat: "Competition",
     service: "viz",
@@ -617,7 +617,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p3_1,
-        t: "Islas Ice Rink",
+        t: "Islas - Ice Arena",
         c: "Competition",
         ar: "ar-169"
       }
@@ -628,13 +628,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p3_2,
-        t: "Islas Ice Rink",
+        t: "Islas - Ice Arena",
         c: "Interior atmosphere",
         ar: "ar-43"
       },
         {
         img: P.p3_3,
-        t: "Islas Ice Rink",
+        t: "Islas - Ice Arena",
         c: "Interior atmosphere",
         ar: "ar-43"
       }
@@ -643,7 +643,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "arento-viz",
-    title: "HüttenacherPLUS Residential Development",
+    title: "Hüttenacher PLUS - Residential complex",
     place: "Bäretswil (ZH)",
     cat: "Real Estate",
     service: "viz",
@@ -659,7 +659,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_1,
-        t: "HüttenacherPLUS Residential Development",
+        t: "Hüttenacher PLUS - Residential complex",
         c: "Interior atmosphere",
         ar: "ar-169"
       }
@@ -670,13 +670,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_2,
-        t: "HüttenacherPLUS Residential Development",
+        t: "Hüttenacher PLUS - Residential complex",
         c: "Interior atmosphere",
         ar: "ar-43"
       },
         {
         img: P.p5_3,
-        t: "HüttenacherPLUS Residential Development",
+        t: "Hüttenacher PLUS - Residential complex",
         c: "Interior atmosphere",
         ar: "ar-43"
       }
@@ -687,7 +687,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_4,
-        t: "HüttenacherPLUS Residential Development",
+        t: "Hüttenacher PLUS - Residential complex",
         c: "Interior atmosphere",
         ar: "ar-169"
       }
@@ -698,7 +698,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.hp_e1,
-        t: "HüttenacherPLUS Residential Development",
+        t: "Hüttenacher PLUS - Residential complex",
         c: "Exterior perspectives",
         ar: "ar-169"
       }
@@ -709,7 +709,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.hp_e2,
-        t: "HüttenacherPLUS Residential Development",
+        t: "Hüttenacher PLUS - Residential complex",
         c: "Exterior & garden",
         ar: "ar-169"
       }
@@ -728,7 +728,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "kindergarten-kreuzgut-viz",
-    title: "Kreuzgut Triple Kindergarten",
+    title: "Kreuzgut - Kindergarten",
     place: "Schaffhausen (SH)",
     cat: "Competition",
     service: "viz",
@@ -744,7 +744,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.hero,
-        t: "Kreuzgut Triple Kindergarten",
+        t: "Kreuzgut - Kindergarten",
         c: "Competition",
         ar: "ar-169"
       }
@@ -755,13 +755,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.p1_2,
-        t: "Kreuzgut Triple Kindergarten",
+        t: "Kreuzgut - Kindergarten",
         c: "Exterior perspectives",
         ar: "ar-43"
       },
         {
         img: P.p1_3,
-        t: "Kreuzgut Triple Kindergarten",
+        t: "Kreuzgut - Kindergarten",
         c: "Exterior perspectives",
         ar: "ar-43"
       }
@@ -770,7 +770,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "altstetten-viz",
-    title: "Altstetten Housing Estate",
+    title: "Altstetten - Residential complex",
     place: "Zürich (ZH)",
     cat: "Competition",
     service: "viz",
@@ -786,7 +786,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.al1,
-        t: "Altstetten Housing Estate",
+        t: "Altstetten - Residential complex",
         c: "Competition",
         ar: "ar-32"
       }
@@ -797,7 +797,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.al2,
-        t: "Altstetten Housing Estate",
+        t: "Altstetten - Residential complex",
         c: "Street at dusk",
         ar: "ar-32"
       }
@@ -808,7 +808,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.al3,
-        t: "Altstetten Housing Estate",
+        t: "Altstetten - Residential complex",
         c: "Access gallery",
         ar: "ar-32"
       }
@@ -817,7 +817,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "casa-lele-print",
-    title: "Casa Lele Single-Family House",
+    title: "Casa Lele - Private residence",
     place: "Cevio (TI)",
     cat: "3D Print Model",
     service: "print",
@@ -833,7 +833,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm1,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "3D Print Model",
         ar: "ar-32"
       }
@@ -844,7 +844,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm2,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Ground floor",
         ar: "ar-32"
       }
@@ -855,13 +855,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm3,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Plan detail",
         ar: "ar-32"
       },
         {
         img: P.lm4,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Sectioned elevation",
         ar: "ar-32"
       }
@@ -872,7 +872,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm5,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Bedroom",
         ar: "ar-32"
       }
@@ -883,13 +883,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm6,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Printed furniture",
         ar: "ar-32"
       },
         {
         img: P.lm7,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Kitchen island",
         ar: "ar-32"
       }
@@ -900,13 +900,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm8,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Kitchen through the railing",
         ar: "ar-34"
       },
         {
         img: P.lm9,
-        t: "Casa Lele Single-Family House",
+        t: "Casa Lele - Private residence",
         c: "Assembly by hand",
         ar: "ar-34"
       }
@@ -915,7 +915,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "oerlikon-print",
-    title: "Hagenholz High-Rise",
+    title: "Hagenholz - Residential tower",
     place: "Zürich (ZH)",
     cat: "3D Print Model",
     service: "print",
@@ -931,13 +931,13 @@ const PROJECTS = [{
       items: [
         {
         img: P.oe1,
-        t: "Hagenholz High-Rise",
+        t: "Hagenholz - Residential tower",
         c: "3D Print Model",
         ar: "ar-23"
       },
         {
         img: P.oe2,
-        t: "Hagenholz High-Rise",
+        t: "Hagenholz - Residential tower",
         c: "Grid detail",
         ar: "ar-23"
       }
@@ -946,7 +946,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "graffio-print",
-    title: "Graffio Single-Family House",
+    title: "Graffio - Private residence",
     place: "Golino (TI)",
     cat: "3D Print Model",
     service: "print",
@@ -962,7 +962,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.gm1,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "3D Print Model",
         ar: "ar-169"
       }
@@ -973,7 +973,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.gm2,
-        t: "Graffio Single-Family House",
+        t: "Graffio - Private residence",
         c: "Massing & site",
         ar: "ar-169"
       }
@@ -982,7 +982,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "graffio-360",
-    title: "Graffio Single-Family House",
+    title: "Graffio - Private residence",
     place: "Golino (TI)",
     cat: "360° Virtual Tour",
     service: "tour",
@@ -1039,7 +1039,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "silserkugel-360",
-    title: "Islas Ice Rink",
+    title: "Islas - Ice Arena",
     place: "St. Moritz (GR)",
     cat: "360° Virtual Tour",
     service: "tour",
@@ -1084,7 +1084,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "efh-maria-ai",
-    title: "Schtubu Multi-Family House – Stairwell",
+    title: "Schtubu - Stairwell",
     place: "Liechtenstein (FL)",
     cat: "AI Visualization",
     service: "ai",
@@ -1114,7 +1114,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "efh-maria-living-ai",
-    title: "Schtubu Multi-Family House – Living Room",
+    title: "Schtubu - Living room",
     place: "Liechtenstein (FL)",
     cat: "AI Visualization",
     service: "ai",
@@ -1145,7 +1145,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "efh-maria-facade-ai",
-    title: "Schtubu Multi-Family House – Facade",
+    title: "Schtubu - Facade",
     place: "Liechtenstein (FL)",
     cat: "AI Visualization",
     service: "ai",
@@ -1291,18 +1291,18 @@ const DE = {
   "Brief": "Auftrag",
   "Our work": "Leistungen",
   // nombres de proyecto (EN -> DE)
-  "Graffio Single-Family House": "EFH Graffio",
-  "Viseu Single-Family House": "EFH Viseu",
-  "Casa Lele Single-Family House": "EFH Casa Lele",
-  "Jaso Sports Hall": "Sporthalle Jaso",
-  "Islas Ice Rink": "Eishalle Islas",
-  "HüttenacherPLUS Residential Development": "Wohnüberbauung HüttenacherPLUS",
-  "Kreuzgut Triple Kindergarten": "Dreifachkindergarten Kreuzgut",
-  "Altstetten Housing Estate": "Wohnsiedlung Altstetten",
-  "Hagenholz High-Rise": "Hochhaus Hagenholz",
-  "Schtubu Multi-Family House – Stairwell": "MFH Schtubu Treppenhaus",
-  "Schtubu Multi-Family House – Living Room": "MFH Schtubu Wohnzimmer",
-  "Schtubu Multi-Family House – Facade": "MFH Schtubu Fassade",
+  "Graffio - Private residence": "EFH Graffio",
+  "Viseu - Private residence": "EFH Viseu",
+  "Casa Lele - Private residence": "EFH Casa Lele",
+  "Jaso primary school - Sports Hall": "Sporthalle Primarschule Jaso",
+  "Islas - Ice Arena": "Eishalle Islas",
+  "Hüttenacher PLUS - Residential complex": "Wohnüberbauung Hüttenacher PLUS",
+  "Kreuzgut - Kindergarten": "Kindergarten Kreuzgut",
+  "Altstetten - Residential complex": "Wohnsiedlung Altstetten",
+  "Hagenholz - Residential tower": "Hochhaus Hagenholz",
+  "Schtubu - Stairwell": "MFH Schtubu - Treppenhaus",
+  "Schtubu - Living room": "MFH Schtubu - Wohnzimmer",
+  "Schtubu - Facade": "MFH Schtubu - Fassade",
   "Living & kitchen": "Wohnen & K\u00fcche",
   "Garden facade": "Gartenfassade",
   "Timber": "Holz",
