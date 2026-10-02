@@ -384,7 +384,7 @@ const PROJECTS = [{
     service: "viz",
     pending: false,
     cover: {
-      img: P.p2_1,
+      img: P.p2_6,
       ar: "ar-43"
     },
     has360: false,
