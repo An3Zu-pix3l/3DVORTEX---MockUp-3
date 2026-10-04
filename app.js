@@ -923,6 +923,16 @@ const PROJECTS = [{
         ar: "ar-34"
       }
       ]
+    },
+      {
+      layout: "video",
+      items: [],
+      video: {
+        hd: "/assets/v/lele-video-1080.mp4",
+        sd: "/assets/v/lele-video-720.mp4",
+        poster: "/assets/v/lele-video-poster.jpg",
+        c: "Model turntable"
+      }
     }
     ]
   }, {
@@ -1264,6 +1274,7 @@ const DE = {
   "AI Visualization": "KI-Visualisierung",
   "Sketch \u2192 Render": "Skizze \u2192 Render",
   "Material variants": "Materialvarianten",
+  "Model turntable": "Modell in Drehung",
   "Presentation video": "Präsentationsvideo",
   // fichas: texto y ficha tecnica
   "Private client": "Private Bauherrschaft",
