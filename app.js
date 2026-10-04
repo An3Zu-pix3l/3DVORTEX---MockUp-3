@@ -1405,6 +1405,7 @@ const DE = {
   "Tap to look around": "Tippen und umsehen",
   "by moving your phone": "durch Bewegen des Handys",
   "◫ VR glasses": "◫ VR-Brille",
+  "Look at a button to press it": "Schau einen Knopf an, um ihn zu drücken",
   "✕ Exit VR": "✕ VR beenden",
   "Split the view for a Cardboard-style headset": "Ansicht teilen für eine Cardboard-Brille",
   "\\u21bb Turn your phone sideways, then slide it into the glasses": "\\u21bb Handy quer drehen und in die Brille schieben",
@@ -2317,6 +2318,30 @@ function Tour360({
     className: "c"
   }, s.c)))))));
 }
+const CSS_MIRADA = `
+.vr-mira{position:absolute; left:50%; top:50%; width:34px; height:34px; margin:-17px 0 0 -17px;
+  pointer-events:none; z-index:10; opacity:.9}
+.vr-mira b{position:absolute; inset:0; border-radius:50%;
+  background:conic-gradient(#fff calc(var(--gz,0) * 360deg), rgba(255,255,255,.20) 0)}
+.vr-mira i{position:absolute; inset:4px; border-radius:50%; background:rgba(0,0,0,.5)}
+.vr-mira u{position:absolute; left:50%; top:50%; width:4px; height:4px; margin:-2px 0 0 -2px;
+  border-radius:50%; background:#fff; text-decoration:none}
+.vr-rooms{position:absolute; left:0; right:0; bottom:10%; z-index:9; display:flex; flex-wrap:wrap;
+  justify-content:center; gap:5px; padding:0 6px}
+.vr-room-pill{appearance:none; -webkit-appearance:none; cursor:pointer; white-space:nowrap;
+  border:1px solid rgba(255,255,255,.35); background:rgba(0,0,0,.55); color:#fff;
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  font-family:var(--font-mono); font-size:9px; letter-spacing:.12em; text-transform:uppercase;
+  padding:7px 10px; border-radius:100px; opacity:.72; transition:opacity .15s, background .15s}
+.vr-room-pill.on{border-color:rgba(255,255,255,.85); opacity:1}
+.vr-room-pill.on-gaze,.vr-exit.on-gaze{opacity:1; background:rgba(255,255,255,.22);
+  border-color:#fff; box-shadow:0 0 0 2px rgba(255,255,255,.4)}
+.vr-tip{position:absolute; left:0; right:0; top:calc(50% + 28px); z-index:9; text-align:center;
+  color:rgba(255,255,255,.7); font-family:var(--font-mono); font-size:9px; letter-spacing:.14em;
+  text-transform:uppercase; pointer-events:none; padding:0 10px; transition:opacity .6s}
+.vr-tip.ido{opacity:0}
+@media(max-width:560px){ .vr-room-pill{font-size:8px; padding:6px 8px} .vr-rooms{bottom:8%} }
+`;
 function PanoOverlay({
   panoId,
   onClose
@@ -2333,6 +2358,64 @@ function PanoOverlay({
   const vrPushed = useRef(false);
   const [motion, setMotion] = useState(MOTION_OK);
   const [vr, setVr] = useState(false);
+
+  // ---- Mirar para pulsar -------------------------------------------------
+  // El punto de mira es el centro del ojo izquierdo; el derecho pinta lo
+  // mismo, asi que los dos se funden en uno solo al mirar por las gafas.
+  // Al completarse el anillo se lanza el clic real del boton.
+  const stageRef = useRef(null);
+  const ojoRef = useRef(null);
+  const [tip, setTip] = useState(false);
+  useEffect(() => {
+    if (!vr) { setTip(false); return; }
+    setTip(true);
+    const id = setTimeout(() => setTip(false), 6000);
+    return () => clearTimeout(id);
+  }, [vr]);
+  useEffect(() => {
+    if (!vr) return;
+    const MS = 1500;      // por defecto; el boton puede pedir otro con data-gaze-ms
+    const VACIA = 350;    // lo que tarda en vaciarse si la mirada se va
+    let p = 0, id = null, armado = true, antes = performance.now(), raf = 0;
+    const pinta = (ahora, v) => {
+      const st = stageRef.current;
+      if (!st) return;
+      st.style.setProperty('--gz', v.toFixed(3));
+      st.querySelectorAll('.on-gaze').forEach(e => {
+        if (e.dataset.gaze !== ahora) e.classList.remove('on-gaze');
+      });
+      if (ahora) st.querySelectorAll('[data-gaze="' + ahora + '"]').forEach(e => e.classList.add('on-gaze'));
+    };
+    const tick = ahora => {
+      const dt = Math.min(100, ahora - antes);
+      antes = ahora;
+      const caja = ojoRef.current;
+      let bajo = null;
+      if (caja) {
+        const r = caja.getBoundingClientRect();
+        const cx = r.left + r.width / 2, cy = r.top + r.height / 2, m = 8;
+        caja.querySelectorAll('[data-gaze]').forEach(b => {
+          const q = b.getBoundingClientRect();
+          if (cx >= q.left - m && cx <= q.right + m && cy >= q.top - m && cy <= q.bottom + m) bajo = b;
+        });
+      }
+      const nuevo = bajo ? bajo.dataset.gaze : null;
+      if (nuevo !== id) { id = nuevo; p = 0; armado = true; }
+      if (id && armado) {
+        p = Math.min(1, p + dt / ((bajo && +bajo.dataset.gazeMs) || MS));
+        if (p >= 1) {
+          armado = false; p = 0;
+          try { bajo.click(); } catch (e) {}
+        }
+      } else if (p > 0) {
+        p = Math.max(0, p - dt / VACIA);
+      }
+      pinta(id, p);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => { cancelAnimationFrame(raf); pinta(null, 0); };
+  }, [vr]);
 
   // El modo gafas mete su propia entrada en el historial. Asi el boton o el
   // gesto de "atras" del movil sale de las gafas en vez de abandonar la pagina.
@@ -2360,6 +2443,28 @@ function PanoOverlay({
     }
     setVr(false);
   };
+  // Lo que se pinta encima de cada ojo: salir, las estancias y el punto de mira.
+  const salas = pano ? PANORAMAS.filter(x => x.proj === pano.proj) : [];
+  const ojoUI = () => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+    className: "vr-exit",
+    onClick: exitVr,
+    "aria-label": "Exit VR",
+    "data-gaze": "exit",
+    "data-gaze-ms": "2000"
+  }, t("✕ Exit VR")), salas.length > 1 && /*#__PURE__*/React.createElement("div", {
+    className: "vr-rooms"
+  }, salas.map(s => /*#__PURE__*/React.createElement("button", {
+    key: s.id,
+    type: "button",
+    className: `vr-room-pill ${s.id === pano.id ? 'on' : ''}`,
+    "data-gaze": "sala-" + s.id,
+    onClick: () => setCur(s.id)
+  }, t(s.t)))), /*#__PURE__*/React.createElement("span", {
+    className: "vr-mira",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("b", null), /*#__PURE__*/React.createElement("i", null), /*#__PURE__*/React.createElement("u", null)), /*#__PURE__*/React.createElement("div", {
+    className: `vr-tip ${tip ? '' : 'ido'}`
+  }, t("Look at a button to press it")));
   const motionCapable = MOTION_CAPABLE;
   const needsPermission = MOTION_NEEDS_TAP;
   // al cambiar de estancia se recrea el visor: si ya hay permiso, sigue encendido
@@ -2444,9 +2549,11 @@ function PanoOverlay({
   return /*#__PURE__*/React.createElement("div", {
     className: `pano-ov ${open ? 'open' : ''}`
   }, open && vr && /*#__PURE__*/React.createElement("div", {
-    className: "vr-stage"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "vr-eye"
+    className: "vr-stage",
+    ref: stageRef
+  }, /*#__PURE__*/React.createElement("style", null, CSS_MIRADA), /*#__PURE__*/React.createElement("div", {
+    className: "vr-eye",
+    ref: ojoRef
   }, /*#__PURE__*/React.createElement(Pano360, {
     key: pano.id + '-L',
     src: pano.src,
@@ -2458,11 +2565,7 @@ function PanoOverlay({
     onViewer: v => {
       viewerRef.current = v;
     }
-  }), /*#__PURE__*/React.createElement("button", {
-    className: "vr-exit",
-    onClick: exitVr,
-    "aria-label": "Exit VR"
-  }, t("✕ Exit VR"))), /*#__PURE__*/React.createElement("div", {
+  }), ojoUI()), /*#__PURE__*/React.createElement("div", {
     className: "vr-eye"
   }, /*#__PURE__*/React.createElement(Pano360, {
     key: pano.id + '-R',
@@ -2474,11 +2577,7 @@ function PanoOverlay({
     onViewer: v => {
       eyeRef.current = v;
     }
-  }), /*#__PURE__*/React.createElement("button", {
-    className: "vr-exit",
-    onClick: exitVr,
-    "aria-label": "Exit VR"
-  }, t("✕ Exit VR"))), /*#__PURE__*/React.createElement("div", {
+  }), ojoUI()), /*#__PURE__*/React.createElement("div", {
     className: "vr-split"
   }), /*#__PURE__*/React.createElement("div", {
     className: "vr-rotate"
