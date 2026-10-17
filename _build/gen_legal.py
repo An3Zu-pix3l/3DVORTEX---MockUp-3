@@ -13,7 +13,7 @@ poner Adrian.
 """
 import pathlib, sys
 
-SITE = pathlib.Path("/home/claude/seo/site")
+SITE = pathlib.Path("/home/claude/web")
 
 TEXTOS = {
     "en": {
@@ -24,7 +24,7 @@ TEXTOS = {
         "volver": "Back to the studio →",
         "legal": """
 <h2>Company</h2>
-<p><strong>3D Vortex KlG</strong><br />
+<p><strong>3dvortex KlG</strong><br />
 Aemtlerstrasse 78<br />
 8003 Zürich<br />
 Switzerland</p>
@@ -34,9 +34,10 @@ Switzerland</p>
 <a href="tel:+41442031330">+41 44 203 13 30</a></p>
 
 <h2>Commercial register</h2>
-<p>Business identification number: <mark>[CHE-___.___.___ — to be completed]</mark><br />
-Legal form: <mark>[Kollektivgesellschaft / to be confirmed]</mark><br />
-Persons responsible for content: <mark>[names — to be completed]</mark></p>
+<p>Business identification number: CHE-259.184.257<br />
+Legal form: Kollektivgesellschaft (KlG)<br />
+Commercial register: CH-020-2009820-4, Commercial Register Office of the Canton of Zurich<br />
+Responsible for content: 3dvortex KlG</p>
 
 <h2>Images and content</h2>
 <p>All visualizations, 3D models, photographs and texts on this site are the work
@@ -83,7 +84,7 @@ keeps standard access logs (IP address, time, page requested) for security and
 troubleshooting. We do not use them to build profiles.</p>
 
 <h2>Responsible</h2>
-<p>3D Vortex KlG, Aemtlerstrasse 78, 8003 Zürich, Switzerland ·
+<p>3dvortex KlG, Aemtlerstrasse 78, 8003 Zürich, Switzerland ·
 <a href="mailto:info@3dvortex.ch">info@3dvortex.ch</a></p>
 
 <p class="nota">This notice is a working draft prepared from the site's actual
@@ -100,7 +101,7 @@ bracketed fields completed.</p>
         "volver": "Zurück zum Studio →",
         "legal": """
 <h2>Unternehmen</h2>
-<p><strong>3D Vortex KlG</strong><br />
+<p><strong>3dvortex KlG</strong><br />
 Aemtlerstrasse 78<br />
 8003 Zürich<br />
 Schweiz</p>
@@ -110,9 +111,10 @@ Schweiz</p>
 <a href="tel:+41442031330">+41 44 203 13 30</a></p>
 
 <h2>Handelsregister</h2>
-<p>Unternehmens-Identifikationsnummer: <mark>[CHE-___.___.___ — nachzutragen]</mark><br />
-Rechtsform: <mark>[Kollektivgesellschaft / zu bestätigen]</mark><br />
-Inhaltlich verantwortlich: <mark>[Namen — nachzutragen]</mark></p>
+<p>Unternehmens-Identifikationsnummer: CHE-259.184.257<br />
+Rechtsform: Kollektivgesellschaft (KlG)<br />
+Handelsregister: CH-020-2009820-4, Handelsregisteramt des Kantons Zürich<br />
+Inhaltlich verantwortlich: 3dvortex KlG</p>
 
 <h2>Bilder und Inhalte</h2>
 <p>Sämtliche Visualisierungen, 3D-Modelle, Fotografien und Texte auf dieser Seite
@@ -161,7 +163,7 @@ aufgerufene Seite), zur Sicherheit und Fehlersuche. Wir erstellen daraus keine
 Profile.</p>
 
 <h2>Verantwortlich</h2>
-<p>3D Vortex KlG, Aemtlerstrasse 78, 8003 Zürich, Schweiz ·
+<p>3dvortex KlG, Aemtlerstrasse 78, 8003 Zürich, Schweiz ·
 <a href="mailto:info@3dvortex.ch">info@3dvortex.ch</a></p>
 
 <p class="nota">Dieser Text ist ein Arbeitsentwurf, erstellt anhand des
