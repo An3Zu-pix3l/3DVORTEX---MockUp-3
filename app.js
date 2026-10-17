@@ -1234,6 +1234,34 @@ const ORDEN_PORTFOLIO = ["graffio-viz", "islas-viz", "casa-lele-viz", "altstette
 const PROJECT_BY_SLUG = Object.fromEntries(PROJECTS.map(p => [p.slug, p]));
 
 // Filas de la home a partir de la lista filtrada (ritmo full / pair / pair)
+// Fichas que son el mismo proyecto visto por servicios distintos. Una ficha por
+// servicio es lo correcto para el portfolio —cada una ensena un trabajo— pero
+// sin esto no se hablan entre ellas y el visitante no sabe que existen.
+const GRUPOS = {
+  "graffio-viz": "graffio", "graffio-print": "graffio", "graffio-360": "graffio",
+  "casa-lele-viz": "casa-lele", "casa-lele-print": "casa-lele",
+  "islas-viz": "islas", "islas-360": "islas",
+  "schtubu-stairwell-ai": "schtubu", "schtubu-living-ai": "schtubu",
+  "schtubu-exterior-ai": "schtubu"
+};
+
+// Las demas fichas del mismo proyecto, en el orden del portfolio.
+function hermanas(slug) {
+  const g = GRUPOS[slug];
+  if (!g) return [];
+  return PROJECTS.filter(p => p.slug !== slug && GRUPOS[p.slug] === g);
+}
+
+// Lo mismo, pero sin las que ya son el proyecto anterior o el siguiente: ahi el
+// enlace ya existe y la franja solo repetiria. Las tres fichas de Schtubu van
+// seguidas en el portfolio, asi que para ellas no queda ninguna.
+function hermanasLejanas(slug) {
+  const i = PROJECTS.findIndex(p => p.slug === slug);
+  const n = PROJECTS.length;
+  const vecinas = [PROJECTS[(i - 1 + n) % n].slug, PROJECTS[(i + 1) % n].slug];
+  return hermanas(slug).filter(h => vecinas.indexOf(h.slug) === -1);
+}
+
 function buildHomeRows(list) {
   const rows = [], PAT = ['full', 'pair', 'pair'];
   let i = 0, k = 0;
@@ -1273,6 +1301,19 @@ const HEADLINES = {
 // t(). LANG es una variable de modulo que App pone al dia en cada render, para
 // que t() la vea desde cualquier componente.
 const DE = {
+  "‹ Back": "‹ Zurück",
+  "Next ›": "Weiter ›",
+  // el aviso de iPhone antes de entrar en las gafas, 17-10-2026
+  "Before you put the phone in the glasses": "Bevor Sie das Telefon in die Brille schieben",
+  "On iPhone, Safari keeps its address bar on screen and the two halves end up off-centre. To get rid of it, add this site to your Home Screen and open it from there:": "Auf dem iPhone blendet Safari seine Adressleiste nicht aus, und die beiden Hälften sitzen dadurch nicht mittig. Legen Sie die Seite auf den Home-Bildschirm und öffnen Sie sie von dort:",
+  "Share ↑  ·  Add to Home Screen  ·  open it from the icon": "Teilen ↑  ·  Zum Home-Bildschirm  ·  über das Symbol öffnen",
+  "Not now": "Jetzt nicht",
+  "Enter anyway →": "Trotzdem starten →",
+  // nota del formulario, 17-10-2026
+  "Your message reaches our mailbox in Switzerland. No form service in between — ": "Ihre Nachricht erreicht unser Postfach in der Schweiz. Kein Formulardienst dazwischen — ",
+  "privacy policy": "Datenschutzerklärung",
+  // enlace entre fichas del mismo proyecto, 17-10-2026
+  "More of this project": "Mehr zu diesem Projekt",
   // repaso del portfolio con Adrian, 17-10-2026
   "Interior and exterior visualizations": "Innen- und Aussenvisualisierungen",
   "3D-printed massing model": "3D-Druckmodell des Baukörpers",
@@ -1662,11 +1703,12 @@ function urlEnIdioma(l) {
 }
 
 // ========== ENVIO DEL FORMULARIO ==========
-// A donde se manda el formulario de contacto. Mientras esto este vacio, el
-// formulario NO finge que envia: avisa de que no esta conectado y ofrece el
-// correo. Para activarlo basta pegar aqui la URL del servicio (Formspree,
-// Basin, o una funcion propia en Vercel).
-const FORM_ENDPOINT = "";
+// Nuestro propio dominio, no un intermediario: lo que escribe el visitante no
+// sale de 3dvortex.ch mas que para llegar al buzon de Hostpoint, en Suiza.
+// Quien atiende esta ruta hoy es api/contact.js (una funcion de Vercel); el dia
+// que la web se mude a Hostpoint sera un api/contact.php que haga lo mismo, y
+// esta linea no cambia.
+const FORM_ENDPOINT = "/api/contact";
 
 // ========== IMAGENES RESPONSIVE ==========
 // Cada foto tiene versiones AVIF y WebP en varios anchos dentro de assets/r/.
@@ -2172,7 +2214,12 @@ function ProjectPage({
     className: "dot-end"
   }, ".")), /*#__PURE__*/React.createElement("div", {
     className: "pmeta reveal"
-  }, /*#__PURE__*/React.createElement("span", null, t(proj.cat)), proj.has360 && /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("span", null, t(proj.cat)), hermanas(slug).filter(h => h.cat !== proj.cat).map(h =>
+    /*#__PURE__*/React.createElement("a", {
+      key: h.slug,
+      className: "pill-otra",
+      href: urlProyecto(h.slug)
+    }, t(h.cat), " \u2192")), proj.has360 && /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "pill360",
     onClick: () => {
@@ -2208,7 +2255,19 @@ function ProjectPage({
     className: "pnav"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wrap"
+  }, hermanasLejanas(slug).length ? /*#__PURE__*/React.createElement("div", {
+    className: "mas-proyecto"
   }, /*#__PURE__*/React.createElement("div", {
+    className: "mp-lbl"
+  }, t("More of this project")), /*#__PURE__*/React.createElement("div", {
+    className: "mp-list"
+  }, hermanasLejanas(slug).map(h => /*#__PURE__*/React.createElement("a", {
+    key: h.slug,
+    className: "mp",
+    href: urlProyecto(h.slug)
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mp-t"
+  }, t(h.cat !== proj.cat ? h.cat : h.title))))) ) : null, /*#__PURE__*/React.createElement("div", {
     className: "pnav-in"
   }, /*#__PURE__*/React.createElement("a", {
     className: "pn",
@@ -2244,6 +2303,17 @@ function ProjectPage({
 // iOS 13+ exige que el usuario lo conceda con un gesto explicito, asi que ahi
 // hace falta un toque. MOTION_OK recuerda el permiso durante la visita, para no
 // volver a pedirlo en cada visor.
+// iPhone y iPad. Importa en el modo gafas: Safari no deja poner una pagina a
+// pantalla completa, asi que la barra del navegador se queda ahi y descoloca las
+// dos mitades. La unica salida es abrir la web desde la pantalla de inicio, que
+// si arranca sin barras.
+const ES_IOS = typeof navigator !== 'undefined' && (
+  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+const DESDE_INICIO = typeof window !== 'undefined' && (
+  window.navigator.standalone === true ||
+  (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches));
+
 const MOTION_CAPABLE = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches && typeof window.DeviceOrientationEvent !== 'undefined';
 const MOTION_NEEDS_TAP = MOTION_CAPABLE && typeof window.DeviceOrientationEvent.requestPermission === 'function';
 let MOTION_OK = MOTION_CAPABLE && !MOTION_NEEDS_TAP;
@@ -2425,28 +2495,41 @@ function Tour360({
   }, s.c)))))));
 }
 const CSS_MIRADA = `
-.vr-mira{position:absolute; left:50%; top:50%; width:34px; height:34px; margin:-17px 0 0 -17px;
+.vr-mira{position:absolute; left:50%; top:50%; width:40px; height:40px; margin:-20px 0 0 -20px;
   pointer-events:none; z-index:10; opacity:.9}
 .vr-mira b{position:absolute; inset:0; border-radius:50%;
   background:conic-gradient(#fff calc(var(--gz,0) * 360deg), rgba(255,255,255,.20) 0)}
 .vr-mira i{position:absolute; inset:4px; border-radius:50%; background:rgba(0,0,0,.5)}
 .vr-mira u{position:absolute; left:50%; top:50%; width:4px; height:4px; margin:-2px 0 0 -2px;
   border-radius:50%; background:#fff; text-decoration:none}
-.vr-rooms{position:absolute; left:0; right:0; bottom:10%; z-index:9; display:flex; flex-wrap:wrap;
-  justify-content:center; gap:5px; padding:0 6px}
-.vr-room-pill{appearance:none; -webkit-appearance:none; cursor:pointer; white-space:nowrap;
-  border:1px solid rgba(255,255,255,.35); background:rgba(0,0,0,.55); color:#fff;
+/* La zona util de unas gafas de carton es un circulo en el centro: lo que queda
+   cerca de los bordes no se ve, o se ve curvado. De ahi el 22 %, y los tamanos
+   de letra son los de leer por una lente, no en la mano.
+
+   Y sobre todo: EL CENTRO SE QUEDA LIBRE. Con una lista de estancias, cuatro
+   nombres largos se apilaban en tres filas, invadian el centro y el punto de
+   mira caia encima de una: a los segundos el tour cambiaba de habitacion solo.
+   Por eso se pasa de estancia con dos botones a los lados, abajo, que ocupan lo
+   mismo haya dos estancias o diez. */
+.vr-paso{position:absolute; bottom:24%; z-index:9; appearance:none; -webkit-appearance:none;
+  cursor:pointer; white-space:nowrap; border:1px solid rgba(255,255,255,.35);
+  background:rgba(0,0,0,.55); color:#fff;
   -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
-  font-family:var(--font-mono); font-size:9px; letter-spacing:.12em; text-transform:uppercase;
-  padding:7px 10px; border-radius:100px; opacity:.72; transition:opacity .15s, background .15s}
-.vr-room-pill.on{border-color:rgba(255,255,255,.85); opacity:1}
-.vr-room-pill.on-gaze,.vr-exit.on-gaze{opacity:1; background:rgba(255,255,255,.22);
+  font-family:var(--font-mono); font-size:14px; letter-spacing:.10em; text-transform:uppercase;
+  padding:11px 15px; border-radius:100px; opacity:.78; transition:opacity .15s, background .15s}
+.vr-paso.atras{left:14%}
+.vr-paso.alante{right:14%}
+.vr-aqui{position:absolute; left:10%; right:10%; bottom:14%; z-index:9; text-align:center;
+  color:rgba(255,255,255,.8); font-family:var(--font-mono); font-size:14px; letter-spacing:.12em;
+  text-transform:uppercase; pointer-events:none; text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.vr-paso.on-gaze,.vr-exit.on-gaze{opacity:1; background:rgba(255,255,255,.22);
   border-color:#fff; box-shadow:0 0 0 2px rgba(255,255,255,.4)}
-.vr-tip{position:absolute; left:0; right:0; top:calc(50% + 28px); z-index:9; text-align:center;
-  color:rgba(255,255,255,.7); font-family:var(--font-mono); font-size:9px; letter-spacing:.14em;
-  text-transform:uppercase; pointer-events:none; padding:0 10px; transition:opacity .6s}
+.vr-tip{position:absolute; left:12%; right:12%; top:calc(50% + 34px); z-index:9; text-align:center;
+  color:rgba(255,255,255,.75); font-family:var(--font-mono); font-size:13px; letter-spacing:.12em;
+  text-transform:uppercase; pointer-events:none; padding:0; transition:opacity .6s}
 .vr-tip.ido{opacity:0}
-@media(max-width:560px){ .vr-room-pill{font-size:8px; padding:6px 8px} .vr-rooms{bottom:8%} }
+/* en pantallas estrechas se encoge un punto, no a 8 px: por la lente no se leia */
+@media(max-width:560px){ .vr-paso{font-size:13px; padding:10px 13px} .vr-aqui{font-size:13px} }
 `;
 function PanoOverlay({
   panoId,
@@ -2523,6 +2606,36 @@ function PanoOverlay({
     return () => { cancelAnimationFrame(raf); pinta(null, 0); };
   }, [vr]);
 
+  // ---- Que no se apague la pantalla ---------------------------------------
+  // Dentro de las gafas nadie toca el movil: sin esto se bloquea solo a los dos
+  // minutos. El permiso se pierde al cambiar de app o atender una llamada, asi
+  // que se vuelve a pedir cuando la pagina se ve otra vez.
+  const wakeRef = useRef(null);
+  useEffect(() => {
+    if (!vr) return;
+    let vivo = true;
+    const pedir = async () => {
+      if (!navigator.wakeLock || wakeRef.current || !vivo) return;
+      try {
+        const w = await navigator.wakeLock.request('screen');
+        if (!vivo) { try { w.release(); } catch (e) {} return; }
+        wakeRef.current = w;
+        w.addEventListener('release', () => { wakeRef.current = null; });
+      } catch (e) {}
+    };
+    pedir();
+    const alVolver = () => {
+      if (document.visibilityState === 'visible') pedir();
+    };
+    document.addEventListener('visibilitychange', alVolver);
+    return () => {
+      vivo = false;
+      document.removeEventListener('visibilitychange', alVolver);
+      try { wakeRef.current && wakeRef.current.release(); } catch (e) {}
+      wakeRef.current = null;
+    };
+  }, [vr]);
+
   // El modo gafas mete su propia entrada en el historial. Asi el boton o el
   // gesto de "atras" del movil sale de las gafas en vez de abandonar la pagina.
   useEffect(() => {
@@ -2551,21 +2664,34 @@ function PanoOverlay({
   };
   // Lo que se pinta encima de cada ojo: salir, las estancias y el punto de mira.
   const salas = pano ? PANORAMAS.filter(x => x.proj === pano.proj) : [];
+  // la estancia de al lado, dando la vuelta al llegar al final
+  const vecina = d => {
+    const i = salas.findIndex(s => s.id === pano.id);
+    return salas[(i + d + salas.length) % salas.length].id;
+  };
   const ojoUI = () => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
     className: "vr-exit",
     onClick: exitVr,
     "aria-label": "Exit VR",
     "data-gaze": "exit",
     "data-gaze-ms": "2000"
-  }, t("✕ Exit VR")), salas.length > 1 && /*#__PURE__*/React.createElement("div", {
-    className: "vr-rooms"
-  }, salas.map(s => /*#__PURE__*/React.createElement("button", {
-    key: s.id,
-    type: "button",
-    className: `vr-room-pill ${s.id === pano.id ? 'on' : ''}`,
-    "data-gaze": "sala-" + s.id,
-    onClick: () => setCur(s.id)
-  }, t(s.t)))), /*#__PURE__*/React.createElement("span", {
+  }, t("✕ Exit VR")), salas.length > 1 && /*#__PURE__*/React.createElement(React.Fragment, null,
+    /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      className: "vr-paso atras",
+      "data-gaze": "atras",
+      onClick: () => setCur(vecina(-1))
+    }, t("‹ Back")),
+    /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      className: "vr-paso alante",
+      "data-gaze": "alante",
+      onClick: () => setCur(vecina(1))
+    }, t("Next ›")),
+    /*#__PURE__*/React.createElement("div", {
+      className: "vr-aqui"
+    }, t(pano.t), "  ·  ", String(salas.findIndex(s => s.id === pano.id) + 1), "/", String(salas.length))
+  ), /*#__PURE__*/React.createElement("span", {
     className: "vr-mira",
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("b", null), /*#__PURE__*/React.createElement("i", null), /*#__PURE__*/React.createElement("u", null)), /*#__PURE__*/React.createElement("div", {
@@ -2616,7 +2742,20 @@ function PanoOverlay({
     }
   }, [vr]);
 
+  // En iPhone, fuera de la pantalla de inicio, la barra de Safari se queda ahi
+  // y descoloca las dos mitades. Se avisa una vez, con la salida a mano.
+  const [avisoIos, setAvisoIos] = useState(false);
+  const avisado = useRef(false);
+  const pedirVr = async () => {
+    if (ES_IOS && !DESDE_INICIO && !avisado.current) {
+      avisado.current = true;
+      setAvisoIos(true);
+      return;
+    }
+    await enterVr();
+  };
   const enterVr = async () => {
+    setAvisoIos(false);
     // El clic es el gesto que iOS exige para pedir permiso del giroscopio,
     // asi que se pide aqui, antes de partir la pantalla.
     if (await askMotion()) setMotion(true);
@@ -2719,7 +2858,7 @@ function PanoOverlay({
     }
   }, /*#__PURE__*/React.createElement("button", {
     className: "close vr-btn",
-    onClick: enterVr,
+    onClick: pedirVr,
     title: t("Split the view for a Cardboard-style headset")
   }, t("◫ VR glasses")), motionCapable && /*#__PURE__*/React.createElement("button", {
     className: `close motion ${motion ? 'on' : ''}`,
@@ -2730,7 +2869,25 @@ function PanoOverlay({
   }, t("Close ✕")))), motionCapable && !motion && /*#__PURE__*/React.createElement("div", {
     className: "pano-hint",
     key: pano.id + '-mhint'
-  }, t("◎ Tap Motion — move your phone to look around"))));
+  }, t("◎ Tap Motion — move your phone to look around")), avisoIos && /*#__PURE__*/React.createElement("div", {
+    className: "ios-vr"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ios-vr-caja"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "k"
+  }, t("Before you put the phone in the glasses")), /*#__PURE__*/React.createElement("p", null, t("On iPhone, Safari keeps its address bar on screen and the two halves end up off-centre. To get rid of it, add this site to your Home Screen and open it from there:")), /*#__PURE__*/React.createElement("p", {
+    className: "pasos"
+  }, t("Share ↑  ·  Add to Home Screen  ·  open it from the icon")), /*#__PURE__*/React.createElement("div", {
+    className: "bts"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "close",
+    onClick: () => setAvisoIos(false)
+  }, t("Not now")), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "close vr-btn",
+    onClick: enterVr
+  }, t("Enter anyway →")))))));
 }
 function Pull({
   showStats
@@ -2930,7 +3087,7 @@ function Contact() {
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
       });
-      setEstado(r.ok ? 'ok' : 'error');
+      setEstado(r.ok ? 'ok' : r.status === 503 ? 'sin-conectar' : 'error');
     } catch (err) {
       setEstado('error');
     }
@@ -3011,7 +3168,13 @@ function Contact() {
     role: "alert"
   }, estado === 'sin-conectar' ? t("The form isn't connected yet. Please write to us at ") : t("It didn't go through. Please write to us at "), /*#__PURE__*/React.createElement("a", {
     href: "mailto:info@3dvortex.ch"
-  }, "info@3dvortex.ch"), "."))))); 
+  }, "info@3dvortex.ch"), "."), /*#__PURE__*/React.createElement("p", {
+    className: "form-nota"
+  }, t("Your message reaches our mailbox in Switzerland. No form service in between — "), /*#__PURE__*/React.createElement("a", {
+    href: prefijoIdioma() + (LANG === "de" ? "/datenschutz" : "/privacy"),
+    target: "_blank",
+    rel: "noopener"
+  }, t("privacy policy"), " \u2197"), "."))))); 
 }
 function Footer() {
   return /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("div", {

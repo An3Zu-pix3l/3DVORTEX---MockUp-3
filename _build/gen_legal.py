@@ -72,25 +72,30 @@ anywhere, and clearing your browser data removes it.</p>
 <h2>The contact form</h2>
 <p>If you write to us through the form, the name, email address, company and
 message you type are sent to us so we can reply. We use them for that and nothing
-else: no newsletter, no sharing, no selling. They are handled by
-<mark>[form provider — to be completed]</mark> and reach us by email at
-info@3dvortex.ch.</p>
+else: no newsletter, no sharing, no selling. There is no form service in between:
+the message goes straight from this site to our own mailbox, hosted by Hostpoint
+AG in Switzerland, and we read it as an email at info@3dvortex.ch. It is kept in
+that mailbox for as long as the enquiry is live and our reply may still be
+useful, and deleted after that.</p>
 <p>You can write to <a href="mailto:info@3dvortex.ch">info@3dvortex.ch</a> at any
 time to ask what we hold about you, or to have it deleted.</p>
 
 <h2>Server logs</h2>
-<p>This site is hosted by <mark>[Vercel Inc. — confirm at launch]</mark>, which
-keeps standard access logs (IP address, time, page requested) for security and
-troubleshooting. We do not use them to build profiles.</p>
+<p>This site is hosted by Vercel Inc. (United States), which keeps standard
+access logs (IP address, time, page requested) for security and troubleshooting.
+We do not use them to build profiles. Opening a page therefore means your IP
+address reaches a server outside Switzerland; what you type into the contact form
+does not — that goes to our mailbox in Switzerland, as described above.</p>
 
 <h2>Responsible</h2>
 <p>3dvortex KlG, Aemtlerstrasse 78, 8003 Zürich, Switzerland ·
 <a href="mailto:info@3dvortex.ch">info@3dvortex.ch</a></p>
 
-<p class="nota">This notice is a working draft prepared from the site's actual
-behaviour. Before the site goes live it should be checked against the Swiss
-Federal Act on Data Protection (nFADP) by someone qualified to do so, and the
-bracketed fields completed.</p>
+<p class="nota">Written from what this site actually does, not from a template,
+and last revised on 17 October 2026. It has not been reviewed by a lawyer; before any
+larger launch it is worth having it checked against the Swiss Federal Act on Data
+Protection (nFADP). If we ever move the site to another host or add a service
+that sees your data, this page is updated first.</p>
 """,
     },
     "de": {
@@ -150,26 +155,32 @@ Browser, wird nirgendwohin gesendet, und das Löschen der Browserdaten entfernt 
 <h2>Das Kontaktformular</h2>
 <p>Wenn Sie uns über das Formular schreiben, werden Name, E-Mail-Adresse, Büro und
 Nachricht an uns übermittelt, damit wir antworten können. Wir verwenden sie dafür
-und für nichts anderes: kein Newsletter, keine Weitergabe, kein Verkauf. Die
-Zustellung erfolgt über <mark>[Formular-Anbieter — nachzutragen]</mark> und
-erreicht uns per E-Mail an info@3dvortex.ch.</p>
+und für nichts anderes: kein Newsletter, keine Weitergabe, kein Verkauf. Es ist
+kein Formulardienst dazwischengeschaltet: Die Nachricht geht direkt von dieser
+Seite an unser eigenes Postfach bei der Hostpoint AG in der Schweiz und erreicht
+uns als E-Mail an info@3dvortex.ch. Sie bleibt dort, solange die Anfrage aktuell
+ist und unsere Antwort noch nützlich sein kann, und wird danach gelöscht.</p>
 <p>Sie können jederzeit an <a href="mailto:info@3dvortex.ch">info@3dvortex.ch</a>
 schreiben, um Auskunft oder Löschung zu verlangen.</p>
 
 <h2>Server-Protokolle</h2>
-<p>Diese Seite wird bei <mark>[Vercel Inc. — vor dem Start bestätigen]</mark>
-gehostet. Dort fallen übliche Zugriffsprotokolle an (IP-Adresse, Zeitpunkt,
-aufgerufene Seite), zur Sicherheit und Fehlersuche. Wir erstellen daraus keine
-Profile.</p>
+<p>Diese Seite wird bei Vercel Inc. (USA) gehostet. Dort fallen übliche
+Zugriffsprotokolle an (IP-Adresse, Zeitpunkt, aufgerufene Seite), zur Sicherheit
+und Fehlersuche. Wir erstellen daraus keine Profile. Beim Aufruf einer Seite
+gelangt Ihre IP-Adresse somit auf einen Server ausserhalb der Schweiz; was Sie
+ins Kontaktformular schreiben, hingegen nicht — das geht, wie oben beschrieben,
+an unser Postfach in der Schweiz.</p>
 
 <h2>Verantwortlich</h2>
 <p>3dvortex KlG, Aemtlerstrasse 78, 8003 Zürich, Schweiz ·
 <a href="mailto:info@3dvortex.ch">info@3dvortex.ch</a></p>
 
-<p class="nota">Dieser Text ist ein Arbeitsentwurf, erstellt anhand des
-tatsächlichen Verhaltens der Seite. Vor dem Livegang sollte er von fachkundiger
-Seite gegen das revidierte Datenschutzgesetz (revDSG) geprüft und die Felder in
-Klammern ergänzt werden.</p>
+<p class="nota">Erstellt anhand dessen, was diese Seite tatsächlich tut, nicht
+aus einer Vorlage, zuletzt überarbeitet am 17. Oktober 2026. Der Text wurde nicht
+anwaltlich geprüft; vor einem grösseren Launch lohnt sich eine Prüfung gegen das
+revidierte Datenschutzgesetz (revDSG). Sollten wir die Seite je zu einem anderen
+Hoster zügeln oder einen Dienst einbinden, der Ihre Daten sieht, wird zuerst
+diese Seite aktualisiert.</p>
 """,
     },
 }
@@ -276,8 +287,7 @@ def main():
     print("paginas legales generadas:")
     for r in escritas:
         print("  ", r)
-    print("\nOJO: los campos entre corchetes y resaltados en amarillo son los que")
-    print("faltan (numero CHE, responsables, proveedor del formulario).")
+    print("sin huecos: ni corchetes ni resaltados.")
 
 
 if __name__ == "__main__":

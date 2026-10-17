@@ -2,7 +2,9 @@
 <html lang="de">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title>Graffio — Golino (TI) · 360° Virtual Tour | 3DVORTEX</title>
 <meta name="description" content="360° Virtual Tour · Im Vorprojekt erstellt, damit die Bauherrschaft Materialien, Küche, Bäder und Möblierung direkt im Raum festlegen konnte. 3D Vortex, Studio für Architekturvisualisierung in Zürich." />
 
@@ -410,6 +412,9 @@
      que algunos robots lo detectan */
   .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0; pointer-events:none}
   .form-msg{margin:14px 0 0; font-size:13.5px; line-height:1.55}
+  .contact .form-nota{font-size:13px; line-height:1.55; color:var(--muted); margin-top:18px}
+  .contact .form-nota a{border-bottom:1px solid var(--line)}
+  .contact .form-nota a:hover{border-bottom-color:var(--ink)}
   .form-msg.ok{color:var(--ink-2)}
   .form-msg.err{color:#a4462f}
   .form-msg a{color:inherit; text-decoration:underline; text-underline-offset:3px}
@@ -480,6 +485,15 @@
   .pvideo{margin:0 0 20px}
   .pvideo video{display:block; width:100%; aspect-ratio:16/9; background:#0a1a2a; object-fit:cover; border-radius:2px}
   .pvideo figcaption{font-family:var(--font-mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); padding-top:10px}
+  .pview .pill-otra{display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border:1px solid var(--line); border-radius:100px; color:var(--muted); font-size:13px; transition:all .3s}
+  .pview .pill-otra:hover{border-color:var(--ink); color:var(--ink)}
+  .mas-proyecto{border-top:1px solid var(--line); padding-top:26px; margin-bottom:34px}
+  .mas-proyecto .mp-lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:16px}
+  .mas-proyecto .mp-list{display:flex; flex-wrap:wrap; gap:14px 40px}
+  .mas-proyecto .mp{display:flex; flex-direction:column; gap:4px}
+  .mas-proyecto .mp-t{font-family:var(--font-display); font-size:clamp(20px,2.2vw,28px); line-height:1.1; transition:color .3s}
+  .mas-proyecto .mp:hover .mp-t{color:var(--coral); font-style:italic}
+  @media(max-width:560px){ .mas-proyecto{padding-top:20px; margin-bottom:26px} .mas-proyecto .mp-list{gap:16px; flex-direction:column} }
   .pnav{padding:30px 0 90px}
   .pnav-in{display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--line); padding-top:28px}
   .pnav .pn{display:flex; flex-direction:column; gap:8px}
@@ -626,11 +640,11 @@
   /* Una salida por ojo, no una centrada: en el centro cae el tabique de las
      gafas, y pegada al borde puede quedar bajo la barra del navegador.
      Va por encima de todo lo demas para que nada pueda tragarse el toque. */
-  .vr-exit{position:absolute; top:9%; left:50%; transform:translateX(-50%); z-index:9;
-    padding:11px 20px; border-radius:100px; background:rgba(0,0,0,.62);
+  .vr-exit{position:absolute; top:22%; left:50%; transform:translateX(-50%); z-index:9;
+    padding:12px 22px; border-radius:100px; background:rgba(0,0,0,.62);
     -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); color:#fff;
     border:1px solid rgba(255,255,255,.45); font-family:var(--font-mono);
-    font-size:11px; letter-spacing:.18em; text-transform:uppercase; cursor:pointer;
+    font-size:14px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer;
     touch-action:manipulation; -webkit-tap-highlight-color:transparent; white-space:nowrap}
   .vr-exit:hover,.vr-exit:active{background:#fff; color:#000}
   .vr-room{position:absolute; bottom:14px; left:50%; transform:translateX(-50%); z-index:4;
@@ -649,13 +663,34 @@
     .vr-rotate{position:absolute; inset:0; z-index:5; display:flex; align-items:flex-end;
       justify-content:center; text-align:center; padding:0 28px 16vh;
       background:rgba(0,0,0,.72); color:#fff; font-family:var(--font-mono);
-      font-size:12px; letter-spacing:.18em; text-transform:uppercase; line-height:2;
+      font-size:14px; letter-spacing:.14em; text-transform:uppercase; line-height:2;
       pointer-events:none}
   }
   @media(max-width:560px){
-    .vr-exit{top:7%; padding:9px 14px; font-size:10px; letter-spacing:.14em}
+    .vr-exit{top:22%; padding:11px 16px; font-size:13px; letter-spacing:.12em}
     .vr-room{display:none}
   }
+
+
+  /* El aviso de iPhone antes de entrar en las gafas. */
+  .ios-vr{position:absolute; inset:0; z-index:12; display:flex; align-items:center;
+    justify-content:center; padding:24px; background:rgba(0,0,0,.72);
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px)}
+  .ios-vr-caja{max-width:420px; background:#fff; color:var(--ink); border-radius:14px;
+    padding:26px 24px; line-height:1.55; font-size:14px}
+  .ios-vr-caja .k{font-family:var(--font-mono); font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 14px}
+  .ios-vr-caja p{margin:0 0 14px}
+  .ios-vr-caja .pasos{font-family:var(--font-mono); font-size:12px; letter-spacing:.06em;
+    background:var(--soft,#f3f5f7); border-radius:8px; padding:10px 12px}
+  .ios-vr-caja .bts{display:flex; gap:10px; justify-content:flex-end; margin-top:20px}
+  /* Los botones del aviso van sobre fondo blanco: sin esto heredan el estilo de
+     los del visor (texto blanco) y se quedan invisibles. */
+  .pano-ov .ios-vr-caja .bts button{color:var(--ink); border:1px solid var(--line);
+    background:#fff; font-size:12px; letter-spacing:.14em; padding:11px 16px}
+  .pano-ov .ios-vr-caja .bts button:hover{background:var(--soft,#f3f5f7); color:var(--ink)}
+  .pano-ov .ios-vr-caja .bts button.vr-btn{background:var(--ink); color:#fff; border-color:var(--ink)}
+  .pano-ov .ios-vr-caja .bts button.vr-btn:hover{background:#000; color:#fff}
 
   /* ========== TWEAKS ========== */
   .tweaks{position:fixed; right:24px; bottom:24px; z-index:300; background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 24px 60px rgba(0,0,0,.12); padding:18px; width:300px; font-size:13px; display:none}
