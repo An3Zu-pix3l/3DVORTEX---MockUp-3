@@ -208,6 +208,14 @@ PLANTILLA = """<!doctype html>
   .doc mark{{background:#fdf1c7; color:var(--ink); padding:1px 5px; border-radius:3px}}
   .doc .nota{{margin-top:44px; padding-top:22px; border-top:1px solid var(--line);
        font-size:13.5px; color:var(--muted); font-style:italic}}
+  /* La salida, repetida al final: estas paginas no tienen cabecera ni pie, y
+     el Datenschutz es largo — quien termina de leer no deberia tener que subir
+     del todo para volver. Misma pestana, para que el boton atras siga valiendo. */
+  .doc .salida{{margin-top:56px; padding-top:22px; border-top:1px solid var(--line);
+       font-family:var(--font-mono); font-size:11px; letter-spacing:.2em;
+       text-transform:uppercase; color:var(--muted)}}
+  .doc .salida a{{color:var(--muted); text-decoration:none}}
+  .doc .salida a:hover{{color:var(--ink)}}
 </style>
 </head>
 <body>
@@ -215,6 +223,7 @@ PLANTILLA = """<!doctype html>
     <a class="vuelta" href="{inicio}">{volver}</a>
     <h1>{titulo}</h1>
 {cuerpo}
+    <p class="salida"><a href="{inicio}">{volver}</a> · <a href="{otra_ruta}">{otra_titulo}</a></p>
   </main>
 </body>
 </html>
@@ -255,6 +264,9 @@ def main():
                 inicio=pref + "/" if pref else "/",
                 volver=txt["volver"],
                 cuerpo=txt[clase],
+                # la otra pagina legal, para saltar entre las dos sin volver a la portada
+                otra_ruta=pref + "/" + txt["priv_slug" if clase == "legal" else "legal_slug"],
+                otra_titulo=txt["priv_title" if clase == "legal" else "legal_title"],
             )
             destino = SITE / ruta.strip("/") / "index.html"
             destino.parent.mkdir(parents=True, exist_ok=True)

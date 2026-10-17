@@ -657,6 +657,14 @@
   .doc mark{background:#fdf1c7; color:var(--ink); padding:1px 5px; border-radius:3px}
   .doc .nota{margin-top:44px; padding-top:22px; border-top:1px solid var(--line);
        font-size:13.5px; color:var(--muted); font-style:italic}
+  /* La salida, repetida al final: estas paginas no tienen cabecera ni pie, y
+     el Datenschutz es largo — quien termina de leer no deberia tener que subir
+     del todo para volver. Misma pestana, para que el boton atras siga valiendo. */
+  .doc .salida{margin-top:56px; padding-top:22px; border-top:1px solid var(--line);
+       font-family:var(--font-mono); font-size:11px; letter-spacing:.2em;
+       text-transform:uppercase; color:var(--muted)}
+  .doc .salida a{color:var(--muted); text-decoration:none}
+  .doc .salida a:hover{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -707,6 +715,7 @@ tatsächlichen Verhaltens der Seite. Vor dem Livegang sollte er von fachkundiger
 Seite gegen das revidierte Datenschutzgesetz (revDSG) geprüft und die Felder in
 Klammern ergänzt werden.</p>
 
+    <p class="salida"><a href="/de/">Zurück zum Studio →</a> · <a href="/de/impressum">Impressum</a></p>
   </main>
 </body>
 </html>
