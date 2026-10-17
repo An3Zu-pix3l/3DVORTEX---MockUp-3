@@ -1638,6 +1638,16 @@ function rutaDesdeUrl() {
   return location.hash;
 }
 
+// Las unicas rutas que la SPA sabe pintar. Cualquier otra —las cuatro paginas
+// legales, que son HTML aparte y no cargan este archivo— la abre el navegador
+// como un enlace normal.
+function laPintaLaSpa(p) {
+  const r = decodeURIComponent(p).replace(/\/+$/, '');
+  return r === '' || r === '/de' ||
+         /^(?:\/de)?\/work\/[^/]+$/.test(r) ||
+         /^(?:\/de)?\/tour$/.test(r);
+}
+
 function irA(url) {
   history.pushState({}, '', url);
   window.dispatchEvent(new PopStateEvent('popstate'));
@@ -1777,6 +1787,8 @@ function useEnlacesInternos() {
       let url;
       try { url = new URL(a.getAttribute('href'), location.href); } catch (err) { return; }
       if (url.origin !== location.origin) return;
+      // fuera de la SPA (las paginas legales): que navegue el navegador
+      if (!laPintaLaSpa(url.pathname)) return;
       e.preventDefault();
       if (url.pathname === location.pathname) {
         if (url.hash) {
