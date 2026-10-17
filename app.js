@@ -213,7 +213,7 @@ function TourBar({
     className: "n"
   }, t(current.c)), /*#__PURE__*/React.createElement("span", {
     className: "p"
-  }, current.place, t(" · 360° Tour"))), /*#__PURE__*/React.createElement("div", {
+  }, current.place, t(" · 360° Virtual Tour"))), /*#__PURE__*/React.createElement("div", {
     className: "tb-rooms"
   }, rooms.map(r => /*#__PURE__*/React.createElement("button", {
     key: r.id,
@@ -278,9 +278,9 @@ const INFO = {
   "client": "Private client",
   "year": "2023",
   "ctx": "Preliminary design, presentation to the client",
-  "sub": "360° tour through the rooms of the Graffio house",
+  "sub": "360° Virtual Tour through the rooms of the Graffio house",
   "desc": "Made at preliminary-design stage, so the client could decide the finishes, the kitchen, the bathrooms and the furniture from inside each room.",
-  "svc": "360° virtual tour"
+  "svc": "360° Virtual Tour"
  },
  "viseu-viz": {
   "client": "Private client",
@@ -335,7 +335,7 @@ const INFO = {
   "year": "2025",
   "ctx": "Competition",
   "svc": "Interior and exterior visualizations and a 360° virtual tour",
-  "sub": "360° tour of the Islas ice arena: rink, stands and café area",
+  "sub": "360° Virtual Tour of the Islas ice arena: rink, stands and café area",
   "desc": "Fuchs Architekten’s competition presentation, shown with VR headsets."
  },
  "arento-viz": {
@@ -1052,7 +1052,7 @@ const PROJECTS = [{
         img: PNM.amb1,
         pano: "amb1",
         t: "Master Bedroom",
-        c: "Enter the 360° tour",
+        c: "Enter the 360° Virtual Tour",
         ar: "ar-169"
       }
       ]
@@ -1064,14 +1064,14 @@ const PROJECTS = [{
         img: PNM.amb2,
         pano: "amb2",
         t: "Kitchen",
-        c: "Enter the 360° tour",
+        c: "Enter the 360° Virtual Tour",
         ar: "ar-43"
       },
         {
         img: PNM.amb3,
         pano: "amb3",
         t: "Living Room",
-        c: "Enter the 360° tour",
+        c: "Enter the 360° Virtual Tour",
         ar: "ar-43"
       }
       ]
@@ -1083,7 +1083,7 @@ const PROJECTS = [{
         img: PNM.amb4,
         pano: "amb4",
         t: "Office & Reading Room",
-        c: "Enter the 360° tour",
+        c: "Enter the 360° Virtual Tour",
         ar: "ar-43"
       }
       ]
@@ -1109,7 +1109,7 @@ const PROJECTS = [{
         img: PNM.court1,
         pano: "court1",
         t: "Ice Rink",
-        c: "Enter the 360° tour",
+        c: "Enter the 360° Virtual Tour",
         ar: "ar-169"
       }
       ]
@@ -1121,14 +1121,14 @@ const PROJECTS = [{
         img: PNM.court2,
         pano: "court2",
         t: "Rink — Training",
-        c: "Enter the 360° tour",
+        c: "Enter the 360° Virtual Tour",
         ar: "ar-43"
       },
         {
         img: PNM.hall,
         pano: "hall",
         t: "Café",
-        c: "Enter the 360° tour",
+        c: "Enter the 360° Virtual Tour",
         ar: "ar-43"
       }
       ]
@@ -1276,7 +1276,7 @@ const DE = {
   // repaso del portfolio con Adrian, 17-10-2026
   "Interior and exterior visualizations": "Innen- und Aussenvisualisierungen",
   "3D-printed massing model": "3D-Druckmodell des Baukörpers",
-  "360° virtual tour": "360°-Rundgang",
+  "360° Virtual Tour": "360° Virtual Tour",
   "AI visualizations": "KI-Visualisierungen",
   "Material study": "Materialstudie",
   "Casa Lele": "Casa Lele",
@@ -1309,9 +1309,9 @@ const DE = {
   "Printed for Fuchs Architekten’s competition presentation: a section of the facade at detail scale.": "Für die Wettbewerbspräsentation von Fuchs Architekten gedruckt: ein Fassadenausschnitt im Detailmassstab.",
   "3D-printed massing model of the Graffio house in its setting": "3D-Druckmodell des Baukörpers von Graffio in seiner Umgebung",
   "Printed at preliminary-design stage, for the private client to see the volume and how it sits in its surroundings.": "Im Vorprojekt für die private Bauherrschaft gedruckt, um den Baukörper und seine Einbettung in die Umgebung zu zeigen.",
-  "360° tour through the rooms of the Graffio house": "360°-Rundgang durch die Räume von Graffio",
+  "360° Virtual Tour through the rooms of the Graffio house": "360° Virtual Tour durch die Räume von Graffio",
   "Made at preliminary-design stage, so the client could decide the finishes, the kitchen, the bathrooms and the furniture from inside each room.": "Im Vorprojekt erstellt, damit die Bauherrschaft Materialien, Küche, Bäder und Möblierung direkt im Raum festlegen konnte.",
-  "360° tour of the Islas ice arena: rink, stands and café area": "360°-Rundgang durch die Eishalle Islas: Eisfeld, Tribüne und Cafébereich",
+  "360° Virtual Tour of the Islas ice arena: rink, stands and café area": "360° Virtual Tour durch die Eishalle Islas: Eisfeld, Tribüne und Cafébereich",
   "Fuchs Architekten’s competition presentation, shown with VR headsets.": "Wettbewerbspräsentation von Fuchs Architekten, mit VR-Brillen gezeigt.",
   "Stairwell of a private residence in Liechtenstein, in four material variants": "Treppenhaus eines Einfamilienhauses in Liechtenstein, in vier Materialvarianten",
   "AI images from 3D model sketches, for the private client to compare oak, concrete, rattan and colour.": "KI-Bilder aus Skizzen des 3D-Modells, damit die private Bauherrschaft Eiche, Beton, Rattan und Farbe vergleichen konnte.",
@@ -1346,7 +1346,6 @@ const DE = {
   "It didn't go through. Please write to us at ": "Es hat nicht geklappt. Bitte schreiben Sie uns an ",
   "Home": "Start",
   "Projects": "Projekte",
-  "360° Tour": "360°-Tour",
   "Services": "Leistungen",
   "About": "Über uns",
   "Contact": "Kontakt",
@@ -1367,7 +1366,6 @@ const DE = {
   "All": "Alle",
   "Visualization": "Visualisierung",
   "3D Print Model": "3D-Druckmodell",
-  "360° Virtual Tour": "360°-Rundgang",
   "AI Visualization": "KI-Visualisierung",
   "Sketch \u2192 Render": "Skizze \u2192 Render",
   "Material variants": "Materialvarianten",
@@ -1452,7 +1450,6 @@ const DE = {
   "Sage & blush": "Salbei & Ros\u00e9",
   "Sketch \u2192 AI visualization": "Skizze \u2192 KI-Visualisierung",
   "Stair hall": "Treppenhalle",
-  "Competition": "Wettbewerb",
   "Real Estate": "Immobilien",
   "With ": "Bei ",
   ", every detail matters. Our photoreal visualizations don't just showcase design — they tell a story, creating immersive experiences that resonate with your audience.": " zählt jedes Detail. Unsere fotorealistischen Visualisierungen zeigen nicht nur den Entwurf — sie erzählen eine Geschichte und schaffen Bilder, die bei Ihrem Publikum haften bleiben.",
@@ -1510,8 +1507,8 @@ const DE = {
   "◉ Motion on": "◉ Bewegung an",
   "◎ Tap Motion — move your phone to look around": "◎ Bewegung antippen — Handy bewegen und umsehen",
   "Close ✕": "Schliessen ✕",
-  " · 360° Tour": " · 360°-Tour",
-  "⟳ Enter 360° Tour": "⟳ 360°-Rundgang starten",
+  " · 360° Virtual Tour": " · 360° Virtual Tour",
+  "⟳ Enter 360° Virtual Tour": "⟳ 360° Virtual Tour starten",
   "Living Room": "Wohnzimmer",
   "Kitchen": "Küche",
   "Office & Reading Room": "Büro & Lesezimmer",
@@ -1523,12 +1520,12 @@ const DE = {
   "← Previous project": "← Vorheriges Projekt",
   "Next project →": "Nächstes Projekt →",
   "by 3D Vortex": "von 3D Vortex",
-  "360° virtual tour by 3D Vortex": "360°-Rundgang von 3D Vortex",
+  "360° Virtual Tour by 3D Vortex": "360° Virtual Tour von 3D Vortex",
   "Access gallery": "Laubengang",
   "Arrival & entrance": "Ankunft & Eingang",
   "Assembly by hand": "Montage von Hand",
   "Bedroom": "Schlafzimmer",
-  "Enter the 360° tour": "360°-Rundgang starten",
+  "Enter the 360° Virtual Tour": "360° Virtual Tour starten",
   "Exterior & access": "Aussen & Zugang",
   "Exterior & garden": "Aussenraum & Garten",
   "Exterior & interior": "Aussen & Innen",
@@ -1578,7 +1575,7 @@ const DE = {
   "Privacy Policy": "Datenschutz",
   "Architectural Visualization Studio, Zürich | ": "Studio für Architekturvisualisierung, Zürich | ",
   "Architectural visualization studio in Zürich: photoreal renderings, AI visualization, 3D-printed models, 360° virtual tours and technical drafting.": "Studio für Architekturvisualisierung in Zürich: fotorealistische Renderings, KI-Visualisierung, 3D-Druckmodelle, 360°-Rundgänge und technisches Zeichnen.",
-  "360° Virtual Tours — Graffio House & Islas Ice Rink | ": "360°-Rundgänge — EFH Graffio & Eishalle Islas | ",
+  "360° Virtual Tours — Graffio House & Islas Ice Rink | ": "360° Virtual Tours — EFH Graffio & Eishalle Islas | ",
   "Walk through our architectural visualizations in 360°: the Graffio single-family house in Golino and the Islas ice rink in St. Moritz.": "Gehen Sie durch unsere Architekturvisualisierungen in 360°: das Einfamilienhaus Graffio in Golino und die Eishalle Islas in St. Moritz."
 };
 
@@ -2170,7 +2167,7 @@ function ProjectPage({
       const first = proj.rows.flatMap(r => r.items).find(x => x.pano);
       if (first) onPano(first.pano);
     }
-  }, t("⟳ Enter 360° Tour"))), /*#__PURE__*/React.createElement(ProjectInfo, {
+  }, t("⟳ Enter 360° Virtual Tour"))), /*#__PURE__*/React.createElement(ProjectInfo, {
     proj: proj
   }))), /*#__PURE__*/React.createElement("section", {
     className: "cluster"
@@ -2400,7 +2397,7 @@ function Tour360({
   }, /*#__PURE__*/React.createElement(Pic, {
     src: s.mid || s.src,
     sizes: SIZE_ESCENA,
-    alt: `${t(s.t)}, ${s.c} — ${t("360° virtual tour by 3D Vortex")}`,
+    alt: `${t(s.t)}, ${s.c} — ${t("360° Virtual Tour by 3D Vortex")}`,
     loading: "lazy",
     style: {
       transform: 'scale(2.4)'
@@ -2702,7 +2699,7 @@ function PanoOverlay({
     className: "t"
   }, t(pano.t)), /*#__PURE__*/React.createElement("div", {
     className: "c"
-  }, t(pano.c), t(" · 360° Tour"))), /*#__PURE__*/React.createElement("div", {
+  }, t(pano.c), t(" · 360° Virtual Tour"))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 10,
@@ -3023,7 +3020,7 @@ function Footer() {
     href: prefijoIdioma() + "/#portfolio"
   }, t("Projects"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: urlTour()
-  }, t("360° Tour"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+  }, t("360° Virtual Tour"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: prefijoIdioma() + "/#services"
   }, t("Services"))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
     href: prefijoIdioma() + "/#about"
