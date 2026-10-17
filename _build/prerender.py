@@ -17,8 +17,8 @@ import copy, asyncio, html, json, pathlib, shutil, sys
 from playwright.async_api import async_playwright
 
 EXE = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
-LOCAL = "https://localhost:8443"
-SITE = pathlib.Path("/home/claude/seo/site")
+LOCAL = "http://127.0.0.1:8123"
+SITE = pathlib.Path("/home/claude/web")
 
 # --- dominios -------------------------------------------------------------
 # canonical y hreflang -> el dominio final, para que la copia de pruebas no
@@ -342,7 +342,7 @@ def main():
                 nuevo_nos = noscript_proyecto(p, pagina, et)
             else:
                 pagina["imagen"] = "/assets/og-cover.jpg"
-                pagina["imagen_alt"] = "Kreuzgut Triple Kindergarten, competition visualization by 3D Vortex"
+                pagina["imagen_alt"] = "Kreuzgut Kindergarten, competition visualization by 3D Vortex"
                 nuevo_json = json_v          # la ficha del estudio, tal cual
                 nuevo_nos = (noscript_home(datos, pagina, et) if tipo == "home"
                              else noscript_tour(datos, pagina, et))

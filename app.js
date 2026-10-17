@@ -187,7 +187,7 @@ const PANORAMAS = [{
   pitch: -2
 }, {
   id: "hall",
-  t: "Restaurant",
+  t: "Café",
   c: "Islas - Ice Arena",
   proj: "silserkugel",
   place: "St. Moritz (GR)",
@@ -249,7 +249,7 @@ const VARIANTES_MARIA_LIVING = [
   { k: "terrazzo",   l: "Terrazzo",   d: "Terrazzo & plaster",      img: P.ml4 },
   { k: "nordic",     l: "Nordic",     d: "Nordic oak",              img: P.ml5 },
   { k: "olive",      l: "Olive",      d: "Olive & tropical green",  img: P.ml6 },
-  { k: "coastal",    l: "Coastal",    d: "Coastal light",           img: P.ml7 },
+  { k: "coastal",    l: "Mint",    d: "Mint green & oak",           img: P.ml7 },
   { k: "minimal",    l: "Minimal",    d: "Minimal white",           img: P.ml8 }
 ];
 const VARIANTES_MARIA_FACHADA = [
@@ -262,55 +262,61 @@ const INFO = {
   "client": "Private client",
   "year": "2023",
   "ctx": "Preliminary design, presentation to the client",
-  "sub": "A single-family house in Golino, Ticino, at preliminary-design stage",
-  "desc": "Visualizations of the preliminary design for a private client in Golino. They let the client see the house in its setting and discuss the design before it was developed further."
+  "sub": "Private residence with garden on the edge of Golino, Ticino",
+  "desc": "Preliminary-design visualizations for the private client: the house in its surroundings, inside and out.",
+  "svc": "Interior and exterior visualizations"
  },
  "graffio-print": {
   "client": "Private client",
   "year": "2023",
   "ctx": "Preliminary design, presentation to the client",
-  "sub": "A single-family house in Golino, Ticino, at preliminary-design stage",
-  "desc": "Visualizations of the preliminary design for a private client in Golino. They let the client see the house in its setting and discuss the design before it was developed further."
+  "sub": "3D-printed massing model of the Graffio house in its setting",
+  "desc": "Printed at preliminary-design stage, for the private client to see the volume and how it sits in its surroundings.",
+  "svc": "3D-printed massing model"
  },
  "graffio-360": {
   "client": "Private client",
   "year": "2023",
   "ctx": "Preliminary design, presentation to the client",
-  "sub": "A single-family house in Golino, Ticino, at preliminary-design stage",
-  "desc": "Visualizations of the preliminary design for a private client in Golino. They let the client see the house in its setting and discuss the design before it was developed further."
+  "sub": "360° tour through the rooms of the Graffio house",
+  "desc": "Made at preliminary-design stage, so the client could decide the finishes, the kitchen, the bathrooms and the furniture from inside each room.",
+  "svc": "360° virtual tour"
  },
  "viseu-viz": {
   "client": "Private client",
   "year": "2023",
   "ctx": "Preliminary design, presentation to the client",
   "svc": "Exterior visualizations",
-  "sub": "A single-family house in Golino, Ticino, seen from outside",
-  "desc": "Exterior visualizations of the preliminary design, prepared for the presentation to the private client in Golino."
+  "sub": "Private residence in Golino, Ticino",
+  "desc": "Preliminary-design visualizations for the private client: the house and its outdoor spaces."
  },
  "casa-lele-viz": {
   "client": "Private client",
   "year": "2023",
   "ctx": "Final visualizations: materials and furnishings",
   "svc": "Interior and exterior visualizations, 360° virtual tour and 3D-printed model",
-  "sub": "Materials and furnishings for a single-family house in Cevio, Ticino",
-  "desc": "Final visualizations to decide materials and furnishings with the private client, inside and out, together with a 360° virtual tour and a 3D-printed model of the house."
+  "sub": "Renovation of a rustico in Cevio, Ticino",
+  "desc": "Interior and exterior visualizations for a private client, to judge the material finishes and the furnishings."
  },
  "casa-lele-print": {
   "client": "Private client",
   "year": "2023",
   "ctx": "Final visualizations: materials and furnishings",
   "svc": "Interior and exterior visualizations, 360° virtual tour and 3D-printed model",
-  "sub": "Materials and furnishings for a single-family house in Cevio, Ticino",
-  "desc": "Final visualizations to decide materials and furnishings with the private client, inside and out, together with a 360° virtual tour and a 3D-printed model of the house."
+  "sub": "Detailed 3D-printed model of the Casa Lele renovation, with furniture",
+  "desc": "Printed for the private client, to judge the scale of the renovation and to discuss the furniture layout."
  },
- "football-pitch-viz": {
+ "jaso-sports-hall-viz": {
   "client": "Colegio Jaso (private school), Pamplona",
   "year": "2024",
   "ctx": "Competition",
-  "sub": "Competition entry for a sports hall for Colegio Jaso in Pamplona",
-  "desc": "Visualizations for a competition held by Colegio Jaso, a private school in Pamplona, for a new sports hall."
+  "sub": "Sports hall for a primary school in Pamplona, Spain",
+  "desc": "Interior and exterior visualizations for the competition entry, commissioned by Ingeniería LHR.",
+  "svc": "Interior and exterior visualizations",
+  "by": "Ingeniería LHR",
+  "byUrl": "https://lhringenieriadotcom.wordpress.com/"
  },
- "silserkugel-viz": {
+ "islas-viz": {
   "by": {
    "n": "Fuchs Architekten AG",
    "url": "https://www.fuchs-architekten.ch/projekte/w-eishalle-st-moritz/"
@@ -318,10 +324,10 @@ const INFO = {
   "year": "2025",
   "ctx": "Competition",
   "svc": "Interior and exterior visualizations and a 360° virtual tour",
-  "sub": "Competition entry for an ice rink in St. Moritz",
-  "desc": "Interior and exterior visualizations and a 360° virtual tour for Fuchs Architekten's competition entry for an ice rink in St. Moritz."
+  "sub": "Compact ice hockey arena for public and private use in St. Moritz, Graubünden",
+  "desc": "Interior and exterior visualizations for Fuchs Architekten’s competition entry, a compact volume echoing the Silserkugel."
  },
- "silserkugel-360": {
+ "islas-360": {
   "by": {
    "n": "Fuchs Architekten AG",
    "url": "https://www.fuchs-architekten.ch/projekte/w-eishalle-st-moritz/"
@@ -329,8 +335,8 @@ const INFO = {
   "year": "2025",
   "ctx": "Competition",
   "svc": "Interior and exterior visualizations and a 360° virtual tour",
-  "sub": "Competition entry for an ice rink in St. Moritz",
-  "desc": "Interior and exterior visualizations and a 360° virtual tour for Fuchs Architekten's competition entry for an ice rink in St. Moritz."
+  "sub": "360° tour of the Islas ice arena: rink, stands and café area",
+  "desc": "Fuchs Architekten’s competition presentation, shown with VR headsets."
  },
  "arento-viz": {
   "by": {
@@ -340,8 +346,8 @@ const INFO = {
   "year": "2025",
   "ctx": "Marketing and sales",
   "svc": "Interior and exterior visualizations and presentation videos",
-  "sub": "Residential development in Bäretswil, visualized for sale",
-  "desc": "Interior and exterior visualizations and presentation videos for the marketing of the HüttenacherPLUS residential development in Bäretswil, commissioned by Arento AG."
+  "sub": "Apartment building in Bäretswil, Zurich",
+  "desc": "Interior and exterior visualizations and a presentation video for Arento AG, used to sell the flats before completion."
  },
  "kindergarten-kreuzgut-viz": {
   "by": {
@@ -351,8 +357,8 @@ const INFO = {
   "year": "2026",
   "ctx": "Competition",
   "svc": "Exterior visualization",
-  "sub": "Competition entry for a triple kindergarten in Schaffhausen",
-  "desc": "Exterior visualization for Fuchs Architekten's competition entry for the Kreuzgut triple kindergarten in Schaffhausen."
+  "sub": "Kindergarten in timber on the Kreuzgut school campus, Schaffhausen",
+  "desc": "Exterior visualizations for Fuchs Architekten’s competition entry, showing the building and its play areas."
  },
  "altstetten-viz": {
   "by": {
@@ -362,10 +368,10 @@ const INFO = {
   "year": "2026",
   "ctx": "Competition",
   "svc": "Exterior visualizations",
-  "sub": "Competition entry for a housing estate in Zürich-Altstetten",
-  "desc": "Exterior renderings for Fuchs Architekten's competition entry for a housing estate in Zürich-Altstetten."
+  "sub": "Cooperative housing in timber, terraced down the slope in Zürich-Altstetten",
+  "desc": "Exterior visualizations for Fuchs Architekten’s competition entry: the street front at dusk and the access galleries."
  },
- "oerlikon-print": {
+ "hagenholz-print": {
   "by": {
    "n": "Fuchs Architekten AG",
    "url": "https://www.fuchs-architekten.ch/projekte/fassadensanierung-wohnturm-zuerich/"
@@ -373,8 +379,32 @@ const INFO = {
   "year": "2024",
   "ctx": "Competition",
   "svc": "3D-printed facade model",
-  "sub": "Competition entry for the facade renovation of a residential tower in Zürich",
-  "desc": "A 3D-printed model of the new facade for Fuchs Architekten's competition entry for the facade renovation of the Hagenholz residential tower in Zürich."
+  "sub": "Detailed 3D-printed facade model of the Hagenholz residential tower, Zurich",
+  "desc": "Printed for Fuchs Architekten’s competition presentation: a section of the facade at detail scale."
+ },
+ "schtubu-stairwell-ai": {
+  "sub": "Stairwell of a private residence in Liechtenstein, in four material variants",
+  "desc": "AI images from 3D model sketches, for the private client to compare oak, concrete, rattan and colour.",
+  "client": "Private client",
+  "ctx": "Material study",
+  "svc": "AI visualizations",
+  "year": "2025"
+ },
+ "schtubu-living-ai": {
+  "sub": "Living room of a private residence in Liechtenstein, in eight material variants",
+  "desc": "AI images from 3D model sketches, for the private client to choose finishes, from terracotta and oak to terrazzo.",
+  "client": "Private client",
+  "ctx": "Material study",
+  "svc": "AI visualizations",
+  "year": "2025"
+ },
+ "schtubu-exterior-ai": {
+  "sub": "Exterior of a private residence in Liechtenstein, in two facade variants",
+  "desc": "AI images from 3D model sketches, for the private client to compare a timber attic with a stone base and plaster.",
+  "client": "Private client",
+  "ctx": "Material study",
+  "svc": "AI visualizations",
+  "year": "2025"
  }
 };
 const PROJECTS = [{
@@ -395,7 +425,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_1,
-        t: "Graffio - Private residence",
+        t: "Office & Reading Room",
         c: "Visualization",
         ar: "ar-169"
       }
@@ -406,14 +436,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_2,
-        t: "Graffio - Private residence",
-        c: "Exterior & interior",
+        t: "Master Bedroom",
+        c: "Visualization",
         ar: "ar-43"
       },
         {
         img: P.p2_3,
-        t: "Graffio - Private residence",
-        c: "Exterior & interior",
+        t: "Master bathroom",
+        c: "Visualization",
         ar: "ar-43"
       }
       ]
@@ -423,14 +453,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_4,
-        t: "Graffio - Private residence",
-        c: "Exterior & interior",
+        t: "Bathroom detail",
+        c: "Visualization",
         ar: "ar-43"
       },
         {
         img: P.p2_5,
-        t: "Graffio - Private residence",
-        c: "Exterior & interior",
+        t: "Washbasin detail",
+        c: "Visualization",
         ar: "ar-43"
       }
       ]
@@ -440,14 +470,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_6,
-        t: "Graffio - Private residence",
-        c: "Exterior & interior",
+        t: "Living & dining with fireplace",
+        c: "Visualization",
         ar: "ar-43"
       },
         {
         img: P.p2_7,
-        t: "Graffio - Private residence",
-        c: "Exterior & interior",
+        t: "Exterior visualization",
+        c: "Visualization",
         ar: "ar-43"
       }
       ]
@@ -457,8 +487,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.p2_8,
-        t: "Graffio - Private residence",
-        c: "Exterior & interior",
+        t: "Exterior visualization",
+        c: "Visualization",
         ar: "ar-43"
       }
       ]
@@ -482,7 +512,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs1,
-        t: "Viseu - Private residence",
+        t: "Exterior visualization",
         c: "Visualization",
         ar: "ar-169"
       }
@@ -493,8 +523,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs2,
-        t: "Viseu - Private residence",
-        c: "Exterior & garden",
+        t: "Exterior visualization",
+        c: "Visualization",
         ar: "ar-169"
       }
       ]
@@ -504,14 +534,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs3,
-        t: "Viseu - Private residence",
-        c: "Pool & cascade",
+        t: "Pool and cascade",
+        c: "Visualization",
         ar: "ar-34"
       },
         {
         img: P.vs4,
-        t: "Viseu - Private residence",
-        c: "Pool & cascade",
+        t: "Pool and cascade",
+        c: "Visualization",
         ar: "ar-34"
       }
       ]
@@ -521,8 +551,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.vs5,
-        t: "Viseu - Private residence",
-        c: "Arrival & entrance",
+        t: "Main facade and entrance",
+        c: "Visualization",
         ar: "ar-169"
       }
       ]
@@ -546,7 +576,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl1,
-        t: "Casa Lele - Private residence",
+        t: "Interior visualization",
         c: "Visualization",
         ar: "ar-32"
       }
@@ -557,8 +587,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl2,
-        t: "Casa Lele - Private residence",
-        c: "Living & fireplace",
+        t: "Interior visualization",
+        c: "Visualization",
         ar: "ar-32"
       }
       ]
@@ -568,18 +598,18 @@ const PROJECTS = [{
       items: [
         {
         img: P.cl3,
-        t: "Casa Lele - Private residence",
-        c: "Village context",
+        t: "Exterior visualization",
+        c: "Visualization",
         ar: "ar-169"
       }
       ]
     }
     ]
   }, {
-    slug: "football-pitch-viz",
+    slug: "jaso-sports-hall-viz",
     title: "Jaso primary school - Sports Hall",
     place: "Pamplona (ES)",
-    cat: "Competition",
+    cat: "Competition visualization",
     service: "viz",
     pending: false,
     cover: {
@@ -593,8 +623,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.pult,
-        t: "Jaso primary school - Sports Hall",
-        c: "Competition",
+        t: "Interior visualization",
+        c: "Competition visualization",
         ar: "ar-169"
       }
       ]
@@ -604,18 +634,18 @@ const PROJECTS = [{
       items: [
         {
         img: P.pult2,
-        t: "Jaso primary school - Sports Hall",
-        c: "Exterior & access",
+        t: "Exterior visualization",
+        c: "Competition visualization",
         ar: "ar-34"
       }
       ]
     }
     ]
   }, {
-    slug: "silserkugel-viz",
+    slug: "islas-viz",
     title: "Islas - Ice Arena",
     place: "St. Moritz (GR)",
-    cat: "Competition",
+    cat: "Competition visualization",
     service: "viz",
     pending: false,
     cover: {
@@ -629,8 +659,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.p3_1,
-        t: "Islas - Ice Arena",
-        c: "Competition",
+        t: "Exterior visualization",
+        c: "Competition visualization",
         ar: "ar-169"
       }
       ]
@@ -640,14 +670,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.p3_2,
-        t: "Islas - Ice Arena",
-        c: "Interior atmosphere",
+        t: "Rink and stands",
+        c: "Competition visualization",
         ar: "ar-43"
       },
         {
         img: P.p3_3,
-        t: "Islas - Ice Arena",
-        c: "Interior atmosphere",
+        t: "Exterior visualization",
+        c: "Competition visualization",
         ar: "ar-43"
       }
       ]
@@ -655,9 +685,9 @@ const PROJECTS = [{
     ]
   }, {
     slug: "arento-viz",
-    title: "Hüttenacher PLUS - Residential complex",
+    title: "Hüttenacher PLUS - Apartment building",
     place: "Bäretswil (ZH)",
-    cat: "Real Estate",
+    cat: "Real estate visualization",
     service: "viz",
     pending: false,
     cover: {
@@ -671,8 +701,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_1,
-        t: "Hüttenacher PLUS - Residential complex",
-        c: "Interior atmosphere",
+        t: "Interior visualization",
+        c: "Real estate visualization",
         ar: "ar-169"
       }
       ]
@@ -682,14 +712,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_2,
-        t: "Hüttenacher PLUS - Residential complex",
-        c: "Interior atmosphere",
+        t: "Interior visualization",
+        c: "Real estate visualization",
         ar: "ar-43"
       },
         {
         img: P.p5_3,
-        t: "Hüttenacher PLUS - Residential complex",
-        c: "Interior atmosphere",
+        t: "Interior visualization",
+        c: "Real estate visualization",
         ar: "ar-43"
       }
       ]
@@ -699,8 +729,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.p5_4,
-        t: "Hüttenacher PLUS - Residential complex",
-        c: "Interior atmosphere",
+        t: "Interior visualization",
+        c: "Real estate visualization",
         ar: "ar-169"
       }
       ]
@@ -710,8 +740,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.hp_e1,
-        t: "Hüttenacher PLUS - Residential complex",
-        c: "Exterior perspectives",
+        t: "Exterior visualization",
+        c: "Real estate visualization",
         ar: "ar-169"
       }
       ]
@@ -721,8 +751,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.hp_e2,
-        t: "Hüttenacher PLUS - Residential complex",
-        c: "Exterior & garden",
+        t: "Exterior visualization",
+        c: "Real estate visualization",
         ar: "ar-169"
       }
       ]
@@ -740,9 +770,9 @@ const PROJECTS = [{
     ]
   }, {
     slug: "kindergarten-kreuzgut-viz",
-    title: "Kreuzgut - Kindergarten",
+    title: "Kreuzgut Kindergarten",
     place: "Schaffhausen (SH)",
-    cat: "Competition",
+    cat: "Competition visualization",
     service: "viz",
     pending: false,
     cover: {
@@ -756,8 +786,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.hero,
-        t: "Kreuzgut - Kindergarten",
-        c: "Competition",
+        t: "Exterior visualization",
+        c: "Competition visualization",
         ar: "ar-169"
       }
       ]
@@ -767,14 +797,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.p1_2,
-        t: "Kreuzgut - Kindergarten",
-        c: "Exterior perspectives",
+        t: "Exterior visualization",
+        c: "Competition visualization",
         ar: "ar-43"
       },
         {
         img: P.p1_3,
-        t: "Kreuzgut - Kindergarten",
-        c: "Exterior perspectives",
+        t: "Exterior detail",
+        c: "Competition visualization",
         ar: "ar-43"
       }
       ]
@@ -784,7 +814,7 @@ const PROJECTS = [{
     slug: "altstetten-viz",
     title: "Altstetten - Residential complex",
     place: "Zürich (ZH)",
-    cat: "Competition",
+    cat: "Competition visualization",
     service: "viz",
     pending: false,
     cover: {
@@ -798,8 +828,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.al1,
-        t: "Altstetten - Residential complex",
-        c: "Competition",
+        t: "Exterior visualization",
+        c: "Competition visualization",
         ar: "ar-32"
       }
       ]
@@ -809,8 +839,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.al2,
-        t: "Altstetten - Residential complex",
-        c: "Street at dusk",
+        t: "Exterior visualization",
+        c: "Competition visualization",
         ar: "ar-32"
       }
       ]
@@ -820,8 +850,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.al3,
-        t: "Altstetten - Residential complex",
-        c: "Access gallery",
+        t: "Access gallery",
+        c: "Competition visualization",
         ar: "ar-32"
       }
       ]
@@ -829,7 +859,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "casa-lele-print",
-    title: "Casa Lele - Private residence",
+    title: "Casa Lele",
     place: "Cevio (TI)",
     cat: "3D Print Model",
     service: "print",
@@ -845,7 +875,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm1,
-        t: "Casa Lele - Private residence",
+        t: "The model from above",
         c: "3D Print Model",
         ar: "ar-32"
       }
@@ -856,8 +886,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm2,
-        t: "Casa Lele - Private residence",
-        c: "Ground floor",
+        t: "The model from the terrace side",
+        c: "3D Print Model",
         ar: "ar-32"
       }
       ]
@@ -867,14 +897,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm3,
-        t: "Casa Lele - Private residence",
-        c: "Plan detail",
+        t: "Sectioned floors",
+        c: "3D Print Model",
         ar: "ar-32"
       },
         {
         img: P.lm4,
-        t: "Casa Lele - Private residence",
-        c: "Sectioned elevation",
+        t: "Sectioned elevation",
+        c: "3D Print Model",
         ar: "ar-32"
       }
       ]
@@ -884,8 +914,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm5,
-        t: "Casa Lele - Private residence",
-        c: "Bedroom",
+        t: "Printed bedroom",
+        c: "3D Print Model",
         ar: "ar-32"
       }
       ]
@@ -895,14 +925,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm6,
-        t: "Casa Lele - Private residence",
-        c: "Printed furniture",
+        t: "Printed sofa",
+        c: "3D Print Model",
         ar: "ar-32"
       },
         {
         img: P.lm7,
-        t: "Casa Lele - Private residence",
-        c: "Kitchen island",
+        t: "Printed kitchen island",
+        c: "3D Print Model",
         ar: "ar-32"
       }
       ]
@@ -912,14 +942,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.lm8,
-        t: "Casa Lele - Private residence",
-        c: "Kitchen through the railing",
+        t: "Kitchen through the railing",
+        c: "3D Print Model",
         ar: "ar-34"
       },
         {
         img: P.lm9,
-        t: "Casa Lele - Private residence",
-        c: "Assembly by hand",
+        t: "Assembly by hand",
+        c: "3D Print Model",
         ar: "ar-34"
       }
       ]
@@ -936,7 +966,7 @@ const PROJECTS = [{
     }
     ]
   }, {
-    slug: "oerlikon-print",
+    slug: "hagenholz-print",
     title: "Hagenholz - Residential tower",
     place: "Zürich (ZH)",
     cat: "3D Print Model",
@@ -953,14 +983,14 @@ const PROJECTS = [{
       items: [
         {
         img: P.oe1,
-        t: "Hagenholz - Residential tower",
+        t: "3D-printed facade model",
         c: "3D Print Model",
         ar: "ar-23"
       },
         {
         img: P.oe2,
-        t: "Hagenholz - Residential tower",
-        c: "Grid detail",
+        t: "Facade grid, detail",
+        c: "3D Print Model",
         ar: "ar-23"
       }
       ]
@@ -968,7 +998,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "graffio-print",
-    title: "Graffio - Private residence",
+    title: "Graffio",
     place: "Golino (TI)",
     cat: "3D Print Model",
     service: "print",
@@ -984,7 +1014,7 @@ const PROJECTS = [{
       items: [
         {
         img: P.gm1,
-        t: "Graffio - Private residence",
+        t: "3D working model",
         c: "3D Print Model",
         ar: "ar-169"
       }
@@ -995,8 +1025,8 @@ const PROJECTS = [{
       items: [
         {
         img: P.gm2,
-        t: "Graffio - Private residence",
-        c: "Massing & site",
+        t: "3D working model",
+        c: "3D Print Model",
         ar: "ar-169"
       }
       ]
@@ -1004,7 +1034,7 @@ const PROJECTS = [{
     ]
   }, {
     slug: "graffio-360",
-    title: "Graffio - Private residence",
+    title: "Graffio",
     place: "Golino (TI)",
     cat: "360° Virtual Tour",
     service: "tour",
@@ -1060,8 +1090,8 @@ const PROJECTS = [{
     }
     ]
   }, {
-    slug: "silserkugel-360",
-    title: "Islas - Ice Arena",
+    slug: "islas-360",
+    title: "Islas",
     place: "St. Moritz (GR)",
     cat: "360° Virtual Tour",
     service: "tour",
@@ -1097,7 +1127,7 @@ const PROJECTS = [{
         {
         img: PNM.hall,
         pano: "hall",
-        t: "Restaurant",
+        t: "Café",
         c: "Enter the 360° tour",
         ar: "ar-43"
       }
@@ -1105,7 +1135,7 @@ const PROJECTS = [{
     }
     ]
   }, {
-    slug: "efh-maria-ai",
+    slug: "schtubu-stairwell-ai",
     title: "Schtubu - Stairwell",
     place: "Liechtenstein (FL)",
     cat: "AI Visualization",
@@ -1127,15 +1157,15 @@ const PROJECTS = [{
         img2: P.mrr,
         vars: VARIANTES_MARIA,
         opts: true,
-        t: "Stair hall",
-        c: "Sketch \u2192 AI visualization",
+        t: "Stairwell",
+        c: "AI Visualization",
         ar: "ar-34"
       }
       ]
     }
     ]
   }, {
-    slug: "efh-maria-living-ai",
+    slug: "schtubu-living-ai",
     title: "Schtubu - Living room",
     place: "Liechtenstein (FL)",
     cat: "AI Visualization",
@@ -1158,16 +1188,16 @@ const PROJECTS = [{
         img2: P.ml1,
         vars: VARIANTES_MARIA_LIVING,
         opts: true,
-        t: "Living & kitchen",
-        c: "Sketch \u2192 AI visualization",
+        t: "Living room and kitchen",
+        c: "AI Visualization",
         ar: "ar-pano"
       }
       ]
     }
     ]
   }, {
-    slug: "efh-maria-facade-ai",
-    title: "Schtubu - Facade",
+    slug: "schtubu-exterior-ai",
+    title: "Schtubu - Exterior",
     place: "Liechtenstein (FL)",
     cat: "AI Visualization",
     service: "ai",
@@ -1189,7 +1219,7 @@ const PROJECTS = [{
         vars: VARIANTES_MARIA_FACHADA,
         opts: true,
         t: "Garden facade",
-        c: "Sketch \u2192 AI visualization",
+        c: "AI Visualization",
         ar: "ar-fac"
       }
       ]
@@ -1197,7 +1227,7 @@ const PROJECTS = [{
     ]
   }];
 // Orden del portfolio (Adrian, 21-09-2026); el resto, detras y en su orden.
-const ORDEN_PORTFOLIO = ["graffio-viz", "silserkugel-viz", "casa-lele-viz", "altstetten-viz", "casa-lele-print", "kindergarten-kreuzgut-viz", "arento-viz", "football-pitch-viz"];
+const ORDEN_PORTFOLIO = ["graffio-viz", "islas-viz", "casa-lele-viz", "altstetten-viz", "casa-lele-print", "kindergarten-kreuzgut-viz", "arento-viz", "jaso-sports-hall-viz"];
 (() => { const pos = new Map(PROJECTS.map((p, i) => [p.slug, i]));
   const r = p => { const k = ORDEN_PORTFOLIO.indexOf(p.slug); return k < 0 ? 1000 + pos.get(p.slug) : k; };
   PROJECTS.sort((x, y) => r(x) - r(y)); })();
@@ -1243,6 +1273,73 @@ const HEADLINES = {
 // t(). LANG es una variable de modulo que App pone al dia en cada render, para
 // que t() la vea desde cualquier componente.
 const DE = {
+  // repaso del portfolio con Adrian, 17-10-2026
+  "Interior and exterior visualizations": "Innen- und Aussenvisualisierungen",
+  "3D-printed massing model": "3D-Druckmodell des Baukörpers",
+  "360° virtual tour": "360°-Rundgang",
+  "AI visualizations": "KI-Visualisierungen",
+  "Material study": "Materialstudie",
+  "Casa Lele": "Casa Lele",
+  "Kreuzgut Kindergarten": "Kindergarten Kreuzgut",
+  "Hüttenacher PLUS - Apartment building": "Mehrfamilienhaus Hüttenacher PLUS",
+  "Graffio": "Graffio",
+  "Islas": "Islas",
+  "Schtubu - Exterior": "EFH Schtubu - Aussen",
+  "Competition visualization": "Wettbewerbs-Visualisierung",
+  "Real estate visualization": "Immobilien-Visualisierung",
+  "Private residence with garden on the edge of Golino, Ticino": "Einfamilienhaus mit Garten am Dorfrand von Golino (TI)",
+  "Preliminary-design visualizations for the private client: the house in its surroundings, inside and out.": "Visualisierungen des Vorprojekts für die private Bauherrschaft: das Haus in seiner Umgebung, innen wie aussen.",
+  "Compact ice hockey arena for public and private use in St. Moritz, Graubünden": "Kompakte Eishockeyhalle für öffentliche und private Nutzung in St. Moritz (GR)",
+  "Interior and exterior visualizations for Fuchs Architekten’s competition entry, a compact volume echoing the Silserkugel.": "Innen- und Aussenvisualisierungen für den Wettbewerbsbeitrag von Fuchs Architekten, dessen kompakter Baukörper an die Silserkugel erinnert.",
+  "Renovation of a rustico in Cevio, Ticino": "Umbau eines Rustico in Cevio (TI)",
+  "Interior and exterior visualizations for a private client, to judge the material finishes and the furnishings.": "Innen- und Aussenvisualisierungen für eine private Bauherrschaft, um Materialisierung und Möblierung zu beurteilen.",
+  "Cooperative housing in timber, terraced down the slope in Zürich-Altstetten": "Genossenschaftliche Wohnsiedlung in Holzbauweise, terrassiert am Hang in Zürich-Altstetten",
+  "Exterior visualizations for Fuchs Architekten’s competition entry: the street front at dusk and the access galleries.": "Aussenvisualisierungen für den Wettbewerbsbeitrag von Fuchs Architekten: die Strassenfront in der Dämmerung und die Laubengänge.",
+  "Detailed 3D-printed model of the Casa Lele renovation, with furniture": "Detailliertes 3D-Druckmodell des Umbaus Casa Lele, mit Mobiliar",
+  "Printed for the private client, to judge the scale of the renovation and to discuss the furniture layout.": "Für die private Bauherrschaft gedruckt, um den Massstab des Umbaus zu beurteilen und die Möblierung zu besprechen.",
+  "Kindergarten in timber on the Kreuzgut school campus, Schaffhausen": "Dreifachkindergarten in Holzbauweise auf dem Schulareal Kreuzgut, Schaffhausen",
+  "Exterior visualizations for Fuchs Architekten’s competition entry, showing the building and its play areas.": "Aussenvisualisierungen für den Wettbewerbsbeitrag von Fuchs Architekten, mit dem Gebäude und den Spielbereichen.",
+  "Apartment building in Bäretswil, Zurich": "Mehrfamilienhaus in Bäretswil (ZH)",
+  "Interior and exterior visualizations and a presentation video for Arento AG, used to sell the flats before completion.": "Innen- und Aussenvisualisierungen sowie ein Präsentationsvideo für Arento AG, für den Verkauf der Wohnungen vor Fertigstellung.",
+  "Sports hall for a primary school in Pamplona, Spain": "Sporthalle für eine Primarschule in Pamplona (ES)",
+  "Interior and exterior visualizations for the competition entry, commissioned by Ingeniería LHR.": "Innen- und Aussenvisualisierungen für den Wettbewerbsbeitrag, im Auftrag von Ingeniería LHR.",
+  "Private residence in Golino, Ticino": "Einfamilienhaus in Golino (TI)",
+  "Preliminary-design visualizations for the private client: the house and its outdoor spaces.": "Visualisierungen des Vorprojekts für die private Bauherrschaft: das Haus und seine Aussenräume.",
+  "Detailed 3D-printed facade model of the Hagenholz residential tower, Zurich": "Detailliertes 3D-Druckmodell der Fassade des Hochhauses Hagenholz, Zürich",
+  "Printed for Fuchs Architekten’s competition presentation: a section of the facade at detail scale.": "Für die Wettbewerbspräsentation von Fuchs Architekten gedruckt: ein Fassadenausschnitt im Detailmassstab.",
+  "3D-printed massing model of the Graffio house in its setting": "3D-Druckmodell des Baukörpers von Graffio in seiner Umgebung",
+  "Printed at preliminary-design stage, for the private client to see the volume and how it sits in its surroundings.": "Im Vorprojekt für die private Bauherrschaft gedruckt, um den Baukörper und seine Einbettung in die Umgebung zu zeigen.",
+  "360° tour through the rooms of the Graffio house": "360°-Rundgang durch die Räume von Graffio",
+  "Made at preliminary-design stage, so the client could decide the finishes, the kitchen, the bathrooms and the furniture from inside each room.": "Im Vorprojekt erstellt, damit die Bauherrschaft Materialien, Küche, Bäder und Möblierung direkt im Raum festlegen konnte.",
+  "360° tour of the Islas ice arena: rink, stands and café area": "360°-Rundgang durch die Eishalle Islas: Eisfeld, Tribüne und Cafébereich",
+  "Fuchs Architekten’s competition presentation, shown with VR headsets.": "Wettbewerbspräsentation von Fuchs Architekten, mit VR-Brillen gezeigt.",
+  "Stairwell of a private residence in Liechtenstein, in four material variants": "Treppenhaus eines Einfamilienhauses in Liechtenstein, in vier Materialvarianten",
+  "AI images from 3D model sketches, for the private client to compare oak, concrete, rattan and colour.": "KI-Bilder aus Skizzen des 3D-Modells, damit die private Bauherrschaft Eiche, Beton, Rattan und Farbe vergleichen konnte.",
+  "Living room of a private residence in Liechtenstein, in eight material variants": "Wohnzimmer eines Einfamilienhauses in Liechtenstein, in acht Materialvarianten",
+  "AI images from 3D model sketches, for the private client to choose finishes, from terracotta and oak to terrazzo.": "KI-Bilder aus Skizzen des 3D-Modells, damit die private Bauherrschaft Oberflächen von Terrakotta und Eiche bis Terrazzo wählen konnte.",
+  "Exterior of a private residence in Liechtenstein, in two facade variants": "Aussenansicht eines Einfamilienhauses in Liechtenstein, in zwei Fassadenvarianten",
+  "AI images from 3D model sketches, for the private client to compare a timber attic with a stone base and plaster.": "KI-Bilder aus Skizzen des 3D-Modells, zum Vergleich von Holzaufbau und Steinsockel mit Verputz.",
+  "Master bathroom": "Masterbad",
+  "Bathroom detail": "Bad, Detail",
+  "Washbasin detail": "Waschtisch, Detail",
+  "Living & dining with fireplace": "Wohnen & Essen mit Kamin",
+  "Rink and stands": "Eisfeld und Tribüne",
+  "Interior visualization": "Innenvisualisierung",
+  "The model from above": "Modell von oben",
+  "The model from the terrace side": "Modell von der Terrassenseite",
+  "Sectioned floors": "Aufgeschnittene Geschosse",
+  "Printed bedroom": "Gedrucktes Schlafzimmer",
+  "Printed sofa": "Gedrucktes Sofa",
+  "Printed kitchen island": "Gedruckte Küchenzeile",
+  "Exterior detail": "Detail-Aussenvisualisierung",
+  "Pool and cascade": "Pool mit Wasserfall",
+  "Main facade and entrance": "Hauptfassade, Zugang",
+  "Facade grid, detail": "Fassadenraster, Detail",
+  "3D working model": "3D-Arbeitsmodell",
+  "Stairwell": "Treppenhaus",
+  "Living room and kitchen": "Wohnzimmer und Küche",
+  "Café": "Café",
+  "Mint green & oak": "Mintgrün & Eiche",
   "Sending…": "Wird gesendet …",
   "Thanks — we'll get back to you within one working day.": "Danke — wir melden uns innerhalb eines Arbeitstages.",
   "The form isn't connected yet. Please write to us at ": "Das Formular ist noch nicht angebunden. Bitte schreiben Sie uns an ",
@@ -1270,7 +1367,7 @@ const DE = {
   "All": "Alle",
   "Visualization": "Visualisierung",
   "3D Print Model": "3D-Druckmodell",
-  "360° Virtual Tour": "360° Virtual Tour",
+  "360° Virtual Tour": "360°-Rundgang",
   "AI Visualization": "KI-Visualisierung",
   "Sketch \u2192 Render": "Skizze \u2192 Render",
   "Material variants": "Materialvarianten",
@@ -1314,17 +1411,17 @@ const DE = {
   "Brief": "Auftrag",
   "Our work": "Leistungen",
   // nombres de proyecto (EN -> DE)
-  "Graffio - Private residence": "EFH Graffio",
-  "Viseu - Private residence": "EFH Viseu",
-  "Casa Lele - Private residence": "EFH Casa Lele",
+  "Graffio - Private residence": "Einfamilienhaus Graffio",
+  "Viseu - Private residence": "Einfamilienhaus Viseu",
+  "Casa Lele - Private residence": "Einfamilienhaus Casa Lele",
   "Jaso primary school - Sports Hall": "Sporthalle Primarschule Jaso",
   "Islas - Ice Arena": "Eishalle Islas",
   "Hüttenacher PLUS - Residential complex": "Wohnüberbauung Hüttenacher PLUS",
   "Kreuzgut - Kindergarten": "Kindergarten Kreuzgut",
   "Altstetten - Residential complex": "Wohnsiedlung Altstetten",
   "Hagenholz - Residential tower": "Hochhaus Hagenholz",
-  "Schtubu - Stairwell": "MFH Schtubu - Treppenhaus",
-  "Schtubu - Living room": "MFH Schtubu - Wohnzimmer",
+  "Schtubu - Stairwell": "EFH Schtubu - Treppenhaus",
+  "Schtubu - Living room": "EFH Schtubu - Wohnzimmer",
   "Schtubu - Facade": "MFH Schtubu - Fassade",
   "Living & kitchen": "Wohnen & K\u00fcche",
   "Garden facade": "Gartenfassade",
@@ -1427,7 +1524,7 @@ const DE = {
   "Next project →": "Nächstes Projekt →",
   "by 3D Vortex": "von 3D Vortex",
   "360° virtual tour by 3D Vortex": "360°-Rundgang von 3D Vortex",
-  "Access gallery": "Erschliessungsgalerie",
+  "Access gallery": "Laubengang",
   "Arrival & entrance": "Ankunft & Eingang",
   "Assembly by hand": "Montage von Hand",
   "Bedroom": "Schlafzimmer",
@@ -1441,7 +1538,7 @@ const DE = {
   "Images coming soon": "Bilder folgen in Kürze",
   "Interior atmosphere": "Innenraumstimmung",
   "Kitchen island": "Kücheninsel",
-  "Kitchen through the railing": "Küche durch das Geländer",
+  "Kitchen through the railing": "Küche hinter dem Geländer",
   "Living & fireplace": "Wohnen & Cheminée",
   "Massing & site": "Volumetrie & Umgebung",
   "Plan detail": "Plandetail",
